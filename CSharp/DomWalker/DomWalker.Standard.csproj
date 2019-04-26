@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>DomWalker</RootNamespace>
+    <Product>DomWalker</Product>
+    <Authors>Robert R Flores</Authors>
+    <Copyright>2014</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/MindfulWarrior/HtmlWalker</PackageProjectUrl>
+    <Description>Extension of HtmlWalker for common functionality for all DOM based HTML parsing</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HtmlWalker\HtmlWalker.Standard.csproj" />
+  </ItemGroup>
+
+</Project>

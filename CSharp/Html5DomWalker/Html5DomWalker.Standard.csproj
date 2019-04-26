@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>Html5DomWalker</RootNamespace>
+    <Product>HtmlWalker</Product>
+    <Authors>Robert R Flores</Authors>
+    <Copyright>2014</Copyright>
+    <PackageProjectUrl>https://github.com/MindfulWarrior/HtmlWalker</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Description>HTML 5 implementation of HtmlWalker using DOM documents.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DomWalker\DomWalker.Standard.csproj" />
+  </ItemGroup>
+
+</Project>
