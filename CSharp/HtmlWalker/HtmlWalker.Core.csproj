@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>HtmlWalker</RootNamespace>
+    <Authors>Robert R Flores</Authors>
+    <Copyright>2014</Copyright>
+    <PackageId>HtmlWalker.Core</PackageId>
+    <Product>HtmlWalker</Product>
+    <PackageProjectUrl>https://github.com/MindfulWarrior/HtmlWalker</PackageProjectUrl>
+    <Description>Base framework to parse, analyze, and process HTML</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

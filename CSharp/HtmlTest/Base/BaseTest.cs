@@ -30,9 +30,9 @@ namespace HtmlTest.Base
 
         private readonly DirectoryInfo input;
         private readonly DirectoryInfo output;
-       
-        protected string TestFolder => ConfigurationManager.AppSettings["InputRoot"];
-        protected string OutFolder => ConfigurationManager.AppSettings["OutputRoot"];
+
+        protected string TestFolder => "../../../../Test";
+        protected string OutFolder => "../../../../Test";
 
         protected abstract WalkerPlatform Platform { get; }
 
