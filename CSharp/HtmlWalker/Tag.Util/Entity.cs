@@ -2,7 +2,6 @@
 using HtmlWalker.Platform;
 using HtmlWalker.Tag.Base;
 using HtmlWalker.Visitor;
-using System;
 
 namespace HtmlWalker.Tag.Util
 {

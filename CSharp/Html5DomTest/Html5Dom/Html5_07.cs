@@ -1,7 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using HtmlTest.Base;
-
 namespace HtmlTest.Html5Dom
 {
 

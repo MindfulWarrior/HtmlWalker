@@ -1,9 +1,7 @@
 ﻿using HtmlWalker.Platform;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Configuration;
 using System.IO;
-using System.Xml;
 
 namespace HtmlTest.Base
 {

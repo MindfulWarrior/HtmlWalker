@@ -9,7 +9,8 @@ namespace HtmlWalker
     ///   Describes what the inner tag types are
     /// </summary>
     /// <author>Robert R Flores</author>
-    public enum ContentType {
+    public enum ContentType
+    {
         /// <summary>
         ///   No content will be returned by <see cref="ITag.OwnedTags"/> or <see cref="ITag.TextValue"/>.
         ///   Identifies <see cref="ContentNoneTag"/>

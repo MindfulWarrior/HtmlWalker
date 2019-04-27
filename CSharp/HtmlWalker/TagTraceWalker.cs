@@ -1,5 +1,4 @@
-﻿using HtmlWalker.Platform;
-using HtmlWalker.Core;
+﻿using HtmlWalker.Core;
 using System;
 using System.Diagnostics;
 

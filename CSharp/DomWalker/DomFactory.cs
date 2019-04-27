@@ -82,7 +82,8 @@ namespace DomWalker
         protected override object CreateHead() => DApi.CreateElement(Dom, "head");
         protected override object CreateHeader() => DApi.CreateElement(Dom, "header");
         protected override object CreateHgroup() => DApi.CreateElement(Dom, "hgroup");
-        protected override object CreateHtml() {
+        protected override object CreateHtml()
+        {
             var tag = DApi.HtmlElement(Dom);
             if (tag == null)
                 tag = DApi.CreateElement(Dom, "html");

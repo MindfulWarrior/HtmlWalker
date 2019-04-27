@@ -1,6 +1,4 @@
-﻿using HtmlWalker.Platform;
-
-namespace HtmlWalker.Exception
+﻿namespace HtmlWalker.Exception
 {
     /// <summary>
     ///   This exception is called when an atempt is made to walk HTML and the document

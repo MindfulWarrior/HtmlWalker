@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HtmlWalker.Exception
+﻿namespace HtmlWalker.Exception
 {
     /// <summary>
     ///   This exception class wraps a previous exception that occured while

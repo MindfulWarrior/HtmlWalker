@@ -10,8 +10,8 @@ namespace XhtmlDomWalker
     public class XhtmlDomApi : DomApi<XmlDocument>
     {
         public static XhtmlDomApi Instance = new XhtmlDomApi();
- 
-        private XhtmlDomApi() : base(){  }
+
+        private XhtmlDomApi() : base() { }
 
         protected override object DocumentNode(XmlDocument dom) => dom;
 
@@ -37,7 +37,8 @@ namespace XhtmlDomWalker
         {
             var content = new List<object>();
             var nodes = ((XmlNode)adapter.Tag).ChildNodes;
-            for (int n = 0; n < nodes.Count; n++) {
+            for (int n = 0; n < nodes.Count; n++)
+            {
                 XmlNode node = nodes.Item(n);
                 if (
                     node.NodeType == XmlNodeType.Element ||

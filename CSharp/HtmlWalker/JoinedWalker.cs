@@ -1,5 +1,4 @@
-﻿using HtmlWalker.Platform;
-using HtmlWalker.Tag.Html;
+﻿using HtmlWalker.Tag.Html;
 using HtmlWalker.Tag.Util;
 using System.Collections.Generic;
 
@@ -21,7 +20,7 @@ namespace HtmlWalker
         public JoinedWalker() : base() { }
 
         #region Walker implementation
- 
+
         #region End methods
 
         #region document, <html>, <head>, and <body>

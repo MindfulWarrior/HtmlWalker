@@ -1,8 +1,6 @@
-using System;
 using HtmlWalker.Platform;
 using HtmlWalker.Tag.Base;
 using HtmlWalker.Visitor;
-using HtmlWalker.Core;
 
 namespace HtmlWalker.Tag.Util
 {
@@ -35,7 +33,7 @@ namespace HtmlWalker.Tag.Util
                 nodeOwner = nodeOwner.Owner;
             NodeOwner = nodeOwner as BaseTag;
 
-            if (NodeOwner != null &&adapter.OwnedTags != null)
+            if (NodeOwner != null && adapter.OwnedTags != null)
             {
                 foreach (var tag in adapter.OwnedTags)
                     OwnedTags.Add(tag);

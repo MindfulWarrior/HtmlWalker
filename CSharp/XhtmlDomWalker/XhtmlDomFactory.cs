@@ -1,6 +1,5 @@
 using DomWalker;
 using System.Xml;
-using HtmlWalker.Platform;
 
 namespace XhtmlDomWalker
 {

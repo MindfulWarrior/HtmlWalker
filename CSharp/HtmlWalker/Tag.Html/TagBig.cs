@@ -1,5 +1,5 @@
-﻿using HtmlWalker.Tag.Base;
-using HtmlWalker.Platform;
+﻿using HtmlWalker.Platform;
+using HtmlWalker.Tag.Base;
 using HtmlWalker.Visitor;
 
 namespace HtmlWalker.Tag.Html

@@ -1,5 +1,4 @@
-﻿using HtmlWalker.Core;
-using HtmlWalker.Platform;
+﻿using HtmlWalker.Platform;
 using HtmlWalker.Tag.Util;
 using System;
 using System.Collections;
@@ -24,7 +23,7 @@ namespace HtmlWalker.Tag.Base
         ///   The <see cref="Owner"/> can be the same but not always.
         /// </summary>
         protected readonly BaseTag NodeOwner;
-        
+
         internal TagList(BaseTag owner) : this(owner, owner) { }
 
         internal TagList(BaseTag owner, BaseTag nodeOwner)
@@ -52,7 +51,7 @@ namespace HtmlWalker.Tag.Base
                         original = original.Substring(0, original.Length - Environment.NewLine.Length);
                         endEols++;
                     }
-                        
+
                     if (!String.IsNullOrEmpty(original))
                     {
                         var lines = original.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);

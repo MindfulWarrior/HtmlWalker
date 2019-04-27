@@ -31,7 +31,7 @@ namespace HtmlWalker.Tag.Html
         ///   Implements <see cref="ITag.Visit(ITagVoidVisitor)"/>
         /// </summary>
         public override void Visit(ITagVoidVisitor visitor) { visitor.Visit(this); }
-  
+
         /// <summary>
         ///   Implements <see cref="ITag.Visit{T}(ITagGenericVisitor{T})"/>
         /// </summary>

@@ -3,7 +3,6 @@ using HtmlWalker.Platform;
 using System.Text;
 using System.Xml;
 using XhtmlXsd;
-using System;
 
 namespace XhtmlDomWalker
 {

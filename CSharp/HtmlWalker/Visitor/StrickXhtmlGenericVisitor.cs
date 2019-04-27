@@ -1,6 +1,6 @@
-﻿using HtmlWalker.Tag.Html;
+﻿using HtmlWalker.Exception;
+using HtmlWalker.Tag.Html;
 using HtmlWalker.Tag.Util;
-using HtmlWalker.Exception;
 
 namespace HtmlWalker.Visitor
 {

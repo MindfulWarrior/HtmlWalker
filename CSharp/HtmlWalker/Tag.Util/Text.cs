@@ -1,8 +1,7 @@
-using System;
+using HtmlWalker.Core;
 using HtmlWalker.Platform;
 using HtmlWalker.Tag.Base;
 using HtmlWalker.Visitor;
-using HtmlWalker.Core;
 
 namespace HtmlWalker.Tag.Util
 {

@@ -1,12 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HtmlTest.Base;
-using HtmlWalker;
-using HtmlWalker.Exception;
-using XhtmlDomWalker;
-using System.Xml;
+﻿using HtmlTest.Base;
+using HtmlWalker.Platform;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
-using HtmlWalker.Platform;
+using XhtmlDomWalker;
 using XhtmlXsd;
 
 namespace HtmlTest.XhtmlDom.Base

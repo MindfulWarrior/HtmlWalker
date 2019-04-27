@@ -1,10 +1,10 @@
 ﻿using Html5DomWalker;
 using HtmlAgilityPack;
 using HtmlTest.Base;
+using HtmlWalker.Platform;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
-using HtmlWalker.Platform;
 
 namespace HtmlTest.Html5Dom
 {

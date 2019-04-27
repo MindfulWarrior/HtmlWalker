@@ -1,4 +1,3 @@
-using HtmlWalker.Core;
 using HtmlWalker.Tag.Html;
 using HtmlWalker.Tag.Util;
 

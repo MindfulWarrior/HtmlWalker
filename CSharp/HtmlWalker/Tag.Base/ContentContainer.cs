@@ -1,5 +1,4 @@
-﻿using HtmlWalker.Core;
-using HtmlWalker.Platform;
+﻿using HtmlWalker.Platform;
 using System;
 
 namespace HtmlWalker.Tag.Base
@@ -33,7 +32,7 @@ namespace HtmlWalker.Tag.Base
         /// </summary>
         /// <remarks>This tag type always has no text, so always returns 'null'</remarks>
         public override String TextValue { get => null; set { } }
-        
+
         /// <summary>
         ///   Impleents <see cref="ITag.OwnedTags"/>
         /// </summary>

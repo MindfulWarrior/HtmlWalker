@@ -1,10 +1,8 @@
-using HtmlWalker.Exception;
 using HtmlWalker.Platform;
 using HtmlWalker.Tag.Base;
 using HtmlWalker.Tag.Html;
 using HtmlWalker.Tag.Util;
 using HtmlWalker.Visitor;
-using System;
 
 namespace HtmlWalker
 {
@@ -1647,9 +1645,9 @@ namespace HtmlWalker
         /// </summary>
         /// <param name="adapter">text to be processed</param>
         public virtual void Visit(Text adapter)
-	    {
+        {
             Handle(adapter);
-	    }
+        }
 
         /// <summary>
         ///   Visit an eol tag adapter
@@ -1711,7 +1709,7 @@ namespace HtmlWalker
         {
             Start(adapter);
             Walk(adapter);
-            End(adapter);                
+            End(adapter);
         }
 
         /// <summary>
@@ -1719,33 +1717,33 @@ namespace HtmlWalker
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagTable)"/>
         /// </summary>
         public virtual void Visit(TagTable adapter)
-	    {
-		    Start(adapter);
+        {
+            Start(adapter);
             Walk(adapter);
-		    End(adapter);
-	    }
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;a&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagA)"/>
         /// </summary>
         public virtual void Visit(TagA adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;abbr&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagAbbr)"/>
         /// </summary>
         public virtual void Visit(TagAbbr adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;acronym&gt;</b> tag and all its child tags
@@ -1763,95 +1761,95 @@ namespace HtmlWalker
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagAddress)"/>
         /// </summary>
         public virtual void Visit(TagAddress adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
-	
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
+
         /// <summary>
         ///   Visit the <b>&lt;area&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagArea)"/>
         /// </summary>
-	    public virtual void Visit(TagArea adapter)
-	    {
-		    Handle(adapter);
-	    }
+        public virtual void Visit(TagArea adapter)
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;article&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagArticle)"/>
         /// </summary>
         public virtual void Visit(TagArticle adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;aside&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagAside)"/>
         /// </summary>
         public virtual void Visit(TagAside adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;audio&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagAudio)"/>
         /// </summary>
 	    public virtual void Visit(TagAudio adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;b&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagB)"/>
         /// </summary>
         public virtual void Visit(TagB adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;base&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagBase)"/>
         /// </summary>
         public virtual void Visit(TagBase adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;bdi&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagBdi)"/>
         /// </summary>
         public virtual void Visit(TagBdi adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;bdo&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagBdo)"/>
         /// </summary>
         public virtual void Visit(TagBdo adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;big&gt;</b> tag and all its child tags
@@ -1870,11 +1868,11 @@ namespace HtmlWalker
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagBlockquote)"/>
         /// </summary>
         public virtual void Visit(TagBlockquote adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;bodyl&gt;</b> tag and all its child tags
@@ -1892,560 +1890,560 @@ namespace HtmlWalker
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagBr)"/>
         /// </summary>
         public virtual void Visit(TagBr adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;button&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagButton)"/>
         /// </summary>
         public virtual void Visit(TagButton adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;canvas&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagCanvas)"/>
         /// </summary>
         public virtual void Visit(TagCanvas adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;command&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagCommand)"/>
         /// </summary>
         public virtual void Visit(TagCommand adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;caption&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagCaption)"/>
         /// </summary>
 	    public virtual void Visit(TagCaption adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;center&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagCenter)"/>
         /// </summary>
         public virtual void Visit(TagCenter adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;cite&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagCite)"/>
         /// </summary>
         public virtual void Visit(TagCite adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;code&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagCode)"/>
         /// </summary>
         public virtual void Visit(TagCode adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;col&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagCol)"/>
         /// </summary>
         public virtual void Visit(TagCol adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;colgroup&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagColgroup)"/>
         /// </summary>
         public virtual void Visit(TagColgroup adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;datalist&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagDatalist)"/>
         /// </summary>
         public virtual void Visit(TagDatalist adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;dd&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagDd)"/>
         /// </summary>
 	    public virtual void Visit(TagDd adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;del&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagDel)"/>
         /// </summary>
         public virtual void Visit(TagDel adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;details&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagDetails)"/>
         /// </summary>
         public virtual void Visit(TagDetails adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;dfn&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagDfn)"/>
         /// </summary>
 	    public virtual void Visit(TagDfn adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;dialong&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagDialog)"/>
         /// </summary>
         public virtual void Visit(TagDialog adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;div&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagDiv)"/>
         /// </summary>
 	    public virtual void Visit(TagDiv adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;dl&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagDl)"/>
         /// </summary>
         public virtual void Visit(TagDl adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;dt&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagDt)"/>
         /// </summary>
         public virtual void Visit(TagDt adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;em&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagEm)"/>
         /// </summary>
         public virtual void Visit(TagEm adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;embed&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagEmbed)"/>
         /// </summary>
         public virtual void Visit(TagEmbed adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;fieldset&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagFieldset)"/>
         /// </summary>
         public virtual void Visit(TagFieldset adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;figcaption&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagFigcaption)"/>
         /// </summary>
         public virtual void Visit(TagFigcaption adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;figure&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagFigure)"/>
         /// </summary>
         public virtual void Visit(TagFigure adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;font&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagFont)"/>
         /// </summary>
 	    public virtual void Visit(TagFont adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;footer&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagFooter)"/>
         /// </summary>
         public virtual void Visit(TagFooter adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;form&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagForm)"/>
         /// </summary>
 	    public virtual void Visit(TagForm adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;h1&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagH1)"/>
         /// </summary>
         public virtual void Visit(TagH1 adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;h2&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagH2)"/>
         /// </summary>
         public virtual void Visit(TagH2 adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;h3&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagH3)"/>
         /// </summary>
         public virtual void Visit(TagH3 adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;h4&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagH4)"/>
         /// </summary>
         public virtual void Visit(TagH4 adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;h5&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagH5)"/>
         /// </summary>
         public virtual void Visit(TagH5 adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;h6&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagH6)"/>
         /// </summary>
         public virtual void Visit(TagH6 adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;head&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagHead)"/>
         /// </summary>
         public virtual void Visit(TagHead adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;header&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagHeader)"/>
         /// </summary>
         public virtual void Visit(TagHeader adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;hgroup&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagHgroup)"/>
         /// </summary>
         public virtual void Visit(TagHgroup adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;hr&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagHr)"/>
         /// </summary>
 	    public virtual void Visit(TagHr adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;i&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagI)"/>
         /// </summary>
         public virtual void Visit(TagI adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;iframe&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagIframe)"/>
         /// </summary>
         public virtual void Visit(TagIframe adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;img&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagImg)"/>
         /// </summary>
         public virtual void Visit(TagImg adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;input&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagInput)"/>
         /// </summary>
         public virtual void Visit(TagInput adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;ins&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagIns)"/>
         /// </summary>
         public virtual void Visit(TagIns adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;kbd&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagKbd)"/>
         /// </summary>
         public virtual void Visit(TagKbd adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;keygen&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagKeygen)"/>
         /// </summary>
         public virtual void Visit(TagKeygen adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;label&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagLabel)"/>
         /// </summary>
 	    public virtual void Visit(TagLabel adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;legend&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagLegend)"/>
         /// </summary>
         public virtual void Visit(TagLegend adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;li&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagLi)"/>
         /// </summary>
         public virtual void Visit(TagLi adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;link&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagLink)"/>
         /// </summary>
         public virtual void Visit(TagLink adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;main&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagMain)"/>
         /// </summary>
         public virtual void Visit(TagMain adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;map&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagMap)"/>
         /// </summary>
 	    public virtual void Visit(TagMap adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;mark&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagMark)"/>
         /// </summary>
         public virtual void Visit(TagMark adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;menu&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagMenu)"/>
         /// </summary>
 	    public virtual void Visit(TagMenu adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;menuitem&gt;</b> tag and all its child tags
@@ -2463,115 +2461,115 @@ namespace HtmlWalker
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagMeta)"/>
         /// </summary>
         public virtual void Visit(TagMeta adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;meter&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagMeter)"/>
         /// </summary>
         public virtual void Visit(TagMeter adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;nav&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagNav)"/>
         /// </summary>
         public virtual void Visit(TagNav adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;noscript&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagNoscript)"/>
         /// </summary>
 	    public virtual void Visit(TagNoscript adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;object&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagObject)"/>
         /// </summary>
         public virtual void Visit(TagObject adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;ol&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagOl)"/>
         /// </summary>
         public virtual void Visit(TagOl adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;optgroup&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagOptgroup)"/>
         /// </summary>
         public virtual void Visit(TagOptgroup adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;option&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagOption)"/>
         /// </summary>
         public virtual void Visit(TagOption adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;output&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagOutput)"/>
         /// </summary>
         public virtual void Visit(TagOutput adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;p&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagP)"/>
         /// </summary>
         public virtual void Visit(TagP adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;param&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagParam)"/>
         /// </summary>
         public virtual void Visit(TagParam adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;picture&gt;</b> tag and all its child tags
@@ -2589,316 +2587,316 @@ namespace HtmlWalker
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagPre)"/>
         /// </summary>
         public virtual void Visit(TagPre adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;progress&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagProgress)"/>
         /// </summary>
         public virtual void Visit(TagProgress adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;q&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagQ)"/>
         /// </summary>
 	    public virtual void Visit(TagQ adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;rp&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagRp)"/>
         /// </summary>
         public virtual void Visit(TagRp adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;rt&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagRt)"/>
         /// </summary>
         public virtual void Visit(TagRt adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;ruby&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagRuby)"/>
         /// </summary>
         public virtual void Visit(TagRuby adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;title&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagTitle)"/>
         /// </summary>
         public virtual void Visit(TagTitle adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;s&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagS)"/>
         /// </summary>
         public virtual void Visit(TagS adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;samp&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagSamp)"/>
         /// </summary>
         public virtual void Visit(TagSamp adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;script&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagScript)"/>
         /// </summary>
         public virtual void Visit(TagScript adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;section&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagSection)"/>
         /// </summary>
         public virtual void Visit(TagSection adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;select&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagSelect)"/>
         /// </summary>
         public virtual void Visit(TagSelect adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;small&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagSmall)"/>
         /// </summary>
         public virtual void Visit(TagSmall adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;source&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagSource)"/>
         /// </summary>
         public virtual void Visit(TagSource adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;span&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagSpan)"/>
         /// </summary>
         public virtual void Visit(TagSpan adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;strike&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagStrike)"/>
         /// </summary>
         public virtual void Visit(TagStrike adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;strong&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagStrong)"/>
         /// </summary>
         public virtual void Visit(TagStrong adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;style&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagStyle)"/>
         /// </summary>
         public virtual void Visit(TagStyle adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;sub&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagSub)"/>
         /// </summary>
         public virtual void Visit(TagSub adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;summary&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagSummary)"/>
         /// </summary>
         public virtual void Visit(TagSummary adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;sup&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagSup)"/>
         /// </summary>
         public virtual void Visit(TagSup adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;tbody&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagTbody)"/>
         /// </summary>
         public virtual void Visit(TagTbody adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;td&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagTd)"/>
         /// </summary>
         public virtual void Visit(TagTd adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;textarea&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagTextarea)"/>
         /// </summary>
         public virtual void Visit(TagTextarea adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;tfoot&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagTfoot)"/>
         /// </summary>
 	    public virtual void Visit(TagTfoot adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;th&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagTh)"/>
         /// </summary>
         public virtual void Visit(TagTh adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;thead&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagThead)"/>
         /// </summary>
         public virtual void Visit(TagThead adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;time&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagTime)"/>
         /// </summary>
         public virtual void Visit(TagTime adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;tr&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagTr)"/>
         /// </summary>
         public virtual void Visit(TagTr adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;track&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagTrack)"/>
         /// </summary>
         public virtual void Visit(TagTrack adapter)
-	    {
-		    Handle(adapter);
- 	    }
+        {
+            Handle(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;tt&gt;</b> tag and all its child tags
@@ -2916,53 +2914,53 @@ namespace HtmlWalker
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagU)"/>
         /// </summary>
         public virtual void Visit(TagU adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;ul&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagUl)"/>
         /// </summary>
         public virtual void Visit(TagUl adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;var&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagVar)"/>
         /// </summary>
         public virtual void Visit(TagVar adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;video&gt;</b> tag and all its child tags
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagVideo)"/>
         /// </summary>
         public virtual void Visit(TagVideo adapter)
-	    {
-		    Start(adapter);
-		    Walk(adapter);
-		    End(adapter);
-	    }
+        {
+            Start(adapter);
+            Walk(adapter);
+            End(adapter);
+        }
 
         /// <summary>
         ///   Visit the <b>&lt;wbr&gt;</b> tag
         ///   Implements <see cref="ITagVoidVisitor.Visit(TagWbr)"/>
         /// </summary>
         public virtual void Visit(TagWbr adapter)
-	    {
-		    Handle(adapter);
-	    }
+        {
+            Handle(adapter);
+        }
 
         #endregion
     }

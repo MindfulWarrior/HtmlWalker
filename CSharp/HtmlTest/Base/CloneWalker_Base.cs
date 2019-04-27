@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HtmlWalker;
-using HtmlWalker.Exception;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.IO;
 
 namespace HtmlTest.Base
@@ -11,7 +9,7 @@ namespace HtmlTest.Base
         public CloneWalker_Base() : base("html", "Base") { }
         public CloneWalker_Base(string ext) : base(ext, "Base") { }
 
- 
+
         public virtual void TUnsupported()
         {
             var html = @"<html><body><unsupported></unsupported></body></html>";

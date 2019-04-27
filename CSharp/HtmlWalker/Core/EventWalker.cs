@@ -1,5 +1,4 @@
-﻿using HtmlWalker.Platform;
-using HtmlWalker.Tag.Html;
+﻿using HtmlWalker.Tag.Html;
 using HtmlWalker.Tag.Util;
 using System;
 

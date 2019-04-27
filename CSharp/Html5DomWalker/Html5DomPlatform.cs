@@ -1,6 +1,6 @@
 ﻿using HtmlAgilityPack;
-using HtmlWalker.Platform;
 using HtmlWalker;
+using HtmlWalker.Platform;
 using System.Text;
 
 namespace Html5DomWalker

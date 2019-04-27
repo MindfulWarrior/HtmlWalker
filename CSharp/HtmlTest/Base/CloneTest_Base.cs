@@ -1,8 +1,7 @@
-using System.IO;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HtmlWalker.Platform;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
 
 namespace HtmlTest.Base
 {

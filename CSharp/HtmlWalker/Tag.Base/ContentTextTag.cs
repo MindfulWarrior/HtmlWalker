@@ -1,4 +1,3 @@
-using HtmlWalker.Core;
 using HtmlWalker.Platform;
 
 namespace HtmlWalker.Tag.Base

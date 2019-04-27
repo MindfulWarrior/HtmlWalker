@@ -1,5 +1,4 @@
-﻿using HtmlWalker.Platform;
-using Microsoft.XmlDiffPatch;
+﻿using Microsoft.XmlDiffPatch;
 using System.IO;
 using System.Xml;
 using XhtmlXsd;

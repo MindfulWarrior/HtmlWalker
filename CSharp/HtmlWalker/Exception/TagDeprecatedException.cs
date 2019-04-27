@@ -1,6 +1,4 @@
-﻿using HtmlWalker.Core;
-
-namespace HtmlWalker.Exception
+﻿namespace HtmlWalker.Exception
 {
     public class TagDeprecatedException : HtmlWalkerException
     {

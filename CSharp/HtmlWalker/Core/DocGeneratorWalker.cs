@@ -1,10 +1,8 @@
-﻿using HtmlWalker.Platform;
-using HtmlWalker.Tag.Html;
+﻿using HtmlWalker.Exception;
+using HtmlWalker.Platform;
 using HtmlWalker.Tag.Util;
-using HtmlWalker.Exception;
 using HtmlWalker.Visitor;
 using System.Collections.Generic;
-using System;
 
 namespace HtmlWalker.Core
 {

@@ -1,18 +1,17 @@
 ﻿using DomWalker;
 using HtmlAgilityPack;
 using HtmlWalker;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
 namespace Html5DomWalker
 {
-    public class Html5DomApi: DomApi<HtmlDocument>
+    public class Html5DomApi : DomApi<HtmlDocument>
     {
         internal static Html5DomApi Instance = new Html5DomApi();
 
-        private Html5DomApi() : base(){ }
+        private Html5DomApi() : base() { }
 
         protected override object DocumentNode(HtmlDocument dom)
             => dom.DocumentNode;
@@ -36,7 +35,8 @@ namespace Html5DomWalker
         {
             var content = new List<object>();
             var node = (HtmlNode)adapter.Tag;
-            foreach (var child in node.ChildNodes) {
+            foreach (var child in node.ChildNodes)
+            {
                 if (
                     child.NodeType == HtmlNodeType.Element ||
                     child.NodeType == HtmlNodeType.Text ||
