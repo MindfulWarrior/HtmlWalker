@@ -328,5 +328,11 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# Testing Result files
 **/Test/**/expected*
 **/Test/**/clone*
+**/Test/**/output*
+
+# Java files
+.project
