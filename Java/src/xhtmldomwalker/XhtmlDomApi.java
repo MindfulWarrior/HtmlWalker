@@ -56,7 +56,6 @@ public class XhtmlDomApi extends DomApi<Document>
        }
 	   catch (HtmlWalkerException e)
        {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
        }
        return writer.toString();

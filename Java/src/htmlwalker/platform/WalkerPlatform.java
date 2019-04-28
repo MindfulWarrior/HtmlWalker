@@ -69,6 +69,13 @@ public abstract class WalkerPlatform
 	public abstract String name();
 	
 	/**
+	 * Create the platform specific implementation of IOptions
+	 * 
+	 * @return platform specific IOptions
+	 */
+    public abstract IOptions newDocumentOptions();
+
+	/**
 	 * Instantiates a new walker document for the specific platform.
 	 *
 	 * @param options - document options to use, can be null

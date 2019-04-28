@@ -76,7 +76,7 @@ public interface ITagGenericVisitor<T>
 	 * @return the T
 	 * @throws HtmlWalkerException the html walker exception
 	 */
-	public T visit(TagAcronym tagAcronym) throws HtmlWalkerException;
+	public T visit(TagAcronym adapter) throws HtmlWalkerException;
 	
 	/**
 	 * Visitor pattern method for the <b>&lt;address&gt;</b> tag adapter
@@ -663,7 +663,7 @@ public interface ITagGenericVisitor<T>
 	 * @return the T
 	 * @throws HtmlWalkerException the html walker exception
 	 */
-	public T visit(TagMenuitem tagMenuitem) throws HtmlWalkerException;
+	public T visit(TagMenuitem adapter) throws HtmlWalkerException;
 	
 	/**
 	 * Visitor pattern method for the <b>&lt;meta&gt;</b> tag adapter
@@ -771,7 +771,7 @@ public interface ITagGenericVisitor<T>
 	 * @return the T
 	 * @throws HtmlWalkerException the html walker exception
 	 */
-	public T visit(TagPicture tagPitcture) throws HtmlWalkerException;
+	public T visit(TagPicture adapter) throws HtmlWalkerException;
 	
 	/**
 	 * Visitor pattern method for the <b>&lt;pre&gt;</b> tag adapter
@@ -1059,7 +1059,7 @@ public interface ITagGenericVisitor<T>
 	 * @return the T
 	 * @throws HtmlWalkerException the html walker exception
 	 */
-	public T visit(TagTt tagTt) throws HtmlWalkerException;
+	public T visit(TagTt adapter) throws HtmlWalkerException;
 	
 	/**
 	 * Visitor pattern method for the <b>&lt;u&gt;</b> tag adapter

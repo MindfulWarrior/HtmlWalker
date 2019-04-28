@@ -19,7 +19,6 @@ public class CloneWalker extends DocGeneratorWalker
 	@Override
     protected <T extends ITag> ITag generateTag(T adapter) { return adapter.clone(this.output.factory(), this.currentTag); }
 
-    //public final List<ITagGenericVisitor<ITag>> visitors = new ArrayList<ITagGenericVisitor<ITag>>();
 	/**
 	 * Instantiates a new walker cloner.
 	 *

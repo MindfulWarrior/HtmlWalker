@@ -13,24 +13,57 @@ import htmlwalker.tag.util.Unknown;
 
 public abstract class GenericWalker extends Walker
 {
+	/**
+     * This abstract class provides a short cut when you need to override
+     * all more most of the tag Visit methods.
+     *      
+     * Instead, the class routes all Visits to 5 abstract methods. Then
+     * only these need to be overridden.
+     * 
+     * @param adapter
+     * @throws HtmlWalkerException
+     */
 	public GenericWalker() { super(); }
 
+	/**
+     * Called with the first visit to the DocumentTag,
+     * effectively the beginning of the walk.
+     * 
+     * @param adapter
+     * @throws HtmlWalkerException
+     */
     protected abstract void startDocument(DocumentTag adapter) throws HtmlWalkerException;
 
+    /**
+     * Called on the close of the <see cref="DocumentTag"/>,
+     * effectively at the end of the walk.
+     * 
+     * @param adapter
+     * @throws HtmlWalkerException
+     */
     protected abstract void endDocument(DocumentTag adapter) throws HtmlWalkerException;
 
-    protected abstract <T extends ITag> void handleTag(T adapter) throws HtmlWalkerException;
+    /**
+     * Called wiht tag adapters which do not contain tags.
+     * 
+     * @param <T> tag adapter class
+     * @param adapter
+     * @return tag adapter in the event that it was modified
+     * @throws HtmlWalkerException
+     */
+    protected abstract <T extends ITag> ITag handleTag(T adapter) throws HtmlWalkerException;
 
 	/**
-	 * This method is used to clone a tag adapter, add it to the current tag's content
-	 * and then make the newly cloned tag adapter the current tag.
+     * Called on the opening of a tag adapters
 	 *
-	 * @param adapter - the original tag adapter
+	 * @param adapter
+     * @return tag adapter in the event that it was modified
+     * @throws HtmlWalkerException
 	 */
-    protected abstract <T extends ITag> void startTag(T adapter) throws HtmlWalkerException;
+    protected abstract <T extends ITag> ITag startTag(T adapter) throws HtmlWalkerException;
 
 	/**
-	 * This method returns the stack to the previous tag.
+     * Called on the closing of tag adapters
 	 */
     protected abstract void endTag();
 
