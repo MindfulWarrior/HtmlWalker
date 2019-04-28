@@ -4,6 +4,13 @@ using HtmlWalker.Tag.Util;
 
 namespace HtmlWalker.Visitor
 {
+    /// <summary>
+    ///     This class provides a shortcut when you don't need
+    ///     to override all or most of the Visit methods.
+    ///     
+    ///     Instead, you just need to override those where the
+    ///     tag is replaced.
+    /// </summary>
     public class EchoModifer : DocGeneratorWalker.IModifier
     {
         public virtual ITag Visit(DocumentTag adapter) => adapter;

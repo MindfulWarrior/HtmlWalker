@@ -4,18 +4,50 @@ using System;
 
 namespace HtmlWalker.Core
 {
+    /// <summary>
+    ///     This abstract class provides a short cut when you need to override
+    ///     all more most of the tag Vist methods.
+    ///     
+    ///     Instead, the class routes all Visits to 5 abstract methods. Then
+    ///     only these need to be overridden.
+    /// </summary>
     public abstract class GenericWalker : Walker
     {
         public GenericWalker() : base() { }
 
+        /// <summary>
+        ///     Called with the first visit to the <see cref="DocumentTag"/>,
+        ///     effectively the beginning of the walk.
+        /// </summary>
+        /// <param name="adapter">document tag</param>
         protected abstract void StartDocument(DocumentTag adapter);
 
+        /// <summary>
+        ///     Called on the close of the <see cref="DocumentTag"/>,
+        ///     effectively at the end of the walk.
+        /// </summary>
+        /// <param name="adapter"></param>
         protected abstract void EndDocument(DocumentTag adapter);
 
-        protected abstract void HandleTag<T>(T adapter) where T : ITag;
+        /// <summary>
+        ///     Called with tag adapters which do not contain tags.
+        /// </summary>
+        /// <typeparam name="T">tag adapter class</typeparam>
+        /// <param name="adapter">tag</param>
+        /// <returns>tag adapter in the event that it was modified</returns>
+        protected abstract ITag HandleTag<T>(T adapter) where T : ITag;
 
-        protected abstract void StartTag<T>(T adapter) where T : ITag;
+        /// <summary>
+        ///     Called on the opening of a tag adapters
+        /// </summary>
+        /// <typeparam name="T">tag adapter call</typeparam>
+        /// <param name="adapter">tag</param>
+        /// <returns>tag adapter in the event that it was modified</returns>
+        protected abstract ITag StartTag<T>(T adapter) where T : ITag;
 
+        /// <summary>
+        ///     Called on the closing of tag adapters
+        /// </summary>
         protected abstract void EndTag();
 
         #region Walker implementations

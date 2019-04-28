@@ -21,28 +21,27 @@ namespace HtmlTest.Base
             Ext = ext;
         }
 
-        protected override void CompareToExpected(FileInfo testOutput, FileInfo testExpected)
-        {
+        protected override void CompareToExpected(
+            FileInfo testOutput, FileInfo testExpected, bool ignoreWhitespace = true
+        ) {
             bool pass = false;
 
             if (Platform.IsXml)
             {
-                using (XmlTextReader output = new XmlTextReader(testOutput.Open(FileMode.Open, FileAccess.Read, FileShare.Read)))
+                using XmlTextReader output = new XmlTextReader(testOutput.Open(FileMode.Open, FileAccess.Read, FileShare.Read));
+                using (XmlTextReader expected = new XmlTextReader(testExpected.Open(FileMode.Open, FileAccess.Read, FileShare.Read)))
                 {
-                    using (XmlTextReader expected = new XmlTextReader(testExpected.Open(FileMode.Open, FileAccess.Read, FileShare.Read)))
-                    {
-                        output.XmlResolver = XhtmlEntityResolver.Instance;
-                        expected.XmlResolver = XhtmlEntityResolver.Instance;
+                    output.XmlResolver = XhtmlEntityResolver.Instance;
+                    expected.XmlResolver = XhtmlEntityResolver.Instance;
 
-                        XmlDiff xmldiff = new XmlDiff(
-                            XmlDiffOptions.IgnoreNamespaces |
-                            XmlDiffOptions.IgnorePrefixes |
-                            XmlDiffOptions.IgnoreDtd |
-                            XmlDiffOptions.IgnoreXmlDecl
-                        );
+                    XmlDiff xmldiff = new XmlDiff(
+                        XmlDiffOptions.IgnoreNamespaces |
+                        XmlDiffOptions.IgnorePrefixes |
+                        XmlDiffOptions.IgnoreDtd |
+                        XmlDiffOptions.IgnoreXmlDecl
+                    );
 
-                        pass = xmldiff.Compare(expected, output);
-                    }
+                    pass = xmldiff.Compare(expected, output);
                 }
             }
 
@@ -54,8 +53,8 @@ namespace HtmlTest.Base
         {
             var testInput = GetTestInput(inFile);
 
-            var walker = new TestWalker(Platform, options == null ? false : options.Formatted && options.DocumentOptions.ProvideEol);
-            var document = Platform.NewDocument(testInput.FullName, options.DocumentOptions);
+            var walker = new TestWalker(Platform, (options?.Formatted ?? false) && options.DocumentOptions.ProvideEol);
+            var document = Platform.NewDocument(testInput.FullName, options?.DocumentOptions);
             walker.Visit(document.DocumentTag);
 
             var testOutput = GetTestOutput(outFile);

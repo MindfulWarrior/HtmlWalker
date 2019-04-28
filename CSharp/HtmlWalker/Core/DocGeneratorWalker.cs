@@ -44,9 +44,9 @@ namespace HtmlWalker.Core
 
         protected override void EndDocument(DocumentTag adapter) { }
 
-        protected override void HandleTag<T>(T adapter) => Generate(adapter);
+        protected override ITag HandleTag<T>(T adapter) => Generate(adapter);
 
-        protected override void StartTag<T>(T adapter) => currentTag = Generate(adapter);
+        protected override ITag StartTag<T>(T adapter) => currentTag = Generate(adapter);
 
         protected override void EndTag() => currentTag = currentTag.Owner;
     }

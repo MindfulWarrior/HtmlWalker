@@ -18,17 +18,18 @@ namespace HtmlWalker
 
         public FormattedCloneWalker(WalkerPlatform.WalkerDocument document) : base(document) { }
 
-        protected override void HandleTag<T>(T adapter)
+        protected override ITag HandleTag<T>(T adapter)
         {
-            base.HandleTag(adapter);
+            var tag = base.HandleTag(adapter);
             var owner = CurrentOwner();
-            if (owner != null)
+            if (owner != null && tag.Name != "#skip")
             {
                 if (owner.Name == "body")
                     owner.OwnedTags.Add(new Eol(Output.Factory, 2));
                 else if (owner.Name == "head")
                     owner.OwnedTags.Add(new Eol(Output.Factory));
             }
+            return tag;
         }
 
         protected override void EndTag()
@@ -62,8 +63,10 @@ namespace HtmlWalker
 
         public override void End(TagHead adapter)
         {
+            bool skipped = (currentTag.Name == "#skip");
             base.End(adapter);
-            currentTag.OwnedTags.Add(new Eol(Output.Factory));
+            if (!skipped)
+                currentTag.OwnedTags.Add(new Eol(Output.Factory));
         }
 
         public override void Start(TagBody adapter)
@@ -74,8 +77,10 @@ namespace HtmlWalker
 
         public override void End(TagBody adapter)
         {
+            bool skipped = (currentTag.Name == "#skip");
             base.End(adapter);
-            currentTag.OwnedTags.Add(new Eol(Output.Factory));
+            if (!skipped)
+                currentTag.OwnedTags.Add(new Eol(Output.Factory));
         }
 
         public override void Handle(Eol adapter)
