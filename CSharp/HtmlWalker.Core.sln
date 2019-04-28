@@ -25,6 +25,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Html5DomWalker.Core", "Html
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Html5DomTest.Core", "Html5DomTest\Html5DomTest.Core.csproj", "{76616C94-6FF3-46C8-B9DF-9CF8DB40471C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlDocCleaner.Core", "HtmlDocCleaner\HtmlDocCleaner.Core.csproj", "{EAAB4A38-16B2-434C-BDA0-EE47E0CE89CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlDocToolTest.Core", "HtmlDocToolTest\HtmlDocToolTest.Core.csproj", "{21D1DFC0-4436-4387-AAD1-EDB70BE78796}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{76616C94-6FF3-46C8-B9DF-9CF8DB40471C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76616C94-6FF3-46C8-B9DF-9CF8DB40471C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76616C94-6FF3-46C8-B9DF-9CF8DB40471C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAAB4A38-16B2-434C-BDA0-EE47E0CE89CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAAB4A38-16B2-434C-BDA0-EE47E0CE89CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAAB4A38-16B2-434C-BDA0-EE47E0CE89CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAAB4A38-16B2-434C-BDA0-EE47E0CE89CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21D1DFC0-4436-4387-AAD1-EDB70BE78796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21D1DFC0-4436-4387-AAD1-EDB70BE78796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21D1DFC0-4436-4387-AAD1-EDB70BE78796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21D1DFC0-4436-4387-AAD1-EDB70BE78796}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
