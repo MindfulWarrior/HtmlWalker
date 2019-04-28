@@ -236,7 +236,7 @@ public abstract class CloneWalker_Base extends CloneTest
             if (isXml())
             	expected = "<!DOCTYPE html PUBLIC \"" + XhtmlDomPlatform.DOCTYPE_PUBLIC + "\">" + System.lineSeparator() + html;
             
-            compareToExpected(testOutput, expected);
+            compareToExpected(testOutput, expected, true);
         }
         catch (Exception e)
         {
@@ -277,7 +277,7 @@ public abstract class CloneWalker_Base extends CloneTest
             if (isXml())
             	expected = "<!DOCTYPE html PUBLIC \"" + XhtmlDomPlatform.DOCTYPE_PUBLIC + "\">" + System.lineSeparator() + html;            
 
-            compareToExpected(testOutput, expected);
+            compareToExpected(testOutput, expected, true);
         }
         catch (Exception e)
         {
@@ -347,7 +347,7 @@ public abstract class CloneWalker_Base extends CloneTest
             walker.visit(document.documentTag());
             walker.output().save(testOutput.getAbsolutePath());
 
-            compareToExpected(testOutput, html);
+            compareToExpected(testOutput, html, true);
         }
         catch (Exception e)
         {
@@ -396,7 +396,7 @@ public abstract class CloneWalker_Base extends CloneTest
             walker.visit(document.documentTag());
             walker.output().save(testOutput.getAbsolutePath());
 
-            compareToExpected(testOutput, testExpected);
+            compareToExpected(testOutput, testExpected, true);
         }
         catch (Exception e)
         {

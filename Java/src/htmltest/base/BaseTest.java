@@ -10,20 +10,29 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import htmlwalker.exception.HtmlWalkerException;
 import htmlwalker.platform.WalkerPlatform;
 
 public abstract class BaseTest
 {
-	private final File tstFolder;
+    protected class Options
+    {
+        public final WalkerPlatform.IOptions documentOptions;
+
+        public boolean formatted = true;
+
+        public Options(WalkerPlatform platform)
+        {
+            documentOptions = platform.newDocumentOptions();
+        }
+    }
+
+    private final File tstFolder;
 	private final File outFolder;
 	
 	protected abstract String testFolder();
 	protected abstract String outFolder();
 	
 	protected abstract WalkerPlatform platform();
-	
-	protected abstract WalkerPlatform.IOptions createOptions() throws HtmlWalkerException;
 	
     protected abstract void createExpected(File expected, File testInput);
 	
@@ -119,15 +128,18 @@ public abstract class BaseTest
 	    return expected;
     }
 
-    private String readNextLine(BufferedReader reader) throws IOException
+    private String readNextLine(BufferedReader reader, boolean ignoreWhitespace) throws IOException
 	{
         String line = reader.readLine();
-	    while (null != line && line.trim().length() == 0)
-		    line = reader.readLine();
+        if (ignoreWhitespace)
+        {
+        	while (null != line && line.trim().length() == 0)
+        		line = reader.readLine();
+        }
 	    return line;
 	}
 
-	protected boolean compareLines(String expected, String output)
+	protected boolean compareLines(String expected, String output, boolean ignoreWhitespace)
 	{
 	    boolean match = true;
 		
@@ -139,11 +151,14 @@ public abstract class BaseTest
 	
 	    while (match && ePos < eLine.length() && oPos < oLine.length())
 	    {
-		    while (Character.isWhitespace(eLine.charAt(ePos)) && ePos < eLine.length())
-			    ePos++;
+	    	if (ignoreWhitespace)
+	    	{
+	    		while (Character.isWhitespace(eLine.charAt(ePos)) && ePos < eLine.length())
+	    			ePos++;
 		
-		    while (Character.isWhitespace(oLine.charAt(oPos)) && oPos < oLine.length())
-			    oPos++;
+	    		while (Character.isWhitespace(oLine.charAt(oPos)) && oPos < oLine.length())
+	    			oPos++;
+	    	}
 		
 		    match = eLine.charAt(ePos) == oLine.charAt(oPos);
 		
@@ -157,13 +172,13 @@ public abstract class BaseTest
 	    return match;
 	}
 
-    protected void compareToExpected(File testOutput, File testInput, String expectedFile)
+    protected void compareToExpected(File testOutput, File testInput, String expectedFile, boolean ignoreWhitespace)
     {
         File testExpected = getTestExpected(expectedFile, testInput);
-        compareToExpected(testOutput, testExpected);
+        compareToExpected(testOutput, testExpected, ignoreWhitespace);
     }
 
-    protected void compareToExpected(File testOutput, File testExpected)
+    protected void compareToExpected(File testOutput, File testExpected, boolean ignoreWhitespace)
 	{
 	    String failure = null;
 	    
@@ -192,14 +207,14 @@ public abstract class BaseTest
 
 	                if (null != outputLine && !outputLine.isEmpty() && null != expectedLine && !expectedLine.isEmpty())
 	                {
-	                    outputLine = readNextLine(output);
-	                    expectedLine = readNextLine(expected);
+	                    outputLine = readNextLine(output, ignoreWhitespace);
+	                    expectedLine = readNextLine(expected, ignoreWhitespace);
 	                    while (null != outputLine && null != expectedLine && null == failure)
 	                    {
-	                        if (!compareLines(expectedLine, outputLine))
+	                        if (!compareLines(expectedLine, outputLine, ignoreWhitespace))
 	                            failure = "Expected - [" + expectedLine + "] vs Out - [" + outputLine + "]";
-	                        outputLine = readNextLine(output);
-	                        expectedLine = readNextLine(expected);
+	                        outputLine = readNextLine(output, ignoreWhitespace);
+	                        expectedLine = readNextLine(expected, ignoreWhitespace);
 	                    }
 	                }
 	                else
@@ -228,16 +243,16 @@ public abstract class BaseTest
 		    fail(failure);
 	}
 
-    protected void compareToExpected(File testOutput, String expected)
+    protected void compareToExpected(File testOutput, String expected, boolean ignoreWhitespace)
     {
         String output = "";
         try (BufferedReader reader = new BufferedReader(new FileReader(testOutput.getPath())))
         {
-        	String outputLine = readNextLine(reader);
+        	String outputLine = readNextLine(reader, ignoreWhitespace);
             while (null != outputLine)
             {
                 output += outputLine + System.lineSeparator();
-                outputLine = readNextLine(reader);
+                outputLine = readNextLine(reader, ignoreWhitespace);
             }
         }
         catch (IOException e)

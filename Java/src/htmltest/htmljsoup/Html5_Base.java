@@ -8,10 +8,8 @@ import org.junit.Test;
 
 import htmljsoupwalker.HtmlPlatform;
 import htmltest.base.CloneWalker_Base;
-import htmlwalker.exception.HtmlWalkerException;
 import htmlwalker.platform.WalkerDocument;
 import htmlwalker.platform.WalkerPlatform;
-import htmlwalker.platform.WalkerPlatform.IOptions;
 
 public class Html5_Base extends CloneWalker_Base
 {
@@ -38,12 +36,6 @@ public class Html5_Base extends CloneWalker_Base
             fail(e.getMessage());
         }
     }
-
-	@Override
-	protected IOptions createOptions() throws HtmlWalkerException
-	{
-		return new HtmlPlatform.Options();
-	}
 
     @Override
     @Test

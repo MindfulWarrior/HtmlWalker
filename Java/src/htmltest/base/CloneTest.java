@@ -55,7 +55,7 @@ public abstract class CloneTest extends BaseTest
 		}
 	
 	    if (null != expectedFile)
-		    compareToExpected(testOutput, testInput, expectedFile);
+		    compareToExpected(testOutput, testInput, expectedFile, true);
 	}
 
 	protected void doTest(String inFile, String outFile, String expectedFile)
@@ -83,23 +83,14 @@ public abstract class CloneTest extends BaseTest
 	    doTest("test." + t + "." + this.ext, "clone." + t + "." + this.ext, "expected." + t + "." + this.ext, null);
     }
 	
-    protected void doTest(int t, WalkerPlatform.IOptions options)
+    protected void doTest(int t, Options options)
     {
     	if (options == null)
-    	{
-			try
-			{
-				options = createOptions();
-			}
-			catch (HtmlWalkerException e)
-			{
-				fail(e.getMessage());
-			}
-    	}
-    	options.setProvideEol(false);
-	    doTest(String.valueOf(t), options);
-    	options.setProvideEol(true);
-	    doTest(String.valueOf(t), options);
+			options = new Options(platform());
+    	options.documentOptions.setProvideEol(false);
+	    doTest(String.valueOf(t), options.documentOptions);
+    	options.documentOptions.setProvideEol(true);
+	    doTest(String.valueOf(t), options.documentOptions);
     }
 	
     protected void doTest(int t)
