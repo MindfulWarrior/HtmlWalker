@@ -4,6 +4,9 @@ using HtmlWalker.Tag.Util;
 
 namespace HtmlWalker
 {
+    /// <summary>
+    ///   This classes clones and does simple formatting.
+    /// </summary>
     public class FormattedCloneWalker : CloneWalker
     {
         // TODO: Make <!DOCTYPE html> a new type instead of comment
@@ -52,13 +55,15 @@ namespace HtmlWalker
         public override void Start(TagHtml adapter)
         {
             base.Start(adapter);
-            currentTag.OwnedTags.Add(new Eol(Output.Factory));
+            if (currentTag.Name != "#skip")
+                currentTag.OwnedTags.Add(new Eol(Output.Factory));
         }
 
         public override void Start(TagHead adapter)
         {
             base.Start(adapter);
-            currentTag.OwnedTags.Add(new Eol(Output.Factory));
+            if (currentTag.Name != "#skip")
+                currentTag.OwnedTags.Add(new Eol(Output.Factory));
         }
 
         public override void End(TagHead adapter)
@@ -72,7 +77,8 @@ namespace HtmlWalker
         public override void Start(TagBody adapter)
         {
             base.Start(adapter);
-            currentTag.OwnedTags.Add(new Eol(Output.Factory, 2));
+            if (currentTag.Name != "#skip")
+                currentTag.OwnedTags.Add(new Eol(Output.Factory, 2));
         }
 
         public override void End(TagBody adapter)

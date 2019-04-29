@@ -1,6 +1,7 @@
 ﻿package htmltest.base;
 
 import htmlwalker.CloneWalker;
+import htmlwalker.FormattedCloneWalker;
 import htmlwalker.JoinedWalker;
 import htmlwalker.TagTraceWalker;
 import htmlwalker.platform.WalkerDocument;
@@ -12,17 +13,26 @@ public class TestWalker extends JoinedWalker
 
     public final TagTraceWalker tracer;
 
-    public TestWalker(WalkerPlatform platform)
+    public TestWalker(WalkerPlatform platform, boolean formatted)
     {
     	super();
     	
     	output = platform.newDocument();
         tracer = new TagTraceWalker();
         
-        CloneWalker cloner = new CloneWalker(output);
+        CloneWalker cloner;
+        if (formatted && !platform.isXml())
+        	cloner = new FormattedCloneWalker(output);
+        else
+        	cloner = new CloneWalker(output);
 
         walkers.add(tracer);
         walkers.add(cloner);
+    }
+    
+    public TestWalker(WalkerPlatform platform)
+    {
+    	this(platform, false);
     }
 
     public WalkerDocument output() { return output; }

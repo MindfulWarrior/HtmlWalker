@@ -59,7 +59,7 @@ public abstract class DocGeneratorWalker extends GenericWalker
 
     protected void endDocument(DocumentTag adapter) { }
 
-    protected <T extends ITag> void handleTag(T adapter) throws HtmlWalkerException { generate(adapter); }
+    protected <T extends ITag> ITag handleTag(T adapter) throws HtmlWalkerException { return generate(adapter); }
 
 	/**
 	 * This method is used to clone a tag adapter, add it to the current tag's content
@@ -67,7 +67,7 @@ public abstract class DocGeneratorWalker extends GenericWalker
 	 *
 	 * @param adapter - the original tag adapter
 	 */
-    protected <T extends ITag> void startTag(T adapter) throws HtmlWalkerException { currentTag = generate(adapter); }
+    protected <T extends ITag> ITag startTag(T adapter) throws HtmlWalkerException { return currentTag = generate(adapter); }
 
 	/**
 	 * This method returns the stack to the previous tag.

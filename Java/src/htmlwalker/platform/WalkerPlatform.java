@@ -67,7 +67,20 @@ public abstract class WalkerPlatform
 	protected abstract boolean keepEntities(boolean attribute);
 
 	public abstract String name();
+
+	/**
+	 * @return true if this platform is XHTML
+	 */
+    public abstract boolean isXml();
+
 	
+	/**
+	 * Create the platform specific implementation of IOptions
+	 * 
+	 * @return platform specific IOptions
+	 */
+    public abstract IOptions newDocumentOptions();
+
 	/**
 	 * Instantiates a new walker document for the specific platform.
 	 *

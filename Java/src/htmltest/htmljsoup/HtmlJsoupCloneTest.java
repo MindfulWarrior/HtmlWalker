@@ -8,9 +8,7 @@ import org.jsoup.nodes.Document;
 
 import htmljsoupwalker.*;
 import htmltest.base.CloneTest;
-import htmlwalker.exception.HtmlWalkerException;
 import htmlwalker.platform.*;
-import htmlwalker.platform.WalkerPlatform.IOptions;
 
 public class HtmlJsoupCloneTest extends CloneTest
 {
@@ -51,11 +49,5 @@ public class HtmlJsoupCloneTest extends CloneTest
 		{
 			e.printStackTrace();
 		}				
-	}
-
-	@Override
-	protected IOptions createOptions() throws HtmlWalkerException
-	{
-		return new HtmlPlatform.Options();
 	}
 }

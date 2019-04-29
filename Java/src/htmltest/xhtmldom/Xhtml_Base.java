@@ -13,9 +13,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import htmltest.base.CloneWalker_Base;
-import htmlwalker.exception.HtmlWalkerException;
 import htmlwalker.platform.WalkerPlatform;
-import htmlwalker.platform.WalkerPlatform.IOptions;
 import xhtmldomwalker.XhtmlDomDocument;
 import xhtmldomwalker.XhtmlDomPlatform;
 
@@ -43,12 +41,6 @@ public class Xhtml_Base extends CloneWalker_Base
 		catch (IOException | SAXException | TransformerException e) {
 			e.printStackTrace();
 		}		
-	}
-
-	@Override
-	protected IOptions createOptions() throws HtmlWalkerException
-	{
-		return new XhtmlDomPlatform.Options();
 	}
 
     @Override

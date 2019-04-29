@@ -107,6 +107,12 @@ public class XhtmlDomPlatform extends WalkerPlatform
 	public String name() { return "XhtmlDom"; }
 
 	@Override
+	public boolean isXml() { return true; }
+
+	@Override
+	public IOptions newDocumentOptions() { return new Options(); }
+
+	@Override
 	public WalkerDocument newDocument(IOptions options)
 	{
 		Document doc = documentBuilder().newDocument();

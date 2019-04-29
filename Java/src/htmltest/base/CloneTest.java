@@ -6,7 +6,6 @@ import java.io.File;
 
 import htmlwalker.exception.HtmlWalkerException;
 import htmlwalker.platform.WalkerDocument;
-import htmlwalker.platform.WalkerPlatform;
 
 public abstract class CloneTest extends BaseTest
 {
@@ -32,7 +31,7 @@ public abstract class CloneTest extends BaseTest
 		this.ext = ext;
 	}
 	
-	protected void doTest(String inFile, String outFile, String expectedFile, WalkerPlatform.IOptions options)
+	protected void doTest(String inFile, String outFile, String expectedFile, Options options)
 	{
 	    File testInput = getTestInput(inFile);
 
@@ -45,7 +44,7 @@ public abstract class CloneTest extends BaseTest
 	    
 	    try
 	    {
-	    	WalkerDocument document = platform().newDocument(testInput.getPath(), options);
+	    	WalkerDocument document = platform().newDocument(testInput.getPath(), options.documentOptions);
 	    	cloner.visit(document.documentTag());
 	        cloner.output().save(testOutput.getPath());
 		}
@@ -55,15 +54,15 @@ public abstract class CloneTest extends BaseTest
 		}
 	
 	    if (null != expectedFile)
-		    compareToExpected(testOutput, testInput, expectedFile);
+		    compareToExpected(testOutput, testInput, expectedFile, true);
 	}
 
 	protected void doTest(String inFile, String outFile, String expectedFile)
 	{
-		doTest(inFile, outFile, expectedFile, null);
+		doTest(inFile, outFile, expectedFile, new Options(platform()));
 	}
 
-	protected void doTest(WalkerPlatform.IOptions options)
+	protected void doTest(Options options)
     {
 	    doTest("test." + this.ext, "clone." + this.ext, "expected." + this.ext, options);
     }
@@ -73,37 +72,26 @@ public abstract class CloneTest extends BaseTest
 	    doTest("test." + this.ext, "clone." + this.ext, "expected." + this.ext);
     }
 
-    protected void doTest(String t, WalkerPlatform.IOptions options)
+    protected void doTest(String t, Options options)
     {
 	    doTest("test." + t + "." + this.ext, "clone." + t + "." + this.ext, "expected." + t + "." + this.ext, options);
     }
 
     protected void doTest(String t)
     {
-	    doTest("test." + t + "." + this.ext, "clone." + t + "." + this.ext, "expected." + t + "." + this.ext, null);
+	    doTest("test." + t + "." + this.ext, "clone." + t + "." + this.ext, "expected." + t + "." + this.ext, new Options(platform()));
     }
 	
-    protected void doTest(int t, WalkerPlatform.IOptions options)
+    protected void doTest(int t, Options options)
     {
-    	if (options == null)
-    	{
-			try
-			{
-				options = createOptions();
-			}
-			catch (HtmlWalkerException e)
-			{
-				fail(e.getMessage());
-			}
-    	}
-    	options.setProvideEol(false);
+    	options.documentOptions.setProvideEol(false);
 	    doTest(String.valueOf(t), options);
-    	options.setProvideEol(true);
+    	options.documentOptions.setProvideEol(true);
 	    doTest(String.valueOf(t), options);
     }
 	
     protected void doTest(int t)
     {
-	    doTest(String.valueOf(t), null);
+	    doTest(t, new Options(platform()));
     }
 }
