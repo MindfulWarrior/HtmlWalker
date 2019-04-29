@@ -51,6 +51,9 @@ public class HtmlPlatform extends WalkerPlatform
 	public String name() { return "HtmlJsoup"; }
 
 	@Override
+	public boolean isXml() { return false; }
+
+	@Override
 	public IOptions newDocumentOptions() { return new Options(); }
 
 	@Override
