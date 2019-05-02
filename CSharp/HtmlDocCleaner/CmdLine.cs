@@ -6,7 +6,7 @@ namespace HtmlDocCleaner
 {
     class CmdLine
     {
-        delegate int ArgumentDelegate(string[] args, int pos);
+        delegate int ArgumentDelegate(CmdLine caller, string[] args, int pos);
 
         struct CmdArg
         {
@@ -34,11 +34,7 @@ namespace HtmlDocCleaner
             }
         };
 
-        public static string Input = String.Empty;
-        public static string Output = String.Empty;
-        public static bool IsXhtml = false;
-
-        static int ShowHelp(string[] args, int pos)
+        static int ShowHelp(CmdLine caller, string[] args, int pos)
         {
             foreach (var arg in argMap.Keys)
             {
@@ -49,19 +45,23 @@ namespace HtmlDocCleaner
             return pos + 1;
         }
 
-        static int SetIsXhtml(string[] args, int pos)
+        static int SetIsXhtml(CmdLine caller, string[] args, int pos)
         {
-            IsXhtml = true;
+            caller.IsXhtml = true;
             return pos + 1;
         }
 
-        private CmdLine() { }
+        public CmdLine() { }
 
-        public static bool Read(string[] args)
+        public string Input = String.Empty;
+        public string Output = String.Empty;
+        public bool IsXhtml = false;
+
+        public bool Read(string[] args)
         {
             if (args.Length == 0)
             {
-                ShowHelp(args, 0);
+                ShowHelp(this, args, 0);
                 return false;
             }
             else
@@ -73,7 +73,7 @@ namespace HtmlDocCleaner
                     if (arg[0] == '=')
                     {
                         var cmdArg = argMap[arg.Substring(1)];
-                        pos = cmdArg.Op(args, pos);
+                        pos = cmdArg.Op(this, args, pos);
                     }
                     else
                     {
