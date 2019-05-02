@@ -34,5 +34,8 @@ namespace HtmlDocToolTest
 
         [TestMethod]
         public void Div_01() => doTest("div.01");
+
+        [TestMethod]
+        public void Word_01() => doTest("word.01");
     }
 }

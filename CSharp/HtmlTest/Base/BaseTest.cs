@@ -130,12 +130,14 @@ namespace HtmlTest.Base
 
         protected FileInfo GetTestExpected(string filename, FileInfo testInput, bool autoCreate = true)
         {
+            Assert.IsTrue(testInput.Exists, testInput.FullName + " did not exists.");
+
             var outPath = GetOutPath(filename);
             var expected = new FileInfo(outPath);
             if (!expected.Exists)
             {
                 CreateExpected(expected, testInput);
-                Assert.IsTrue(File.Exists(GetOutPath(filename)), filename + " did not exists and could not be created.");
+                Assert.IsTrue(File.Exists(outPath), outPath + " did not exists and could not be created.");
                 if (!autoCreate)
                     Assert.Inconclusive(filename + " had to be created. Rerun test.");
             }

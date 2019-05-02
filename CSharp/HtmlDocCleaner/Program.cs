@@ -11,10 +11,11 @@ namespace HtmlDocCleaner
     {
         public static void Main(string[] args)
         {
-            if (CmdLine.Read(args))
+            var cmdLine = new CmdLine();
+            if (cmdLine.Read(args))
             {
                 WalkerPlatform platform;
-                if (CmdLine.IsXhtml)
+                if (cmdLine.IsXhtml)
                     platform = new XhtmlDomPlatform();
                 else
                     platform = new Html5DomPlatform();
@@ -22,11 +23,11 @@ namespace HtmlDocCleaner
                 var options = platform.NewDocumentOptions();
                 options.ProvideEol = true;
 
-                var input = platform.NewDocument(CmdLine.Input, options);
+                var input = platform.NewDocument(cmdLine.Input, options);
                 var output = platform.NewDocument();
                 var walker = new DocCleanerWalker(output);
                 walker.Visit(input.DocumentTag);
-                output.Save(CmdLine.Output);
+                output.Save(cmdLine.Output);
             }
         }
     }
