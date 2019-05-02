@@ -9,10 +9,6 @@ namespace Html5DomWalker
     {
         public class Options : IOptions
         {
-            private Encoding defaultEncoding;
-            private bool provideEol;
-            private bool convertToEntities;
-
             public bool AddDebuggingAttributes;
             public bool AutoCloseOnEnd;
             public bool CheckSyntax = true;
@@ -30,9 +26,9 @@ namespace Html5DomWalker
             public string StopperNodeName;
 
             public Encoding DefaultStreamEncoding;
-            public Encoding Encoding { get => this.defaultEncoding; set => this.defaultEncoding = value; }
-            public bool ProvideEol { get => this.provideEol; set => this.provideEol = value; }
-            public bool ConvertToEntities { get => this.convertToEntities; set => this.convertToEntities = value; }
+            public Encoding Encoding { get; set; }
+            public bool ProvideEol { get; set; }
+            public bool ConvertToEntities { get; set; }
         }
 
         public static readonly Html5DomPlatform Instance = new Html5DomPlatform();
