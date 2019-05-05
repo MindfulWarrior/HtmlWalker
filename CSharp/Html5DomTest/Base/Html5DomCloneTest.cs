@@ -12,7 +12,7 @@ namespace HtmlTest.Html5Dom
     {
         public Html5DomCloneTest() : base("html", "Base") { }
 
-        protected Html5DomCloneTest(string subFolder) : base("html", subFolder) { }
+        public Html5DomCloneTest(string subFolder) : base("html", subFolder) { }
 
         protected override WalkerPlatform Platform => Html5DomPlatform.Instance;
 

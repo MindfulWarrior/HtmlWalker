@@ -17,7 +17,7 @@ namespace HtmlDocToolTest
         protected override void CreateExpected(FileInfo expected, FileInfo testInput, Options options = null)
             => Program.Main(new string[] { testInput.FullName, expected.FullName });
 
-        protected void doTest(string test)
+        protected void DoTest(string test)
         {
             var testInput = GetTestInput("test." + test + ".html");
             var expected = GetTestExpected("saved." + test + ".html", testInput, false);
@@ -27,18 +27,18 @@ namespace HtmlDocToolTest
         }
 
         [TestMethod]
-        public void Comment_01() => doTest("comment.01");
+        public void Comment_01() => DoTest("comment.01");
 
         [TestMethod]
-        public void Head_01() => doTest("head.01");
+        public void Head_01() => DoTest("head.01");
 
         [TestMethod]
-        public void Div_01() => doTest("div.01");
+        public void Div_01() => DoTest("div.01");
 
         [TestMethod]
-        public void Attribute_01() => doTest("attribute.01");
+        public void Attribute_01() => DoTest("attribute.01");
 
         [TestMethod]
-        public void Word_01() => doTest("word.01");
+        public void Word_01() => DoTest("word.01");
     }
 }

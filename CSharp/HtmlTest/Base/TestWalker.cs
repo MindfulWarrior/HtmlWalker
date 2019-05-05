@@ -1,31 +1,23 @@
 ﻿using HtmlWalker;
 using HtmlWalker.Platform;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace HtmlTest.Base
 {
     public class TestWalker : JoinedWalker, IDisposable
     {
-        public readonly TagTraceWalker tracer;
+        public readonly TagTraceWalker tracer = new TagTraceWalker();
 
-        public TestWalker(WalkerPlatform platform, bool formatted = true) : base()
+        public TestWalker(WalkerPlatform platform) : base()
         {
             Output = platform.NewDocument();
-
-            tracer = new TagTraceWalker();
-
-            CloneWalker cloner;
-            if (formatted && !platform.IsXml)
-                cloner = new FormattedCloneWalker(Output);
-            else
-                cloner = new CloneWalker(Output);
-
             Walkers.Add(tracer);
-            Walkers.Add(cloner);
         }
 
         public WalkerPlatform.WalkerDocument Output { get; }
 
-        public void Dispose() { Output.Close(); }
+        public void Dispose() => Output.Close();
     }
 }

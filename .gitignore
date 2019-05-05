@@ -333,6 +333,7 @@ ASALocalRun/
 **/Test/**/expected*
 **/Test/**/clone*
 **/Test/**/output*
+**/Test/Private/
 
 # Java files
 .project

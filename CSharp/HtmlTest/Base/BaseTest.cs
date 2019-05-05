@@ -8,7 +8,7 @@ namespace HtmlTest.Base
     [TestClass]
     public abstract class BaseTest
     {
-        protected class Options
+        public class Options
         {
             public readonly WalkerPlatform.IOptions DocumentOptions;
 
@@ -26,8 +26,8 @@ namespace HtmlTest.Base
             Console.WriteLine(e.StackTrace);
         }
 
-        private readonly DirectoryInfo input;
-        private readonly DirectoryInfo output;
+        protected readonly DirectoryInfo InputDirectory;
+        protected readonly DirectoryInfo OutputDirectory;
 
         protected string TestFolder => "../../../../Test";
         protected string OutFolder => "../../../../Test";
@@ -38,21 +38,21 @@ namespace HtmlTest.Base
 
         public BaseTest()
         {
-            this.input = new DirectoryInfo(TestFolder);
-            this.output = new DirectoryInfo(OutFolder);
+            InputDirectory = new DirectoryInfo(TestFolder);
+            OutputDirectory = new DirectoryInfo(OutFolder);
         }
 
         protected BaseTest(string subFolder)
         {
             if (null == subFolder)
             {
-                this.input = new DirectoryInfo(TestFolder);
-                this.output = new DirectoryInfo(OutFolder);
+                InputDirectory = new DirectoryInfo(TestFolder);
+                OutputDirectory = new DirectoryInfo(OutFolder);
             }
             else
             {
-                this.input = new DirectoryInfo(TestFolder + Path.DirectorySeparatorChar + subFolder);
-                this.output = new DirectoryInfo(OutFolder + Path.DirectorySeparatorChar + subFolder);
+                InputDirectory = new DirectoryInfo(TestFolder + Path.DirectorySeparatorChar + subFolder);
+                OutputDirectory = new DirectoryInfo(OutFolder + Path.DirectorySeparatorChar + subFolder);
             }
         }
 
@@ -61,7 +61,7 @@ namespace HtmlTest.Base
         {
             try
             {
-                Assert.IsTrue(this.input.Exists, this.input.FullName + " does not exist");
+                Assert.IsTrue(InputDirectory.Exists, InputDirectory.FullName + " does not exist");
             }
             catch (Exception e)
             {
@@ -75,7 +75,7 @@ namespace HtmlTest.Base
         {
             try
             {
-                Assert.IsTrue(this.output.Exists, this.output.FullName + " does not exist");
+                Assert.IsTrue(OutputDirectory.Exists, OutputDirectory.FullName + " does not exist");
             }
             catch (Exception e)
             {
@@ -90,7 +90,7 @@ namespace HtmlTest.Base
 
             try
             {
-                path = this.input.FullName + Path.DirectorySeparatorChar + filename;
+                path = InputDirectory.FullName + Path.DirectorySeparatorChar + filename;
             }
             catch (Exception e)
             {
@@ -107,7 +107,7 @@ namespace HtmlTest.Base
 
             try
             {
-                path = this.output.FullName + Path.DirectorySeparatorChar + filename;
+                path = OutputDirectory.FullName + Path.DirectorySeparatorChar + filename;
             }
             catch (Exception e)
             {
@@ -118,17 +118,11 @@ namespace HtmlTest.Base
             return path;
         }
 
-        protected FileInfo GetTestInput(string filename)
-        {
-            return new FileInfo(GetTestPath(filename));
-        }
+        public FileInfo GetTestInput(string filename) => new FileInfo(GetTestPath(filename));
 
-        protected FileInfo GetTestOutput(string filename)
-        {
-            return new FileInfo(GetOutPath(filename));
-        }
+        public FileInfo GetTestOutput(string filename) => new FileInfo(GetOutPath(filename));
 
-        protected FileInfo GetTestExpected(string filename, FileInfo testInput, bool autoCreate = true)
+        public FileInfo GetTestExpected(string filename, FileInfo testInput, bool autoCreate = true)
         {
             Assert.IsTrue(testInput.Exists, testInput.FullName + " did not exists.");
 
