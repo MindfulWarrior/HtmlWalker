@@ -57,6 +57,8 @@ namespace HtmlWalker.Platform
 
             public abstract WalkerDocument LoadHtml(string html);
 
+            public abstract void Save(string path, Encoding encoding);
+
             public abstract void Save(string path);
 
             public abstract void Save(TextWriter writer);

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 using static HtmlWalker.Platform.WalkerPlatform;
 
 namespace DomWalker
@@ -36,7 +37,9 @@ namespace DomWalker
             return this;
         }
 
-        public override void Save(string path) => this.factory.DApi.Save(Dom, path, Encoding);
+        public override void Save(string path, Encoding encoding) => this.factory.DApi.Save(Dom, path, Encoding);
+
+        public override void Save(string path) => this.factory.DApi.Save(Dom, path);
 
         public override void Save(TextWriter writer) => this.factory.DApi.Save(Dom, writer);
 
