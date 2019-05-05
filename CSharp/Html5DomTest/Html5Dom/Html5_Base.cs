@@ -32,75 +32,48 @@ namespace HtmlTest.Html5Dom
         }
 
         [TestMethod]
-        public override void TWalk()
-        {
-            base.TWalk();
-        }
+        public override void TWalk() => base.TWalk();
 
         [TestMethod]
-        public override void TUnsupported()
-        {
-            base.TUnsupported();
-        }
+        public override void TUnsupported() => base.TUnsupported();
 
         [TestMethod]
-        public override void TLoadHtml()
-        {
-            base.TLoadHtml();
-        }
+        public override void TLoadHtml() => base.TLoadHtml();
 
         [TestMethod]
-        public override void TLoadPath()
-        {
-            base.TLoadPath();
-        }
+        public override void TLoadPath() => base.TLoadPath();
 
         [TestMethod]
-        public override void TLoadHtmWalk()
-        {
-            base.TLoadHtmWalk();
-        }
+        public override void TLoadHtmWalk() => base.TLoadHtmWalk();
 
         [TestMethod]
-        public override void TLoadPathWalk()
-        {
-            base.TLoadPathWalk();
-        }
+        public override void TLoadPathWalk() => base.TLoadPathWalk();
 
         [TestMethod]
-        public override void TSavePath()
-        {
-            base.TSavePath();
-        }
+        public override void TSavePath() => base.TSavePath();
 
         [TestMethod]
-        public override void TSaveTextWriter()
-        {
-            base.TSaveTextWriter();
-        }
+        public override void TSaveTextWriter() => base.TSaveTextWriter();
 
         [TestMethod]
-        public override void TEntityIsPreserved()
-        {
-            base.TEntityIsPreserved();
-        }
+        public override void TEntityIsPreserved() => base.TEntityIsPreserved();
 
         [TestMethod]
-        public override void TEntityIsPreservedSaved()
-        {
-            base.TEntityIsPreservedSaved();
-        }
+        public override void TEntityIsPreservedSaved() => base.TEntityIsPreservedSaved();
 
         [TestMethod]
-        public override void TEntityIsPreservedLoadSaved()
-        {
-            base.TEntityIsPreservedLoadSaved();
-        }
+        public override void TEntityIsPreservedLoadSaved() => base.TEntityIsPreservedLoadSaved();
 
         [TestMethod]
-        public override void TRemoveTag()
-        {
-            base.TRemoveTag();
-        }
+        public override void TNoEntityConversion() => base.TNoEntityConversion();
+
+        [TestMethod]
+        public override void TNoEntityConversionSaved() => base.TNoEntityConversionSaved();
+
+        [TestMethod]
+        public override void TNoEntityConversionLoadSaved() => base.TNoEntityConversionLoadSaved();
+
+        [TestMethod]
+        public override void TRemoveTag() => base.TRemoveTag();
     }
 }

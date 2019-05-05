@@ -376,7 +376,7 @@ namespace HtmlWalker.Core
                     else if (entity.Length > 3 && entity[1] == '#')
                     {
                         int entity_value;
-                        if (Int32.TryParse(entity.Substring(2, entity.Length - 3), out entity_value) && EscHandler.EscChars.ContainsKey(entity_value))
+                        if (int.TryParse(entity[2..^1], out entity_value) && EscChars.ContainsKey(entity_value))
                             text += EscHandler.EscChars[entity_value];
                         else
                             text += entity;

@@ -31,6 +31,8 @@ namespace DomWalker
 
         internal protected abstract void Save(D dom, string path, Encoding encoding);
 
+        internal protected abstract void Save(D dom, string path);
+
         internal protected abstract void Save(D dom, TextWriter writer);
     }
 }

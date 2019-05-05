@@ -61,6 +61,8 @@ namespace Html5DomWalker
                 dom.Save(path, encoding);
         }
 
+        protected override void Save(HtmlDocument dom, string path) => dom.Save(path);
+
         protected override void Save(HtmlDocument dom, TextWriter writer) => dom.Save(writer);
     }
 }

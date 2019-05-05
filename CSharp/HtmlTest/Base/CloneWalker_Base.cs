@@ -308,6 +308,102 @@ namespace HtmlTest.Base
             }
         }
 
+        public virtual void TNoEntityConversion()
+        {
+            string hdr = "";
+            if (Platform.IsXml)
+                hdr = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
+            var html = "<html><body><p>“Hello, World!”</p></body></html>";
+
+            try
+            {
+                var document = Platform.NewDocument();
+                document.LoadHtml(hdr + html);
+
+                var walker = new CloneTestWalker(Platform);
+                walker.Visit(document.DocumentTag);
+
+                if (walker.Output.Html != html)
+                    Assert.Fail("Expected - [" + html + "] vs Out - [" + walker.Output.Html + "]");
+            }
+            catch (Exception e)
+            {
+                PrintStackTrace(e);
+                Assert.Fail(e.Message);
+            }
+        }
+
+        public virtual void TNoEntityConversionSaved()
+        {
+            string hdr = "";
+            if (Platform.IsXml)
+                hdr = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
+            var html = "<html>  <body>    <p>“Hello, World!”</p>  </body></html>";
+
+            try
+            {
+                FileInfo testOutput = GetTestOutput("output_noentity." + Ext);
+                if (testOutput.Exists)
+                    testOutput.Delete();
+
+                var document = Platform.NewDocument();
+                document.LoadHtml(hdr + html);
+
+                var walker = new CloneTestWalker(Platform);
+                walker.Visit(document.DocumentTag);
+                walker.Output.Save(testOutput.FullName);
+
+                CompareToExpected(testOutput, html);
+            }
+            catch (Exception e)
+            {
+                PrintStackTrace(e);
+                Assert.Fail(e.Message);
+            }
+        }
+
+        public virtual void TNoEntityConversionLoadSaved()
+        {
+            string hdr = "";
+            if (Platform.IsXml)
+                hdr = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
+            var html = "<html><body><p>“Hello, World!”</p></body></html>";
+
+            FileInfo testExpected = GetTestOutput("expected_load_noentity." + Ext);
+            try
+            {
+                if (!testExpected.Exists)
+                {
+                    using (var writer = new StreamWriter(testExpected.FullName))
+                    {
+                        if (Platform.IsXml)
+                            writer.WriteLine(hdr);
+                        writer.WriteLine(html);
+                    }
+                }
+                FileInfo testOutput = GetTestOutput("output_noentity." + Ext);
+                if (testOutput.Exists)
+                    testOutput.Delete();
+
+                var document = Platform.NewDocument();
+                document.LoadHtml(hdr + html);
+
+                if (!Platform.IsXml)
+                    html += Environment.NewLine;
+
+                var walker = new CloneTestWalker(Platform);
+                walker.Visit(document.DocumentTag);
+                walker.Output.Save(testOutput.FullName);
+
+                CompareToExpected(testOutput, testExpected);
+            }
+            catch (Exception e)
+            {
+                PrintStackTrace(e);
+                Assert.Fail(e.Message);
+            }
+        }
+
         public virtual void TRemoveTag()
         {
             var html = "<html><body><p>Hello, World!</p><p>REMOVE THIS</p></body></html>";
