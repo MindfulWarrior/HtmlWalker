@@ -11,15 +11,9 @@ namespace HtmlTest.Base
 
         public CloneTest() : this("html") { }
 
-        public CloneTest(string ext) : base()
-        {
-            Ext = ext;
-        }
+        public CloneTest(string ext) : base() => Ext = ext;
 
-        protected CloneTest(string ext, string subFolder) : base(subFolder)
-        {
-            Ext = ext;
-        }
+        protected CloneTest(string ext, string subFolder) : base(subFolder) => Ext = ext;
 
         protected override void CompareToExpected(
             FileInfo testOutput, FileInfo testExpected, bool ignoreWhitespace = true
@@ -49,33 +43,37 @@ namespace HtmlTest.Base
                 base.CompareToExpected(testOutput, testExpected);
         }
 
-        protected void DoTest(string inFile, string outFile, string expectedFile, Options options = null)
+        public void DoTest(FileInfo testInput, FileInfo testOutput, FileInfo testExpected, Options options = null)
         {
-            var testInput = GetTestInput(inFile);
+            TestWalker walker;
+            if (!Platform.IsXml && (options?.Formatted ?? false) && options.DocumentOptions.ProvideEol)
+                walker = new FormattedCloneTestWalker(Platform);
+            else
+                walker = new CloneTestWalker(Platform);
 
-            var walker = new TestWalker(Platform, (options?.Formatted ?? false) && options.DocumentOptions.ProvideEol);
             var document = Platform.NewDocument(testInput.FullName, options?.DocumentOptions);
             walker.Visit(document.DocumentTag);
 
-            var testOutput = GetTestOutput(outFile);
             if (testOutput.Exists)
                 testOutput.Delete();
 
             walker.Output.Save(testOutput.FullName);
 
-            if (null != expectedFile)
-                CompareToExpected(testOutput, testInput, expectedFile);
+            CompareToExpected(testOutput, testExpected);
         }
 
-        protected void DoTest(Options options = null)
+        public void DoTest(string inFile, string outFile, string expectedFile, Options options = null)
         {
-            DoTest("test." + Ext, "clone." + Ext, "expected." + Ext, options);
+            var testInput = GetTestInput(inFile);
+            var testOutput = GetTestOutput(outFile);
+            var testExpected = GetTestExpected(expectedFile, testInput);
+            DoTest(testInput, testOutput, testExpected, options);
         }
+        protected void DoTest(Options options = null)
+            => DoTest("test." + Ext, "clone." + Ext, "expected." + Ext, options);
 
         protected void DoTest(string t, Options options = null)
-        {
-            DoTest("test." + t + "." + Ext, "clone." + t + "." + Ext, "expected." + t + "." + Ext, options);
-        }
+            => DoTest("test." + t + "." + Ext, "clone." + t + "." + Ext, "expected." + t + "." + Ext, options);
 
         protected void DoTest(int t, Options options = null)
         {

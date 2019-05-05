@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlDocCleaner.Core", "Html
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlDocToolTest.Core", "HtmlDocToolTest\HtmlDocToolTest.Core.csproj", "{21D1DFC0-4436-4387-AAD1-EDB70BE78796}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlPrivateTest", "HtmlPrivateTest\HtmlPrivateTest.csproj", "{EA043F24-E645-4F83-A4F8-D35A5ED4AF9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{21D1DFC0-4436-4387-AAD1-EDB70BE78796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21D1DFC0-4436-4387-AAD1-EDB70BE78796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21D1DFC0-4436-4387-AAD1-EDB70BE78796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA043F24-E645-4F83-A4F8-D35A5ED4AF9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA043F24-E645-4F83-A4F8-D35A5ED4AF9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA043F24-E645-4F83-A4F8-D35A5ED4AF9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA043F24-E645-4F83-A4F8-D35A5ED4AF9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

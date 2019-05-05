@@ -27,13 +27,12 @@ namespace HtmlDocToolTest
             options.WriteEmptyNodes = true;
 
             var input = Platform.NewDocument(pathInput, options);
-            var output = Platform.NewDocument();
-            var walker = new FormattedCloneWalker(output);
+            var walker = new FormattedCloneTestWalker(Platform);
             walker.Visit(input.DocumentTag);
-            output.Save(pathOutput);
+            walker.Output.Save(pathOutput);
         }
 
-        protected void doTest(string test)
+        protected void DoTest(string test)
         {
             var testInput = GetTestInput("test." + test + ".html");
             var expected = GetTestExpected("saved." + test + ".html", testInput, false);
@@ -43,15 +42,15 @@ namespace HtmlDocToolTest
         }
 
         [TestMethod]
-        public void TFormat_01() => doTest("01");
+        public void TFormat_01() => DoTest("01");
 
         [TestMethod]
-        public void TFormat_02() => doTest("02");
+        public void TFormat_02() => DoTest("02");
 
         [TestMethod]
-        public void TFormat_03() => doTest("03");
+        public void TFormat_03() => DoTest("03");
 
         [TestMethod]
-        public void TFormat_04() => doTest("04");
+        public void TFormat_04() => DoTest("04");
     }
 }
