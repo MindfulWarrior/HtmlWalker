@@ -20,16 +20,14 @@ namespace HtmlTest.Html5Dom
         {
             try
             {
-                if (options == null)
-                    options = new Options(Platform);
-
-                if (options.Formatted)
+                if (options?.Formatted ?? false)
                     testInput.CopyTo(expected.FullName);
+                else
                 {
                     // TODO: Change expected files to keep entities
                     var document = new HtmlDocument();
                     document.Load(testInput.FullName);
-                    document.Save(expected.FullName);
+                    document.Save(expected.FullName, document.Encoding);
                 }
             }
             catch (Exception e)

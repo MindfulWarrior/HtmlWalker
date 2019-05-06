@@ -47,9 +47,9 @@ namespace HtmlTest.Base
         {
             TestWalker walker;
             if (!Platform.IsXml && (options?.Formatted ?? false) && options.DocumentOptions.ProvideEol)
-                walker = new FormattedCloneTestWalker(Platform);
+                walker = new FormattedCloneTestWalker(Platform, options?.DocumentOptions);
             else
-                walker = new CloneTestWalker(Platform);
+                walker = new CloneTestWalker(Platform, options?.DocumentOptions);
 
             var document = Platform.NewDocument(testInput.FullName, options?.DocumentOptions);
             walker.Visit(document.DocumentTag);
@@ -57,7 +57,7 @@ namespace HtmlTest.Base
             if (testOutput.Exists)
                 testOutput.Delete();
 
-            walker.Output.Save(testOutput.FullName);
+            walker.Output.Save(testOutput.FullName, document.Encoding);
 
             CompareToExpected(testOutput, testExpected);
         }
