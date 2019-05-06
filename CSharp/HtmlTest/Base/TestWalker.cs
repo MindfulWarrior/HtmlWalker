@@ -10,9 +10,9 @@ namespace HtmlTest.Base
     {
         public readonly TagTraceWalker tracer = new TagTraceWalker();
 
-        public TestWalker(WalkerPlatform platform) : base()
+        public TestWalker(WalkerPlatform platform, WalkerPlatform.IOptions options = null) : base()
         {
-            Output = platform.NewDocument();
+            Output = platform.NewDocument(options);
             Walkers.Add(tracer);
         }
 
