@@ -26,6 +26,13 @@ namespace HtmlTest.Html5Dom
                 {
                     // TODO: Change expected files to keep entities
                     var document = new HtmlDocument();
+                    var opts = options?.DocumentOptions as Html5DomPlatform.Options;
+                    if (opts != null)
+                    {
+                        if (opts.DefaultStreamEncoding != null)
+                            document.OptionDefaultStreamEncoding = opts.DefaultStreamEncoding;
+                    }
+
                     document.Load(testInput.FullName);
                     document.Save(expected.FullName, document.Encoding);
                 }

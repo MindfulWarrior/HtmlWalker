@@ -13,6 +13,7 @@ namespace HtmlTest.Base
             public readonly WalkerPlatform.IOptions DocumentOptions;
 
             public bool Formatted = true;
+            public bool AutoCreate = true;
 
             public Options(WalkerPlatform platform)
             {
@@ -122,7 +123,7 @@ namespace HtmlTest.Base
 
         public FileInfo GetTestOutput(string filename) => new FileInfo(GetOutPath(filename));
 
-        public FileInfo GetTestExpected(string filename, FileInfo testInput, bool autoCreate = true)
+        public FileInfo GetTestExpected(string filename, FileInfo testInput, Options options = null)
         {
             Assert.IsTrue(testInput.Exists, testInput.FullName + " did not exists.");
 
@@ -130,9 +131,9 @@ namespace HtmlTest.Base
             var expected = new FileInfo(outPath);
             if (!expected.Exists)
             {
-                CreateExpected(expected, testInput);
+                CreateExpected(expected, testInput, options);
                 Assert.IsTrue(File.Exists(outPath), outPath + " did not exists and could not be created.");
-                if (!autoCreate)
+                if (!(options?.AutoCreate ?? true))
                     Assert.Inconclusive(filename + " had to be created. Rerun test.");
             }
             return expected;
