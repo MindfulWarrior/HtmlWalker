@@ -20,7 +20,7 @@ namespace HtmlDocToolTest
         protected void DoTest(string test)
         {
             var testInput = GetTestInput("test." + test + ".html");
-            var expected = GetTestExpected("saved." + test + ".html", testInput, false);
+            var expected = GetTestExpected("saved." + test + ".html", testInput, new Options(Platform) { AutoCreate = false});
             var testOutput = GetTestOutput("output." + test + ".html");
             Program.Main(new string[] { testInput.FullName, testOutput.FullName });
             CompareToExpected(testOutput, expected, false);

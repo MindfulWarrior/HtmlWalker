@@ -14,6 +14,9 @@ namespace HtmlPrivateTest
     public class PrivateTest : BaseTest
     {
         protected const string SUB_FOLDER = "Private";
+
+        protected static Encoding Encoding1252 = CodePagesEncodingProvider.Instance.GetEncoding(1252);
+
         public PrivateTest() : base(SUB_FOLDER) { }
 
         private readonly Html5DomCloneTest cloneTest = new Html5DomCloneTest(SUB_FOLDER);
@@ -27,13 +30,15 @@ namespace HtmlPrivateTest
 
         protected void DoTest(FileInfo testInput, string name)
         {
+            // TODO: Handle other encodings
+            var options = new Options(Platform) { AutoCreate = false, Formatted = false };
+            options.DocumentOptions.Encoding = Encoding1252;
+            ((Html5DomPlatform.Options)options.DocumentOptions).DefaultStreamEncoding = Encoding1252;
+
             // Clone Test
-            var cloneExpected = cloneTest.GetTestExpected("expected.clone." + name + ".html", testInput, true);
+            var cloneExpected = cloneTest.GetTestExpected("expected.clone." + name + ".html", testInput, options);
             var cloneOutput = cloneTest.GetTestOutput("output.clone." + name + ".html");
 
-            // TODO: Handle other encodings
-            var options = new Options(Platform);
-            options.DocumentOptions.Encoding = Encoding.UTF8;
             cloneTest.DoTest(testInput, cloneOutput, cloneExpected, options);
         }
 
