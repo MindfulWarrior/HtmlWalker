@@ -1,11 +1,7 @@
 ﻿using HtmlWalker;
-using HtmlWalker.Platform;
 using HtmlWalker.Tag.Html;
 using HtmlWalker.Tag.Util;
 using HtmlWalker.Visitor;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using static HtmlWalker.Platform.WalkerPlatform;
 
 namespace HtmlDocCleaner

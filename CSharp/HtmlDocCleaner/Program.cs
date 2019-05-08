@@ -1,8 +1,5 @@
 ﻿using Html5DomWalker;
 using HtmlWalker.Platform;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using XhtmlDomWalker;
 
 namespace HtmlDocCleaner

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>HtmlDocCleaner</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Html5DomWalker\Html5DomWalker.Standard.csproj" />
+    <ProjectReference Include="..\HtmlWalker\HtmlWalker.Standard.csproj" />
+    <ProjectReference Include="..\XhtmlDomWalker\XhtmlDomWalker.Standard.csproj" />
+  </ItemGroup>
+
+</Project>
