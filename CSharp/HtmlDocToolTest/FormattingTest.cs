@@ -1,12 +1,8 @@
 ﻿using Html5DomWalker;
 using HtmlTest.Base;
-using HtmlWalker;
 using HtmlWalker.Platform;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace HtmlDocToolTest
 {
