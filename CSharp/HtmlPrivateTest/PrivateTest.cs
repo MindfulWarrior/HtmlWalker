@@ -15,6 +15,9 @@ namespace HtmlPrivateTest
     {
         protected const string SUB_FOLDER = "Private";
 
+        protected static DirectoryInfo PrivateDirectory
+            = new DirectoryInfo(TestFolder + Path.DirectorySeparatorChar + SUB_FOLDER);
+
         protected static Encoding Encoding1252 = CodePagesEncodingProvider.Instance.GetEncoding(1252);
 
         public PrivateTest() : base(SUB_FOLDER) { }
@@ -28,24 +31,9 @@ namespace HtmlPrivateTest
             throw new NotImplementedException();
         }
 
-        protected void DoTest(FileInfo testInput, string name)
+        public static IEnumerable<object[]> AllInFolder()
         {
-            // TODO: Handle other encodings
-            var options = new Options(Platform) { AutoCreate = false, Formatted = false };
-            options.DocumentOptions.Encoding = Encoding1252;
-            ((Html5DomPlatform.Options)options.DocumentOptions).DefaultStreamEncoding = Encoding1252;
-
-            // Clone Test
-            var cloneExpected = cloneTest.GetTestExpected("expected.clone." + name + ".html", testInput, options);
-            var cloneOutput = cloneTest.GetTestOutput("output.clone." + name + ".html");
-
-            cloneTest.DoTest(testInput, cloneOutput, cloneExpected, options);
-        }
-
-        [TestMethod]
-        public void TestAllInFolder()
-        {
-            foreach (var testInput in InputDirectory.GetFiles("test.*.html"))
+            foreach (var testInput in PrivateDirectory.GetFiles("test.*.html"))
             {
                 var parts = testInput.Name.Split(".");
                 var name = string.Empty;
@@ -57,8 +45,24 @@ namespace HtmlPrivateTest
                     name += part;
                 }
                 if (!string.IsNullOrEmpty(name))
-                    DoTest(testInput, name);
+                    yield return new object[] { testInput, name };
             }
+        }
+
+        [DataTestMethod]
+        [DynamicData(nameof(AllInFolder), DynamicDataSourceType.Method)]
+        public void TPrivate(FileInfo testInput, string name)
+        {
+            // TODO: Handle other encodings
+            var options = new Options(Platform) { AutoCreate = false, Formatted = false };
+            options.DocumentOptions.Encoding = Encoding1252;
+            ((Html5DomPlatform.Options)options.DocumentOptions).DefaultStreamEncoding = Encoding1252;
+
+            // Clone Test
+            var cloneExpected = cloneTest.GetTestExpected("expected." + name + ".clone.html", testInput, options);
+            var cloneOutput = cloneTest.GetTestOutput("output." + name + ".clone.html");
+
+            cloneTest.DoTest(testInput, cloneOutput, cloneExpected, options);
         }
     }
 }

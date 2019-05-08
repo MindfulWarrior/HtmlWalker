@@ -27,11 +27,11 @@ namespace HtmlTest.Base
             Console.WriteLine(e.StackTrace);
         }
 
+        protected static string TestFolder => "../../../../Test";
+        protected static string OutFolder => "../../../../Test";
+
         protected readonly DirectoryInfo InputDirectory;
         protected readonly DirectoryInfo OutputDirectory;
-
-        protected string TestFolder => "../../../../Test";
-        protected string OutFolder => "../../../../Test";
 
         protected abstract WalkerPlatform Platform { get; }
 
