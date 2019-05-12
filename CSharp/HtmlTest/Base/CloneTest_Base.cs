@@ -12,7 +12,7 @@ namespace HtmlTest.Base
 
         protected override WalkerPlatform Platform => throw new NotSupportedException();
 
-        protected override void CreateExpected(FileInfo expected, FileInfo testInput, Options options = null) { }
+        protected override void CreateExpected(FileInfo expected, FileInfo testInput, TestOptions options) { }
 
         [TestMethod]
         public void TEmptyLines()

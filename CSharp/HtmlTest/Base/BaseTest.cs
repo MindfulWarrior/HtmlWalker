@@ -8,14 +8,14 @@ namespace HtmlTest.Base
     [TestClass]
     public abstract class BaseTest
     {
-        public class Options
+        public class TestOptions
         {
             public readonly WalkerPlatform.IOptions DocumentOptions;
 
-            public bool Formatted = true;
+            public bool Formatted = false;
             public bool AutoCreate = true;
 
-            public Options(WalkerPlatform platform)
+            public TestOptions(WalkerPlatform platform)
             {
                 DocumentOptions = platform.NewDocumentOptions();
             }
@@ -35,7 +35,7 @@ namespace HtmlTest.Base
 
         protected abstract WalkerPlatform Platform { get; }
 
-        protected abstract void CreateExpected(FileInfo expected, FileInfo testInput, Options options = null);
+        protected abstract void CreateExpected(FileInfo expected, FileInfo testInput, TestOptions options);
 
         public BaseTest()
         {
@@ -123,7 +123,7 @@ namespace HtmlTest.Base
 
         public FileInfo GetTestOutput(string filename) => new FileInfo(GetOutPath(filename));
 
-        public FileInfo GetTestExpected(string filename, FileInfo testInput, Options options = null)
+        public FileInfo GetTestExpected(string filename, FileInfo testInput, TestOptions options)
         {
             Assert.IsTrue(testInput.Exists, testInput.FullName + " did not exists.");
 
@@ -133,7 +133,7 @@ namespace HtmlTest.Base
             {
                 CreateExpected(expected, testInput, options);
                 Assert.IsTrue(File.Exists(outPath), outPath + " did not exists and could not be created.");
-                if (!(options?.AutoCreate ?? true))
+                if (!options.AutoCreate)
                     Assert.Inconclusive(filename + " had to be created. Rerun test.");
             }
             return expected;
@@ -190,9 +190,13 @@ namespace HtmlTest.Base
         }
 
         protected void CompareToExpected(
-            FileInfo testOutput, FileInfo testInput, string expectedFile, bool ignoreWhitespace = true
+            FileInfo testOutput,
+            FileInfo testInput,
+            string expectedFile,
+            TestOptions options,
+            bool ignoreWhitespace = true
         ) {
-            FileInfo testExpected = GetTestExpected(expectedFile, testInput);
+            FileInfo testExpected = GetTestExpected(expectedFile, testInput, options);
             CompareToExpected(testOutput, testExpected, ignoreWhitespace);
         }
 
@@ -202,45 +206,45 @@ namespace HtmlTest.Base
             string failure = null;
             try
             {
-                using TextReader output = new StreamReader(testOutput.Open(FileMode.Open, FileAccess.Read, FileShare.Read));
-                using (TextReader expected = new StreamReader(testExpected.Open(FileMode.Open, FileAccess.Read, FileShare.Read)))
+                using TextReader
+                    output = new StreamReader(testOutput.Open(FileMode.Open, FileAccess.Read, FileShare.Read)),
+                    expected = new StreamReader(testExpected.Open(FileMode.Open, FileAccess.Read, FileShare.Read));
+
+                string outputLine = output.ReadLine();
+                if (testOutput.Extension == ".html" || testOutput.Extension == ".htm")
                 {
-                    string outputLine = output.ReadLine();
-                    if (testOutput.Extension == ".html" || testOutput.Extension == ".htm")
-                    {
-                        // First line is declarations
-                        while (!outputLine.Contains("<html"))
-                            outputLine = output.ReadLine();
-                        outputLine = outputLine.Substring(outputLine.IndexOf("<html"));
-                    }
-
-                    string expectedLine = expected.ReadLine();
-                    if (testExpected.Extension == ".html" || testExpected.Extension == ".htm")
-                    {
-                        // First line is declarations
-                        while (!expectedLine.Contains("<html"))
-                            expectedLine = expected.ReadLine();
-                        expectedLine = expectedLine.Substring(outputLine.IndexOf("<html"));
-                    }
-
-                    if (null != outputLine && null != expectedLine)
-                    {
-                        while (null != outputLine && null != expectedLine && null == failure)
-                        {
-                            if (!CompareLines(expectedLine, outputLine, ignoreWhitespace))
-                                failure = "Expected - [" + expectedLine + "] vs Out - [" + outputLine + "]";
-                            outputLine = ReadNextLine(output, ignoreWhitespace);
-                            expectedLine = ReadNextLine(expected, ignoreWhitespace);
-                        }
-                    }
-                    else
-                    {
-                        failure = "Nothing to test";
-                    }
-
-                    if ((null != outputLine || null != expectedLine) && null == failure)
-                        failure = "One file is larger";
+                    // First line is declarations
+                    while (!outputLine.Contains("<html"))
+                        outputLine = output.ReadLine();
+                    outputLine = outputLine.Substring(outputLine.IndexOf("<html"));
                 }
+
+                string expectedLine = expected.ReadLine();
+                if (testExpected.Extension == ".html" || testExpected.Extension == ".htm")
+                {
+                    // First line is declarations
+                    while (!expectedLine.Contains("<html"))
+                        expectedLine = expected.ReadLine();
+                    expectedLine = expectedLine.Substring(outputLine.IndexOf("<html"));
+                }
+
+                if (null != outputLine && null != expectedLine)
+                {
+                    while (null != outputLine && null != expectedLine && null == failure)
+                    {
+                        if (!CompareLines(expectedLine, outputLine, ignoreWhitespace))
+                            failure = "Expected - [" + expectedLine + "] vs Out - [" + outputLine + "]";
+                        outputLine = ReadNextLine(output, ignoreWhitespace);
+                        expectedLine = ReadNextLine(expected, ignoreWhitespace);
+                    }
+                }
+                else
+                {
+                    failure = "Nothing to test";
+                }
+
+                if ((null != outputLine || null != expectedLine) && null == failure)
+                    failure = "One file is larger";
             }
             catch (Exception e)
             {

@@ -21,7 +21,7 @@ namespace HtmlTest.Html5Dom
         public void THtml5_10_03() { DoTest(3); }
 
         [TestMethod]
-        public void THtml5_10_04() { DoTest(4, new Options(Platform) { Formatted = false }); }
+        public void THtml5_10_04() { DoTest(4); }
 
         [TestMethod]
         public void THtml5_10_05() { DoTest(5); }

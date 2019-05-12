@@ -13,7 +13,7 @@ namespace HtmlTest.Base
         public virtual void TUnsupported()
         {
             var html = @"<html><body><unsupported></unsupported></body></html>";
-            var walker = new CloneTestWalker(Platform);
+            var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
             var document = Platform.NewDocument();
 
             document.LoadHtml(html);
@@ -38,12 +38,12 @@ namespace HtmlTest.Base
             {
                 if (!testExpected.Exists)
                 {
-                    using (var writer = new StreamWriter(testExpected.FullName))
-                        writer.WriteLine(html);
+                    using var writer = new StreamWriter(testExpected.FullName);
+                    writer.WriteLine(html);
                 }
 
                 var document = Platform.NewDocument(testExpected.FullName);
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
 
                 if (walker.Output.Html.Replace(Environment.NewLine, "") != html)
@@ -84,8 +84,8 @@ namespace HtmlTest.Base
             {
                 if (!testExpected.Exists)
                 {
-                    using (var writer = new StreamWriter(testExpected.FullName))
-                        writer.WriteLine(html);
+                    using var writer = new StreamWriter(testExpected.FullName);
+                    writer.WriteLine(html);
                 }
 
                 var document = Platform.NewDocument();
@@ -113,7 +113,7 @@ namespace HtmlTest.Base
                 var document = Platform.NewDocument();
                 document.LoadHtml(html);
 
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
 
                 if (walker.Output.Html != html)
@@ -135,14 +135,14 @@ namespace HtmlTest.Base
             {
                 if (!testExpected.Exists)
                 {
-                    using (var writer = new StreamWriter(testExpected.FullName))
-                        writer.WriteLine(html);
+                    using var writer = new StreamWriter(testExpected.FullName);
+                    writer.WriteLine(html);
                 }
 
                 var document = Platform.NewDocument();
                 document.Load(testExpected.FullName);
 
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
 
                 if (walker.Output.Html.Replace(Environment.NewLine, "") != html)
@@ -168,7 +168,7 @@ namespace HtmlTest.Base
                 var document = Platform.NewDocument();
                 document.LoadHtml(html);
 
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
 
                 walker.Output.Save(testOutput.FullName);
@@ -198,7 +198,7 @@ namespace HtmlTest.Base
                 var document = Platform.NewDocument();
                 document.LoadHtml(html);
 
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
 
                 using (var writer = new StreamWriter(testOutput.FullName))
@@ -225,7 +225,7 @@ namespace HtmlTest.Base
                 var document = Platform.NewDocument();
                 document.LoadHtml(hdr + html);
 
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
 
                 if (walker.Output.Html != html)
@@ -254,7 +254,7 @@ namespace HtmlTest.Base
                 var document = Platform.NewDocument();
                 document.LoadHtml(hdr + html);
 
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
                 walker.Output.Save(testOutput.FullName);
 
@@ -277,12 +277,10 @@ namespace HtmlTest.Base
             {
                 if (!testExpected.Exists)
                 {
-                    using (var writer = new StreamWriter(testExpected.FullName))
-                    {
-                        if (Platform.IsXml)
-                            writer.WriteLine(hdr);
-                        writer.WriteLine(html);
-                    }
+                    using var writer = new StreamWriter(testExpected.FullName);
+                    if (Platform.IsXml)
+                        writer.WriteLine(hdr);
+                    writer.WriteLine(html);
                 }
 
                 FileInfo testOutput = GetTestOutput("output_load_entity." + Ext);
@@ -295,7 +293,7 @@ namespace HtmlTest.Base
                 if (!Platform.IsXml)
                     html += Environment.NewLine;
 
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
                 walker.Output.Save(testOutput.FullName);
 
@@ -320,7 +318,7 @@ namespace HtmlTest.Base
                 var document = Platform.NewDocument();
                 document.LoadHtml(hdr + html);
 
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
 
                 if (walker.Output.Html != html)
@@ -349,7 +347,7 @@ namespace HtmlTest.Base
                 var document = Platform.NewDocument();
                 document.LoadHtml(hdr + html);
 
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
                 walker.Output.Save(testOutput.FullName);
 
@@ -374,12 +372,10 @@ namespace HtmlTest.Base
             {
                 if (!testExpected.Exists)
                 {
-                    using (var writer = new StreamWriter(testExpected.FullName))
-                    {
-                        if (Platform.IsXml)
-                            writer.WriteLine(hdr);
-                        writer.WriteLine(html);
-                    }
+                    using var writer = new StreamWriter(testExpected.FullName);
+                    if (Platform.IsXml)
+                        writer.WriteLine(hdr);
+                    writer.WriteLine(html);
                 }
                 FileInfo testOutput = GetTestOutput("output_noentity." + Ext);
                 if (testOutput.Exists)
@@ -391,7 +387,7 @@ namespace HtmlTest.Base
                 if (!Platform.IsXml)
                     html += Environment.NewLine;
 
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
                 walker.Output.Save(testOutput.FullName);
 
@@ -414,7 +410,7 @@ namespace HtmlTest.Base
                 var document = Platform.NewDocument();
                 document.LoadHtml(html);
 
-                var walker = new CloneTestWalker(Platform);
+                var walker = new CloneTestWalker(Platform, Platform.NewDocumentOptions());
                 walker.Visit(document.DocumentTag);
 
                 var body = walker.Output.DocumentTag.BodyTag;

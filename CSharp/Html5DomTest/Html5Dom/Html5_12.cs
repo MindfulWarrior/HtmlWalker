@@ -27,13 +27,13 @@ namespace HtmlTest.Html5Dom
         public void THtml5_12_05() { DoTest(5); }
 
         [TestMethod]
-        public void THtml5_12_06() { DoTest(6, new Options(Platform) { Formatted = false }); }
+        public void THtml5_12_06() { DoTest(6); }
 
         [TestMethod]
         public void THtml5_12_07() { DoTest(7); }
 
         [TestMethod]
-        public void THtml5_12_08() { DoTest(8, new Options(Platform) { Formatted = false }); }
+        public void THtml5_12_08() { DoTest(8); }
 
         [TestMethod]
         public void THtml5_12_09() { DoTest(9); }

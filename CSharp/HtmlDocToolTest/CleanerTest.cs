@@ -14,13 +14,13 @@ namespace HtmlDocToolTest
 
         protected override WalkerPlatform Platform => Html5DomPlatform.Instance;
 
-        protected override void CreateExpected(FileInfo expected, FileInfo testInput, Options options = null)
+        protected override void CreateExpected(FileInfo expected, FileInfo testInput, TestOptions options)
             => Program.Main(new string[] { testInput.FullName, expected.FullName });
 
         protected void DoTest(string test)
         {
             var testInput = GetTestInput("test." + test + ".html");
-            var expected = GetTestExpected("saved." + test + ".html", testInput, new Options(Platform) { AutoCreate = false});
+            var expected = GetTestExpected("saved." + test + ".html", testInput, new TestOptions(Platform) { AutoCreate = false });
             var testOutput = GetTestOutput("output." + test + ".html");
             Program.Main(new string[] { testInput.FullName, testOutput.FullName });
             CompareToExpected(testOutput, expected, false);

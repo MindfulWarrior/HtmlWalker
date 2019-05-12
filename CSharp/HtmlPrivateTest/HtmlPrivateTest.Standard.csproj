@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Html5DomTest\Html5DomTest.Standard.csproj" />
+    <ProjectReference Include="..\HtmlDocToolTest\HtmlDocToolTest.Standard.csproj" />
     <ProjectReference Include="..\HtmlTest\HtmlTest.Standard.csproj" />
   </ItemGroup>
 
