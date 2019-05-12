@@ -16,19 +16,19 @@ namespace HtmlTest.Html5Dom
 
         protected override WalkerPlatform Platform => Html5DomPlatform.Instance;
 
-        protected override void CreateExpected(FileInfo expected, FileInfo testInput, Options options = null)
+        protected override void CreateExpected(FileInfo expected, FileInfo testInput, TestOptions options)
         {
             try
             {
-                if (options?.Formatted ?? false)
+                if (options.Formatted)
                     testInput.CopyTo(expected.FullName);
                 else
                 {
                     // TODO: Change expected files to keep entities
                     var document = new HtmlDocument();
-                    var opts = options?.DocumentOptions as Html5DomPlatform.Options;
-                    if (opts != null)
+                    if (options.DocumentOptions is Html5DomPlatform.Options opts)
                     {
+                        document.OptionWriteEmptyNodes = opts.WriteEmptyNodes;
                         if (opts.DefaultStreamEncoding != null)
                             document.OptionDefaultStreamEncoding = opts.DefaultStreamEncoding;
                     }

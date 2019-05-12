@@ -6,7 +6,7 @@ namespace HtmlTest.Base
 {
     public class CloneTestWalker : TestWalker
     {
-        public CloneTestWalker(WalkerPlatform platform, WalkerPlatform.IOptions options = null)
+        public CloneTestWalker(WalkerPlatform platform, WalkerPlatform.IOptions options)
             : base(platform, options) => Walkers.Add(new CloneWalker(Output));
     }
 }

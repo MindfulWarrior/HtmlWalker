@@ -15,7 +15,7 @@ namespace HtmlTest.XhtmlDom.Base
 
         protected override WalkerPlatform Platform => XhtmlDomPlatform.Instance;
 
-        protected override void CreateExpected(FileInfo expected, FileInfo testInput, Options options = null)
+        protected override void CreateExpected(FileInfo expected, FileInfo testInput, TestOptions options = null)
         {
             try
             {
