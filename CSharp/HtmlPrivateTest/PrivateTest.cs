@@ -19,12 +19,29 @@ namespace HtmlPrivateTest
         protected static DirectoryInfo PrivateDirectory
             = new DirectoryInfo(TestFolder + Path.DirectorySeparatorChar + SUB_FOLDER);
 
-        protected static Encoding Encoding1252 = CodePagesEncodingProvider.Instance.GetEncoding(1252);
-
         public PrivateTest() : base(SUB_FOLDER) { }
 
         private readonly Html5DomCloneTest cloneTest = new Html5DomCloneTest(SUB_FOLDER);
         private readonly FormattingTest formattingTest = new FormattingTest(SUB_FOLDER);
+        private readonly CleanerTest cleanerTest = new CleanerTest(SUB_FOLDER);
+
+        private TestOptions privateOptions = null;
+
+        protected TestOptions PrivateOptions
+        {
+            get
+            {
+                if (privateOptions == null)
+                {
+                    // TODO: Handle other encodings
+                    privateOptions = new TestOptions(Platform) { AutoCreate = false };
+                    privateOptions.DocumentOptions.Encoding = CodePagesEncodingProvider.Instance.GetEncoding(1252);
+                    privateOptions.DocumentOptions.ProvideEol = true;
+                    ((Html5DomPlatform.Options)privateOptions.DocumentOptions).WriteEmptyNodes = true;
+                }
+                return privateOptions;
+            }
+        }
 
         protected override WalkerPlatform Platform => Html5DomPlatform.Instance;
 
@@ -53,26 +70,38 @@ namespace HtmlPrivateTest
 
         [DataTestMethod]
         [DynamicData(nameof(AllInFolder), DynamicDataSourceType.Method)]
-        public void TPrivate(FileInfo testInput, string name)
+        public void TCloneAll(FileInfo testInput, string name)
         {
-            // TODO: Handle other encodings
-            var options = new TestOptions(Platform) { AutoCreate = false };
-            options.DocumentOptions.Encoding = Encoding1252;
-            options.DocumentOptions.ProvideEol = true;
-            ((Html5DomPlatform.Options)options.DocumentOptions).DefaultStreamEncoding = Encoding1252;
-            ((Html5DomPlatform.Options)options.DocumentOptions).WriteEmptyNodes = true;
+            var options = PrivateOptions;
 
-            // Clone Test
             var cloneExpected = cloneTest.GetTestExpected("expected." + name + ".clone.html", testInput, options);
             var cloneOutput = cloneTest.GetTestOutput("output." + name + ".clone.html");
 
             cloneTest.DoTest(testInput, cloneOutput, cloneExpected, options);
+        }
 
-            // Formatting Test
+        [DataTestMethod]
+        [DynamicData(nameof(AllInFolder), DynamicDataSourceType.Method)]
+        public void TFormatAll(FileInfo testInput, string name)
+        {
+            var options = PrivateOptions;
+
             var formattedExpected = formattingTest.GetTestExpected("expected." + name + ".formatted.html", testInput, options);
             var formattedOutput = formattingTest.GetTestOutput("output." + name + ".formatted.html");
 
             formattingTest.DoTest(testInput, formattedOutput, formattedExpected, options);
+        }
+
+        [DataTestMethod]
+        [DynamicData(nameof(AllInFolder), DynamicDataSourceType.Method)]
+        public void TCleanAll(FileInfo testInput, string name)
+        {
+            var options = PrivateOptions;
+
+            var cleanerExpected = cleanerTest.GetTestExpected("expected." + name + ".cleaner.html", testInput, options);
+            var cleanerOutput = cleanerTest.GetTestOutput("output." + name + ".cleaner.html");
+
+            cleanerTest.DoTest(testInput, cleanerOutput, cleanerExpected, options);
         }
     }
 }

@@ -17,11 +17,18 @@ namespace HtmlDocCleaner
                 else
                     platform = new Html5DomPlatform();
 
-                var options = platform.NewDocumentOptions();
-                options.ProvideEol = true;
+                var inputOptions = platform.NewDocumentOptions();
+                inputOptions.ProvideEol = true;
+                inputOptions.ConvertToEntities = true;
+                inputOptions.Encoding = cmdLine.EncodingInput;
 
-                var input = platform.NewDocument(cmdLine.Input, options);
-                var output = platform.NewDocument();
+                var outputOptions = platform.NewDocumentOptions();
+                outputOptions.ProvideEol = true;
+                outputOptions.ConvertToEntities = true;
+                outputOptions.Encoding = cmdLine.EncodingOutput;
+
+                var input = platform.NewDocument(cmdLine.Input, inputOptions);
+                var output = platform.NewDocument(outputOptions);
                 var walker = new DocCleanerWalker(output);
                 walker.Visit(input.DocumentTag);
                 output.Save(cmdLine.Output);
