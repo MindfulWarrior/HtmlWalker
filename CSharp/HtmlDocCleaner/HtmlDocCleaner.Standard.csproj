@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Html5DomWalker\Html5DomWalker.Standard.csproj" />
     <ProjectReference Include="..\HtmlWalker\HtmlWalker.Standard.csproj" />
     <ProjectReference Include="..\XhtmlDomWalker\XhtmlDomWalker.Standard.csproj" />

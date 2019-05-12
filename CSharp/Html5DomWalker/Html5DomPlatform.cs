@@ -55,6 +55,8 @@ namespace Html5DomWalker
 
                 if (opts.DefaultStreamEncoding != null)
                     dom.OptionDefaultStreamEncoding = opts.DefaultStreamEncoding;
+                else if (opts.Encoding != null)
+                    dom.OptionDefaultStreamEncoding = opts.Encoding;
 
                 if (opts.StopperNodeName != null)
                     dom.OptionStopperNodeName = opts.StopperNodeName;
