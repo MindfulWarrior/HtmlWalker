@@ -39,6 +39,20 @@ public class Html5_Base extends CloneWalker_Base
 
     @Override
     @Test
+	public void tConfirmTestFolder()
+	{
+        super.tConfirmTestFolder();
+	}
+
+    @Override
+    @Test
+	public void tConfirmOutFolder()
+	{
+        super.tConfirmOutFolder();
+	}
+
+    @Override
+    @Test
     public void tWalk()
     {
         super.tWalk();

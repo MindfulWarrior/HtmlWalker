@@ -335,4 +335,4 @@ ASALocalRun/
 **/Test/**/output*
 
 # Java files
-.project
+**/Java/**/target/

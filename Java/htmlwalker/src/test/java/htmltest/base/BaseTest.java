@@ -56,8 +56,7 @@ public abstract class BaseTest
 		}
 	}
 
-	@Test
-	public void t0confirmTestFolder()
+	public void tConfirmTestFolder()
 	{
 		try
 		{
@@ -70,8 +69,7 @@ public abstract class BaseTest
 		}
 	}
 
-	@Test
-	public void t0confirmOutFolder()
+	public void tConfirmOutFolder()
 	{
 		try
 		{

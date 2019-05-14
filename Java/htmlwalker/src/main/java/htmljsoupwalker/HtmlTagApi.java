@@ -6,6 +6,7 @@ import java.util.TreeMap;
 
 import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Attributes;
+import org.jsoup.nodes.BooleanAttribute;
 import org.jsoup.nodes.DataNode;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
@@ -39,11 +40,17 @@ class HtmlTagApi implements ITagApi
 	@Override
 	public Map<String, String> getAttributes(Object tag)
 	{
-		Node node = (Node)tag;
-		Map<String, String> attrs = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
-		Attributes attributes = node.attributes();
+		var node = (Node)tag;
+		var attrs = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
+		var attributes = node.attributes().asList();
 		for (Attribute attr : attributes)
-			attrs.put(attr.getKey(), attr.getValue());	
+		{
+			// TODO: Handle Boolean attributes better.
+			if (attr instanceof BooleanAttribute)
+				attrs.put(attr.getKey(), null);
+			else
+				attrs.put(attr.getKey(), attr.getValue());
+		}
 		return attrs;		
 	}
 
@@ -58,7 +65,13 @@ class HtmlTagApi implements ITagApi
 
 	// TODO: Add way to remove attribute
 	@Override
-	public void setAttribute(Object tag, String attr, String value) { ((Node)tag).attr(attr, value); }
+	public void setAttribute(Object tag, String attr, String value)
+	{
+		if (value == null && tag instanceof Element)
+			((Element) tag).attr(attr, true);
+		else
+			((Node)tag).attr(attr, value);
+	}
 
 	@Override
 	public String getText(Object tag)
