@@ -28,6 +28,9 @@ public class Skip extends ContentUtilTag
 	
 	public final BaseTag skippedTag;
 
+	// TODO: need to make this readonly/final
+    public boolean skipTree;
+
 	public Skip(WalkerFactory factory, ITag adapter)
 	{
 		super(factory, adapter.tag());
@@ -81,7 +84,7 @@ public class Skip extends ContentUtilTag
 	public TagList ownedTags()
 	{
         if (this.tags == null)
-            this.tags = new TagList(this, nodeOwner).initialize(this.factory);
+            this.tags = new TagList(this, skipTree ? skippedTag : nodeOwner).initialize(this.factory);
         return this.tags;
 	}
 
