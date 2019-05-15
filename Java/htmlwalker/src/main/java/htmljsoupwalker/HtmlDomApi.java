@@ -10,6 +10,8 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Node;
+import org.jsoup.nodes.TextNode;
+
 import domwalker.DomApi;
 import htmlwalker.ITag;
 import htmlwalker.exception.HtmlWalkerException;
@@ -33,10 +35,10 @@ public class HtmlDomApi extends DomApi<Document>
 	public Object createElement(Document dom, String name) { return dom.createElement(name); }
 
 	@Override
-	public Object createTextNode(Document dom, String text) { return dom.text(text); }
+	public Object createTextNode(Document dom, String text) { return new TextNode(text); }
 
 	@Override
-	public Object createEntityNode(Document dom, String entity) { return dom.text(entity); }
+	public Object createEntityNode(Document dom, String entity) { return new TextNode(entity); }
 
 	@Override
 	public List<Object> getContent(Document dom, ITag adapter)

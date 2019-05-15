@@ -8,8 +8,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import org.junit.Test;
-
 import htmlwalker.platform.WalkerPlatform;
 
 public abstract class BaseTest
@@ -18,7 +16,7 @@ public abstract class BaseTest
     {
         public final WalkerPlatform.IOptions documentOptions;
 
-        public boolean formatted = true;
+        public boolean formatted = false;
 
         public Options(WalkerPlatform platform)
         {

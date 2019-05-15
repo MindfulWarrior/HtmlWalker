@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.jsoup.nodes.Attribute;
-import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.BooleanAttribute;
 import org.jsoup.nodes.DataNode;
 import org.jsoup.nodes.Element;

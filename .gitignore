@@ -330,9 +330,12 @@ ASALocalRun/
 .mfractor/
 
 # Testing Result files
-**/Test/**/expected*
-**/Test/**/clone*
-**/Test/**/output*
+**/Test/**/expected*.html
+**/Test/**/expected*.xhtml
+**/Test/**/clone*.html
+**/Test/**/clone*.xhtml
+**/Test/**/output*.html
+**/Test/**/output*.xhtml
 
 # Java files
 **/Java/**/target/
