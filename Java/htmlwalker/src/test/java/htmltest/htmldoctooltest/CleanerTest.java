@@ -33,18 +33,21 @@ public class CleanerTest extends BaseTest
     protected void doTest(String test)
     {
         var testInput = getTestInput("test." + test + ".html");
-        var expected = getTestExpected("saved." + test + ".html", testInput);
+        var expected = getTestExpected("saved." + test + ".html", testInput, false);
         var testOutput = getTestOutput("output." + test + ".html");
         App.main(new String[] { testInput.getPath(), testOutput.getPath() });
         compareToExpected(testOutput, expected, false);
     }
 
     @Test
-    public void Comment_01() { doTest("comment.01"); }
+    public void comment_01() { doTest("comment.01"); }
 
     @Test
-    public void Head_01() { doTest("head.01"); }
+    public void head_01() { doTest("head.01"); }
 
     @Test
-    public void Div_01() { doTest("div.01"); }
+    public void div_01() { doTest("div.01"); }
+
+    @Test
+    public void word_01() { doTest("word.01"); }
 }

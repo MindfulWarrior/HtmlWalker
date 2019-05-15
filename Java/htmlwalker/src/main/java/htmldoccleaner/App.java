@@ -6,10 +6,12 @@ import htmlwalker.platform.WalkerPlatform;
 import xhtmldomwalker.XhtmlDomPlatform;
 
 public class App {
-    public static void main(String[] args) {
-        if (CmdLine.read(args)) {
+    public static void main(String[] args)
+    {
+        var cmdLine = new CmdLine();
+        if (cmdLine.read(args)) {
             WalkerPlatform platform;
-            if (CmdLine.isXhtml())
+            if (cmdLine.isXhtml())
                 platform = XhtmlDomPlatform.theInstance;
             else
                 platform = HtmlPlatform.theInstance;
@@ -19,11 +21,11 @@ public class App {
 
             try
             {
-                var input = platform.newDocument(CmdLine.input(), options);
+                var input = platform.newDocument(cmdLine.input(), options);
                 var output = platform.newDocument();
                 var walker = new DocCleanerWalker(output);
                 walker.visit(input.documentTag());
-                output.save(CmdLine.output());
+                output.save(cmdLine.output());
             }
             catch (HtmlWalkerException e)
             {

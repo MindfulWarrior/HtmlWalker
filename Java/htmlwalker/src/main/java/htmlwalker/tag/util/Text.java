@@ -70,7 +70,7 @@ public class Text extends ContentUtilTag
 	}
 
 	@Override
-	public TagList ownedTags() { throw new UnsupportedOperationException(); }
+	public TagList ownedTags() { return null; }
 	
 	/**
 	 * @see java.lang.Object#toString()

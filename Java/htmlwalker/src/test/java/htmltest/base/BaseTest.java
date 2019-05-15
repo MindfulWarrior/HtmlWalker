@@ -2,11 +2,14 @@ package htmltest.base;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.junit.Assume.assumeNoException;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
+import org.junit.internal.AssumptionViolatedException;
 
 import htmlwalker.platform.WalkerPlatform;
 
@@ -116,13 +119,24 @@ public abstract class BaseTest
 	    return new File(getOutPath(filename));
     }    
 
+    protected File getTestExpected(String filename, File testInput, boolean autoCreate)
+    {
+		assertTrue(testInput.getPath() + " does not exists.", testInput.exists());
+	    File expected = new File(getOutPath(filename));
+		if (!expected.exists())
+		{
+			createExpected(expected, testInput);
+			assertTrue(expected.getPath() + " does not exists and could not be created", expected.exists());
+			if (!autoCreate)
+				fail(expected.getPath() + " had to be created. Rerun test.");
+		}
+	    return expected;
+	}
+
     protected File getTestExpected(String filename, File testInput)
     {
-	    File expected = new File(getOutPath(filename));
-	    if (!expected.exists())
-		     createExpected(expected, testInput);
-	    return expected;
-    }
+		return getTestExpected(filename, testInput, true);
+	}
 
     private String readNextLine(BufferedReader reader, boolean ignoreWhitespace) throws IOException
 	{

@@ -5,7 +5,7 @@ import java.util.Map;
 
 class CmdLine
 {
-    interface ArgumentProcessor { int process(String[] args, int pos); }
+    interface ArgumentProcessor { int process(CmdLine caller, String[] args, int pos); }
 
     class CmdArg
     {
@@ -13,15 +13,15 @@ class CmdLine
         public ArgumentProcessor op;
     }
 
-    private static String input = "";
-    private static String output = "";
-    private static boolean isXhtml = false;
+    private String input = "";
+    private String output = "";
+    private boolean isXhtml = false;
 
-    public static String input() { return input; }
+    public String input() { return input; }
 
-    public static String output() { return output; }
+    public String output() { return output; }
 
-    public static boolean isXhtml() { return isXhtml; }
+    public boolean isXhtml() { return isXhtml; }
 
     static Map<String, CmdArg> argMap = new HashMap<String, CmdArg>();
 
@@ -31,7 +31,7 @@ class CmdLine
         showHelp.op = new ArgumentProcessor()
         {
             @Override
-            public int process(String[] args, int pos)
+            public int process(CmdLine caller, String[] args, int pos)
             {
                 for (var arg : argMap.keySet())
                 {
@@ -49,9 +49,9 @@ class CmdLine
         isxhtml.op = new ArgumentProcessor()
         {
             @Override
-            public int process(String[] args, int pos)
+            public int process(CmdLine caller, String[] args, int pos)
             {
-                isXhtml = true;
+                caller.isXhtml = true;
                 return pos + 1;
             }
         };
@@ -59,13 +59,13 @@ class CmdLine
         argMap.put("x", isxhtml);
     }
 
-    private CmdLine() { }
+    public CmdLine() { }
 
-    public static boolean read(String[] args)
+    public boolean read(String[] args)
     {
         if (args.length == 0)
         {
-            argMap.get("h").op.process(args, 0);
+            argMap.get("h").op.process(this, args, 0);
             return false;
         }
         else
@@ -77,7 +77,7 @@ class CmdLine
                 if (arg.charAt(0) == '=')
                 {
                     var cmdArg = argMap.get(arg.substring(1));
-                    pos = cmdArg.op.process(args, pos);
+                    pos = cmdArg.op.process(this, args, pos);
                 }
                 else
                 {
