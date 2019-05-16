@@ -23,7 +23,7 @@ public class HtmlJsoupCloneTest extends CloneTest
 		//this.html5 = true;
 	}
 	
-	protected HtmlJsoupCloneTest(String subFolder)
+	public HtmlJsoupCloneTest(String subFolder)
 	{
 		super("html", subFolder);
 		//this.html5 = true;

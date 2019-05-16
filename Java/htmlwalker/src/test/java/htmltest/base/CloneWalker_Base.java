@@ -38,8 +38,8 @@ public abstract class CloneWalker_Base extends CloneTest
     public void tUnsupported()
     {
         String html = "<html><body><unsupported></unsupported></body></html>";
-        TestWalker walker = new TestWalker(platform());
-        WalkerDocument document = platform().newDocument();
+        var document = platform().newDocument();
+        var walker = new CloneTestWalker(platform());
 
         try
         {
@@ -62,19 +62,19 @@ public abstract class CloneWalker_Base extends CloneTest
     {
         String html = testHtml();
         
-        File testExpected = getTestOutput("expected.path_load." + this.ext);
+        var testExpected = getTestOutput("expected.path_load." + this.ext);
         try
         {
             if (testExpected.exists())
             	testExpected.delete();
 
-            try (FileWriter writer = new FileWriter(testExpected.getAbsolutePath()))
+            try (var writer = new FileWriter(testExpected.getAbsolutePath()))
             {
                 writer.write(html);
             }
 
-            WalkerDocument document = platform().newDocument(testExpected.getPath());
-            TestWalker walker = new TestWalker(platform());
+            var document = platform().newDocument(testExpected.getPath());
+            var walker = new CloneTestWalker(platform());
             walker.visit(document.documentTag());
 
             String expected = html;
@@ -97,7 +97,7 @@ public abstract class CloneWalker_Base extends CloneTest
 
         try
         {
-        	WalkerDocument document = platform().newDocument();
+        	var document = platform().newDocument();
             document.loadHtml(html);
             
             String expected = html;
@@ -118,18 +118,18 @@ public abstract class CloneWalker_Base extends CloneTest
     {
         String html = testHtml();
         
-        File testExpected = getTestOutput("expected_load_path." + this.ext);
+        var testExpected = getTestOutput("expected_load_path." + this.ext);
         try
         {
             if (testExpected.exists())
             	testExpected.delete();
 
-            try (FileWriter writer = new FileWriter(testExpected.getAbsolutePath()))
+            try (var writer = new FileWriter(testExpected.getAbsolutePath()))
             {
                 writer.write(html);
             }
 
-            WalkerDocument document = platform().newDocument();
+            var document = platform().newDocument();
             document.load(testExpected.getAbsolutePath());
                         
             String expected = html;
@@ -152,10 +152,10 @@ public abstract class CloneWalker_Base extends CloneTest
         
         try
         {
-        	WalkerDocument document = platform().newDocument();
+        	var document = platform().newDocument();
             document.loadHtml(html);
 
-            TestWalker walker = new TestWalker(platform());
+            var walker = new CloneTestWalker(platform());
             walker.visit(document.documentTag());
 
             String expected = html;
@@ -176,21 +176,21 @@ public abstract class CloneWalker_Base extends CloneTest
     {
         String html = testHtml();
 
-        File testExpected = getTestOutput("expected_load_path_walk." + this.ext);
+        var testExpected = getTestOutput("expected_load_path_walk." + this.ext);
         try
         {
             if (testExpected.exists())
             	testExpected.delete();
 
-            try (FileWriter writer = new FileWriter(testExpected.getAbsolutePath()))
+            try (var writer = new FileWriter(testExpected.getAbsolutePath()))
             {
                 writer.write(html);
             }
 
-            WalkerDocument document = platform().newDocument();
+            var document = platform().newDocument();
             document.load(testExpected.getAbsolutePath());
 
-            TestWalker walker = new TestWalker(platform());
+            var walker = new CloneTestWalker(platform());
             walker.visit(document.documentTag());
 
             String expected = html;
@@ -220,14 +220,14 @@ public abstract class CloneWalker_Base extends CloneTest
 
         try
         {
-            File testOutput = getTestOutput("output_save_path." + this.ext);
+            var testOutput = getTestOutput("output_save_path." + this.ext);
             if (testOutput.exists())
                 testOutput.delete();
 
-            WalkerDocument document = platform().newDocument();
+            var document = platform().newDocument();
             document.loadHtml(html);
 
-            TestWalker walker = new TestWalker(platform());
+            var walker = new CloneTestWalker(platform());
             walker.visit(document.documentTag());
 
             walker.output().save(testOutput.getAbsolutePath());
@@ -258,17 +258,17 @@ public abstract class CloneWalker_Base extends CloneTest
 
         try
         {
-            File testOutput = getTestOutput("output_save_writer." + this.ext);
+            var testOutput = getTestOutput("output_save_writer." + this.ext);
             if (testOutput.exists())
                 testOutput.delete();
 
-            WalkerDocument document = platform().newDocument();
+            var document = platform().newDocument();
             document.loadHtml(html);
 
-            TestWalker walker = new TestWalker(platform());
+            var walker = new CloneTestWalker(platform());
             walker.visit(document.documentTag());
 
-            try (FileWriter writer = new FileWriter(testOutput.getAbsolutePath()))
+            try (var writer = new FileWriter(testOutput.getAbsolutePath()))
             {
                 walker.output().save(writer);
             }
@@ -303,10 +303,10 @@ public abstract class CloneWalker_Base extends CloneTest
 
         try
         {
-        	WalkerDocument document = platform().newDocument();
+        	var document = platform().newDocument();
             document.loadHtml(html);
 
-            TestWalker walker = new TestWalker(platform());
+            var walker = new CloneTestWalker(platform());
             walker.visit(document.documentTag());
 
             if (!html.equals(walker.output().html()))
@@ -336,14 +336,14 @@ public abstract class CloneWalker_Base extends CloneTest
 
         try
         {
-            File testOutput = getTestOutput("output_entity." + this.ext);
+            var testOutput = getTestOutput("output_entity." + this.ext);
             if (testOutput.exists())
                 testOutput.delete();
 
-            WalkerDocument document = platform().newDocument();
+            var document = platform().newDocument();
             document.loadHtml(html);
 
-            TestWalker walker = new TestWalker(platform());
+            var walker = new CloneTestWalker(platform());
             walker.visit(document.documentTag());
             walker.output().save(testOutput.getAbsolutePath());
 
@@ -371,28 +371,28 @@ public abstract class CloneWalker_Base extends CloneTest
         html += " </body>" + eol;
         html += "</html>";
 
-        File testExpected = getTestOutput("expected_load_entity." + this.ext);
+        var testExpected = getTestOutput("expected_load_entity." + this.ext);
         try
         {
             if (testExpected.exists())
             	testExpected.delete();
 
-            try (FileWriter writer = new FileWriter(testExpected.getAbsolutePath()))
+            try (var writer = new FileWriter(testExpected.getAbsolutePath()))
             {
                 writer.write(html);
             }
 
-            File testOutput = getTestOutput("output_load_entity." + this.ext);
+            var testOutput = getTestOutput("output_load_entity." + this.ext);
             if (testOutput.exists())
                 testOutput.delete();
 
-            WalkerDocument document = platform().newDocument();
+            var document = platform().newDocument();
             document.load(testExpected.getAbsolutePath());
 
             if (!isXml())
                 html += System.lineSeparator();
 
-            TestWalker walker = new TestWalker(platform());
+            var walker = new CloneTestWalker(platform());
             walker.visit(document.documentTag());
             walker.output().save(testOutput.getAbsolutePath());
 

@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import htmljsoupwalker.HtmlPlatform;
 import htmltest.base.BaseTest;
+import htmltest.base.FormattedCloneTestWalker;
 import htmlwalker.FormattedCloneWalker;
 import htmlwalker.exception.HtmlWalkerException;
 import htmlwalker.platform.WalkerPlatform;
@@ -37,10 +38,9 @@ public class FormattingTest extends BaseTest
 
         try {
             var input = platform().newDocument(pathInput, options);
-            var output = platform().newDocument();
-            var walker = new FormattedCloneWalker(output);
+            var walker = new FormattedCloneTestWalker(platform());
             walker.visit(input.documentTag());
-            output.save(pathOutput);
+            walker.output().save(pathOutput);
         }
         catch (HtmlWalkerException e)
         {

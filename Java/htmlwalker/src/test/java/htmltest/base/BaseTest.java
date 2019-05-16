@@ -11,7 +11,7 @@ import htmlwalker.platform.WalkerPlatform;
 
 public abstract class BaseTest
 {
-    protected class Options
+    public class Options
     {
         public final WalkerPlatform.IOptions documentOptions;
 
@@ -23,8 +23,8 @@ public abstract class BaseTest
         }
     }
 
-    private final File tstFolder;
-	private final File outFolder;
+    protected final File tstFolder;
+	protected final File outFolder;
 	
 	protected abstract String testFolder();
 	protected abstract String outFolder();

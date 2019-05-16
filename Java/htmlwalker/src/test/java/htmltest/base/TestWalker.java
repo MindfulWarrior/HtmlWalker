@@ -11,23 +11,13 @@ public class TestWalker extends JoinedWalker
 {
 	private final WalkerDocument output;
 
-    public final TagTraceWalker tracer;
+    public final TagTraceWalker tracer = new TagTraceWalker();
 
     public TestWalker(WalkerPlatform platform, boolean formatted)
     {
     	super();
-    	
     	output = platform.newDocument();
-        tracer = new TagTraceWalker();
-        
-        CloneWalker cloner;
-        if (formatted && !platform.isXml())
-        	cloner = new FormattedCloneWalker(output);
-        else
-        	cloner = new CloneWalker(output);
-
         walkers.add(tracer);
-        walkers.add(cloner);
     }
     
     public TestWalker(WalkerPlatform platform)

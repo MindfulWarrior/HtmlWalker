@@ -2,6 +2,8 @@ package htmltest.base;
 
 import static org.junit.Assert.fail;
 
+import java.io.File;
+
 import htmlwalker.exception.HtmlWalkerException;
 
 public abstract class CloneTest extends BaseTest
@@ -28,21 +30,20 @@ public abstract class CloneTest extends BaseTest
 		this.ext = ext;
 	}
 	
-	protected void doTest(String inFile, String outFile, String expectedFile, Options options)
+	protected void doTest(File testInput, File testOutput, File testExpected, Options options)
 	{
-	    var testInput = getTestInput(inFile);
+		TestWalker walker;
+		if (!platform().isXml() && options.formatted && options.documentOptions.getProvideEol())
+			walker = new FormattedCloneTestWalker(platform());
+		else
+			walker = new CloneTestWalker(platform());
 
-	    var testOutput = getTestOutput(outFile);
-        if (testOutput.exists())
-            testOutput.delete();
-
-		var walker = new TestWalker(platform(), options == null ? false : options.formatted && options.documentOptions.getProvideEol());
-	    walker.tracer.verbosity = 2;
-	    
 	    try
 	    {
 	    	var document = platform().newDocument(testInput.getPath(), options.documentOptions);
 	    	walker.visit(document.documentTag());
+			if (testOutput.exists())
+            	testOutput.delete();
 	        walker.output().save(testOutput.getPath());
 		}
 	    catch (HtmlWalkerException e)
@@ -50,8 +51,15 @@ public abstract class CloneTest extends BaseTest
 			fail(e.getMessage());
 		}
 	
-	    if (null != expectedFile)
-		    compareToExpected(testOutput, testInput, expectedFile, true);
+		compareToExpected(testOutput, testExpected, true);
+	}
+
+	protected void doTest(String inFile, String outFile, String expectedFile, Options options)
+	{
+	    var testInput = getTestInput(inFile);
+	    var testOutput = getTestOutput(outFile);
+		var testExpected = getTestExpected(expectedFile, testInput, true);
+		doTest(testInput, testOutput, testExpected, options);
 	}
 
 	protected void doTest(String inFile, String outFile, String expectedFile)
