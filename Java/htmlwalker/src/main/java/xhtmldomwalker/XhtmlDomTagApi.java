@@ -30,10 +30,10 @@ class XhtmlDomTagApi implements ITagApi
 	public WalkerPlatform platform() { return XhtmlDomPlatform.theInstance; }
 
 	@Override
-	public Map<String, String> getAttributes(Object tag)
+	public Map<String, Object> getAttributes(Object tag)
 	{
 		Node node = (Node)tag;
-		Map<String, String> attrs = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
+		Map<String, Object> attrs = new TreeMap<String, Object>(String.CASE_INSENSITIVE_ORDER);
 		NamedNodeMap attributes = node.getAttributes();
 		if (attributes != null)
 		{
@@ -56,11 +56,11 @@ class XhtmlDomTagApi implements ITagApi
 	}
 
 	@Override
-	public void setAttribute(Object tag, String attr, String value)
+	public void setAttribute(Object tag, String attr, Object value)
 	{
 		Node node = ((Node)tag);
 		if (Node.ELEMENT_NODE == node.getNodeType())
-			((Element)node).setAttribute(attr, value);
+			((Element)node).setAttribute(attr, value.toString());
 	}
 
 	@Override

@@ -77,7 +77,7 @@ public abstract class BaseTag implements ITag
         if (contentType() == ContentType.TEXT || contentType() == ContentType.SCRIPT)		
         	adapter.setTextValue(getTextValue());
 	
-        for (Entry<String, String> attr : attributes().entrySet())
+        for (Entry<String, Object> attr : attributes().entrySet())
         	adapter.attributes().put(attr.getKey(), attr.getValue());
         
 		if (owner != null && owner.contentType() == ContentType.TAG)

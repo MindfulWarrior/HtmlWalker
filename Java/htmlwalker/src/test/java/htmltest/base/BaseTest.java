@@ -2,14 +2,10 @@ package htmltest.base;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.junit.Assume.assumeNoException;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
-import org.junit.internal.AssumptionViolatedException;
 
 import htmlwalker.platform.WalkerPlatform;
 

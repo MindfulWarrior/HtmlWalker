@@ -7,14 +7,14 @@ import java.util.Set;
 import htmlwalker.ITag;
 import htmlwalker.platform.ITagApi;
 
-public class TagAttributes implements Map<String, String>
+public class TagAttributes implements Map<String, Object>
 {
 	protected final ITag tag;
     protected final ITagApi api;
 
-    private Map<String, String> map = null;
+    private Map<String, Object> map = null;
 
-    private Map<String, String> attributes()
+    private Map<String, Object> attributes()
     {
         if (this.map == null)
             this.map = this.api.getAttributes(this.tag.tag());
@@ -26,7 +26,7 @@ public class TagAttributes implements Map<String, String>
     	return this.api.platform().handleEntities(this.api.getAttribute(this.tag.tag(), attr), true);
     }
 
-    private void setAttribute(String attr, String value)
+    private void setAttribute(String attr, Object value)
     {
         attr = attr.toLowerCase().trim();
         if (value == null)
@@ -39,7 +39,10 @@ public class TagAttributes implements Map<String, String>
         {
             if (this.map != null)
                 this.map.put(attr, value);
-            this.api.setAttribute(this.tag.tag(), attr, this.api.platform().handleEntities(value, true));
+            this.api.setAttribute(
+				this.tag.tag(), attr,
+				value instanceof String ? this.api.platform().handleEntities(value.toString(), true) : value
+			);
         }
     }
 
@@ -52,8 +55,8 @@ public class TagAttributes implements Map<String, String>
 	@Override
 	public void clear()
 	{
-		Set<String> attrs = keySet();
-		for (String attr : attrs)
+		var attrs = keySet().toArray();
+		for (var attr : attrs)
 			remove(attr);
 	}
 
@@ -64,7 +67,7 @@ public class TagAttributes implements Map<String, String>
 	public boolean containsValue(Object value) { return attributes().containsValue(value); }
 
 	@Override
-	public Set<Entry<String, String>> entrySet() { return attributes().entrySet(); }
+	public Set<Entry<String, Object>> entrySet() { return attributes().entrySet(); }
 
 	@Override
 	public String get(Object attr) { return getAttribute(attr.toString()); }
@@ -76,17 +79,18 @@ public class TagAttributes implements Map<String, String>
 	public Set<String> keySet() { return attributes().keySet(); }
 
 	@Override
-	public String put(String attr, String value)
+	public String put(String attr, Object value)
 	{
 		String old = getAttribute(attr);
-		setAttribute(attr, value);
+		if (!attr.equals("#text"))
+			setAttribute(attr, value);
 		return old;
 	}
 
 	@Override
-	public void putAll(Map<? extends String, ? extends String> attrs)
+	public void putAll(Map<? extends String, ? extends Object> attrs)
 	{
-		for (Entry<? extends String, ? extends String> entry : attrs.entrySet())
+		for (Entry<? extends String, ? extends Object> entry : attrs.entrySet())
 			put(entry.getKey(), entry.getValue());
 	}
 
@@ -97,6 +101,6 @@ public class TagAttributes implements Map<String, String>
 	public int size() { return attributes().size(); }
 
 	@Override
-	public Collection<String> values() { return attributes().values(); }
+	public Collection<Object> values() { return attributes().values(); }
 
 }

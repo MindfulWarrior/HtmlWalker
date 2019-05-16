@@ -29,32 +29,29 @@ public class Skip extends ContentUtilTag
 	public final BaseTag skippedTag;
 
 	// TODO: need to make this readonly/final
-    public boolean skipTree;
+    public boolean skipTree = false;
 
 	public Skip(WalkerFactory factory, ITag adapter)
 	{
 		super(factory, adapter.tag());
 		this.skippedTag = (BaseTag)adapter;
 		
-        ITag nodeOwner = adapter.owner();
+        var nodeOwner = adapter.owner();
         while (nodeOwner != null && nodeOwner.contentType() == ContentType.SKIP)
             nodeOwner = nodeOwner.owner();
         this.nodeOwner = (BaseTag)nodeOwner;
 
-        if (nodeOwner != null)
-        {
-            if (adapter.ownedTags() != null)
-            {
-                for (ITag tag : adapter.ownedTags())
-                    ownedTags().add(tag);
-            }
+        if (nodeOwner != null && adapter.ownedTags() != null)
+		{
+			for (var tag : adapter.ownedTags())
+				ownedTags().add(tag);
         }
 
         if (owner() != null)
         {
         	owner().ownedTags().tags.add(this);
         	owner().ownedTags().tags.remove(adapter);
-            this.nodeOwner.api.remove(tag(), adapter);
+            this.nodeOwner.api.remove(nodeOwner.tag(), adapter);
         }
 		
 	}

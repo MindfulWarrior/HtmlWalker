@@ -37,16 +37,16 @@ class HtmlTagApi implements ITagApi
 	public WalkerPlatform platform() { return HtmlPlatform.theInstance; }
 
 	@Override
-	public Map<String, String> getAttributes(Object tag)
+	public Map<String, Object> getAttributes(Object tag)
 	{
 		var node = (Node)tag;
-		var attrs = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
+		var attrs = new TreeMap<String, Object>(String.CASE_INSENSITIVE_ORDER);
 		var attributes = node.attributes().asList();
 		for (Attribute attr : attributes)
 		{
 			// TODO: Handle Boolean attributes better.
 			if (attr instanceof BooleanAttribute)
-				attrs.put(attr.getKey(), null);
+				attrs.put(attr.getKey(), true);
 			else
 				attrs.put(attr.getKey(), attr.getValue());
 		}
@@ -64,12 +64,17 @@ class HtmlTagApi implements ITagApi
 
 	// TODO: Add way to remove attribute
 	@Override
-	public void setAttribute(Object tag, String attr, String value)
+	public void setAttribute(Object tag, String attr, Object value)
 	{
-		if (value == null && tag instanceof Element)
-			((Element) tag).attr(attr, true);
-		else
-			((Node)tag).attr(attr, value);
+		if (!attr.equals("#text"))
+		{
+			if (value instanceof Boolean)
+				((Element) tag).attr(attr, (boolean)value);
+			else if (value == null)
+				((Node)tag).removeAttr(attr);
+			else
+				((Node)tag).attr(attr, value.toString());
+		}
 	}
 
 	@Override

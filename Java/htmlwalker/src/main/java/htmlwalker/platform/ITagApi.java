@@ -41,7 +41,7 @@ public interface ITagApi
 	 * 
 	 * @see HtmlWalker.ITag#getAttributes()
 	 */
-	public Map<String, String> getAttributes(Object tag);
+	public Map<String, Object> getAttributes(Object tag);
 
 	/**
 	 * Gets the tag attribute value for a given attribute name.
@@ -61,7 +61,7 @@ public interface ITagApi
 	 * 
 	 * @see HtmlWalker.ITag#setAttribute(String, String)
 	 */
-	public void setAttribute(Object tag, String attr, String value);
+	public void setAttribute(Object tag, String attr, Object value);
 
 	/**
 	 * Gets the text for tags of content type <b>TEXT</b>.

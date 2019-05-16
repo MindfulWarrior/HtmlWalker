@@ -49,5 +49,8 @@ public class CleanerTest extends BaseTest
     public void div_01() { doTest("div.01"); }
 
     @Test
+    public void attribute_01() { doTest("attribute.01"); }
+
+    @Test
     public void word_01() { doTest("word.01"); }
 }
