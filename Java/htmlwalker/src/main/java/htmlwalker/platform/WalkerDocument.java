@@ -56,7 +56,17 @@ public abstract class WalkerDocument
 
 	/**
 	 * This method is overwritten to provide the platform specific what the HTML
-	 * needs to be written.
+	 * needs to be written with a given encoding.
+	 *
+	 * @param writer - the writer
+     * @param encoding - which encoding to use.
+	 * @throws HtmlWalkerException the html walker exception
+	 */
+    public abstract void save(String path, String encoding) throws HtmlWalkerException;;
+
+	/**
+	 * This method is overwritten to provide the platform specific what the HTML
+	 * needs to be written using the default encoding
 	 *
 	 * @param writer the writer
 	 * @throws HtmlWalkerException the html walker exception

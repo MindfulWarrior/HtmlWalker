@@ -1,7 +1,5 @@
 ﻿package htmltest.base;
 
-import htmlwalker.CloneWalker;
-import htmlwalker.FormattedCloneWalker;
 import htmlwalker.JoinedWalker;
 import htmlwalker.TagTraceWalker;
 import htmlwalker.platform.WalkerDocument;
@@ -18,6 +16,7 @@ public class TestWalker extends JoinedWalker
     	super();
     	output = platform.newDocument();
         walkers.add(tracer);
+        tracer.verbosity = 2;
     }
     
     public TestWalker(WalkerPlatform platform)

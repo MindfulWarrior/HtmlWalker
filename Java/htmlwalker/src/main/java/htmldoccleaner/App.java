@@ -1,6 +1,8 @@
 ﻿package htmldoccleaner;
 
 import htmljsoupwalker.HtmlPlatform;
+import htmlwalker.JoinedWalker;
+import htmlwalker.TagTraceWalker;
 import htmlwalker.exception.HtmlWalkerException;
 import htmlwalker.platform.WalkerPlatform;
 import xhtmldomwalker.XhtmlDomPlatform;
@@ -22,8 +24,10 @@ public class App {
             try
             {
                 var input = platform.newDocument(cmdLine.input(), options);
-                var output = platform.newDocument();
-                var walker = new DocCleanerWalker(output);
+                var output = platform.newDocument(options);
+                var walker = new JoinedWalker();
+                walker.walkers.add(new TagTraceWalker());
+                walker.walkers.add(new DocCleanerWalker(output));
                 walker.visit(input.documentTag());
                 output.save(cmdLine.output());
             }

@@ -16,7 +16,7 @@ public class TagTraceWalker extends EventWalker
         {
             String msg
                 = Integer.toString(this.traceIndex) + ":"
-                + new String(new char[this.traceIndent]).replace("\0", " ")
+                + new String(" ").repeat(this.traceIndent)
                 + "<" + tag.name() + ">[" + (tag.getTextValue() == null ? tag.toString() : "") + "]";
             System.out.println(msg);
         }

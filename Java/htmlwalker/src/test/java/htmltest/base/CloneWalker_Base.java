@@ -2,12 +2,9 @@
 
 import static org.junit.Assert.fail;
 
-import java.io.File;
 import java.io.FileWriter;
-
 import htmlwalker.exception.HtmlWalkerException;
 import htmlwalker.exception.TagNotSupportedException;
-import htmlwalker.platform.WalkerDocument;
 import xhtmldomwalker.XhtmlDomPlatform;
 
 public abstract class CloneWalker_Base extends CloneTest
@@ -404,5 +401,226 @@ public abstract class CloneWalker_Base extends CloneTest
             fail(e.getMessage());
         }
     }
-}
 
+
+    public void tNoEntityConversion()
+    {
+        String hdr = "";
+        if (platform().isXml())
+            hdr = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
+        var html = "<html><body><p>“Hello, World!”</p></body></html>";
+
+        try
+        {
+            var document = platform().newDocument();
+            document.loadHtml(hdr + html);
+
+            var walker = new CloneTestWalker(platform());
+            walker.visit(document.documentTag());
+
+            if (walker.output().html() != html)
+                fail("Expected - [" + html + "] vs Out - [" + walker.output().html() + "]");
+        }   
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
+    }
+
+    public void tNoEntityConversionSaved()
+    {
+        String hdr = "";
+        if (platform().isXml())
+            hdr = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
+        var html = "<html>  <body>    <p>“Hello, World!”</p>  </body></html>";
+
+        try
+        {
+            var testOutput = getTestOutput("output_noentity." + this.ext);
+            if (testOutput.exists())
+                testOutput.delete();
+
+            var document = platform().newDocument();
+            document.loadHtml(hdr + html);
+
+            var walker = new CloneTestWalker(platform());
+            walker.visit(document.documentTag());
+            walker.output().save(testOutput.getPath());
+
+            compareToExpected(testOutput, html, true);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
+    }
+
+    public void tNoEntityConversionLoadSaved()
+    {
+        String hdr = "";
+        if (platform().isXml())
+            hdr = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
+        var html = "<html><body><p>“Hello, World!”</p></body></html>";
+
+        var testExpected = getTestOutput("expected_load_noentity." + this.ext);
+        try
+        {
+            if (!testExpected.exists())
+            {
+                try (var writer = new FileWriter(testExpected.getPath()))
+                {
+                    if (platform().isXml())
+                        writer.write(hdr + "\n");
+                    writer.write(html + "\n");
+                }
+            }
+            var testOutput = getTestOutput("output_noentity." + this.ext);
+            if (testOutput.exists())
+                testOutput.delete();
+
+            var document = platform().newDocument();
+            document.loadHtml(hdr + html);
+
+            if (!platform().isXml())
+                html += System.lineSeparator();
+
+            var walker = new CloneTestWalker(platform());
+            walker.visit(document.documentTag());
+            walker.output().save(testOutput.getPath());
+
+            compareToExpected(testOutput, testExpected, true);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
+    }
+
+    public void TNoEntityConversion()
+    {
+        String hdr = "";
+        if (platform().isXml())
+            hdr = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
+        var html = "<html><body><p>“Hello, World!”</p></body></html>";
+
+        try
+        {
+            var document = platform().newDocument();
+            document.loadHtml(hdr + html);
+
+            var walker = new CloneTestWalker(platform());
+            walker.visit(document.documentTag());
+
+            if (walker.output().html() != html)
+                fail("Expected - [" + html + "] vs Out - [" + walker.output().html() + "]");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
+    }
+
+    public void TNoEntityConversionSaved()
+    {
+        String hdr = "";
+        if (platform().isXml())
+            hdr = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
+        var html = "<html>  <body>    <p>“Hello, World!”</p>  </body></html>";
+
+        try
+        {
+            var testOutput = getTestOutput("output_noentity." + this.ext);
+            if (testOutput.exists())
+                testOutput.delete();
+
+            var document = platform().newDocument();
+            document.loadHtml(hdr + html);
+
+            var walker = new CloneTestWalker(platform());
+            walker.visit(document.documentTag());
+            walker.output().save(testOutput.getPath());
+
+            compareToExpected(testOutput, html, true);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
+    }
+
+    public void TNoEntityConversionLoadSaved()
+    {
+        String hdr = "";
+        if (platform().isXml())
+            hdr = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
+        var html = "<html><body><p>“Hello, World!”</p></body></html>";
+
+        var testExpected = getTestOutput("expected_load_noentity." + this.ext);
+        try
+        {
+            if (!testExpected.exists())
+            {
+                try (var writer = new FileWriter(testExpected.getPath()))
+                {
+                    if (platform().isXml())
+                        writer.write(hdr + "\n");
+                    writer.write(html + "\n");
+                }
+            }
+            var testOutput = getTestOutput("output_noentity." + this.ext);
+            if (testOutput.exists())
+                testOutput.delete();
+
+            var document = platform().newDocument();
+            document.loadHtml(hdr + html);
+
+            if (!platform().isXml())
+                html += System.lineSeparator();
+
+            var walker = new CloneTestWalker(platform());
+            walker.visit(document.documentTag());
+            walker.output().save(testOutput.getPath());
+
+            compareToExpected(testOutput, testExpected, true);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
+    }
+
+    public void TRemoveTag()
+    {
+        var html = "<html><body><p>Hello, World!</p><p>REMOVE THIS</p></body></html>";
+        var expected = "<html><body><p>Hello, World!</p></body></html>";
+
+        try
+        {
+            var document = platform().newDocument();
+            document.loadHtml(html);
+
+            var walker = new CloneTestWalker(platform());
+            walker.visit(document.documentTag());
+
+            var body = walker.output().documentTag().bodyTag();
+            var removeThis = body.ownedTags().stream().filter(
+                p -> p.name() == "p" && p.ownedText() == "REMOVE THIS"
+            ).findFirst();
+            body.ownedTags().remove(removeThis.get());
+
+            if (walker.output().html() != expected)
+                fail("Expected - [" + expected + "] vs Out - [" + walker.output().html() + "]");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
+    }
+}

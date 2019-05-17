@@ -1,6 +1,7 @@
 package domwalker;
 
 import java.io.Writer;
+import java.nio.charset.Charset;
 
 import htmlwalker.exception.HtmlWalkerException;
 import htmlwalker.platform.WalkerDocument;
@@ -50,9 +51,18 @@ public abstract class DomDocument<F extends DomFactory<A, D>, A extends DomApi<D
     }
 	
 	@Override
+	public void save(String path, String encoding) throws HtmlWalkerException
+	{
+		this.factory.dapi.save(getDom(), path, encoding);
+	}
+	
+	@Override
 	public void save(String path) throws HtmlWalkerException
 	{
-		this.factory.dapi.save(getDom(), path, this.encoding);
+		if (this.encoding == null)
+			this.factory.dapi.save(getDom(), path);
+		else
+			this.factory.dapi.save(getDom(), path, this.encoding);
 	}
 	
 	@Override

@@ -7,7 +7,6 @@ import org.junit.Test;
 import htmljsoupwalker.HtmlPlatform;
 import htmltest.base.BaseTest;
 import htmltest.base.FormattedCloneTestWalker;
-import htmlwalker.FormattedCloneWalker;
 import htmlwalker.exception.HtmlWalkerException;
 import htmlwalker.platform.WalkerPlatform;
 

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,9 +124,21 @@ public class XhtmlDomApi extends DomApi<Document>
 	@Override
 	public void save(Document dom, String path, String encoding) throws HtmlWalkerException
 	{
-		try
+		try(FileWriter writer = new FileWriter(path, Charset.forName(encoding)))
 		{
-			FileWriter writer = new FileWriter(path);
+			save(dom, writer);
+		}
+		catch (IOException e)
+		{
+			throw new HtmlWalkerException(e);
+		}		
+	}
+	
+	@Override
+	public void save(Document dom, String path) throws HtmlWalkerException
+	{
+		try(FileWriter writer = new FileWriter(path))
+		{
 			save(dom, writer);
 		}
 		catch (IOException e)

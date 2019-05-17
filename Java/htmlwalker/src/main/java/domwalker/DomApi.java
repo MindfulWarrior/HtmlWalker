@@ -30,5 +30,7 @@ public abstract class DomApi<D>
 
     public abstract void save(D dom, String path, String encoding) throws HtmlWalkerException;
 
+    public abstract void save(D dom, String path) throws HtmlWalkerException;
+
     public abstract void save(D dom, Writer writer) throws HtmlWalkerException;
 }
