@@ -1,8 +1,6 @@
 package domwalker;
 
 import java.io.Writer;
-import java.nio.charset.Charset;
-
 import htmlwalker.exception.HtmlWalkerException;
 import htmlwalker.platform.WalkerDocument;
 import htmlwalker.platform.WalkerFactory;

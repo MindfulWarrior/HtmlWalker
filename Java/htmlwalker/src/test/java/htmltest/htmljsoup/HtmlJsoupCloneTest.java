@@ -36,11 +36,11 @@ public class HtmlJsoupCloneTest extends CloneTest
 	protected WalkerPlatform platform() { return HtmlPlatform.theInstance; }
 
 	@Override
-	protected void createExpected(File expected, File testInput)
+	protected void createExpected(File expected, File testInput, Options options)
 	{
 		try
 		{
-			Document doc = Jsoup.parse(testInput, "UTF-8");
+			Document doc = Jsoup.parse(testInput, options.documentOptions.getEncoding());
 			FileWriter writer = new FileWriter(expected);
 			writer.write(doc.html());
 			writer.close();

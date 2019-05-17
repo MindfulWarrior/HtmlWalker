@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import htmljsoupwalker.HtmlPlatform;
 import htmltest.base.CloneWalker_Base;
-import htmlwalker.platform.WalkerDocument;
 import htmlwalker.platform.WalkerPlatform;
 
 public class Html5_Base extends CloneWalker_Base
@@ -22,11 +21,11 @@ public class Html5_Base extends CloneWalker_Base
     protected WalkerPlatform platform() { return HtmlPlatform.theInstance; }
 
     @Override
-    protected void createExpected(File expected, File testInput)
+    protected void createExpected(File expected, File testInput, Options options)
     {
         try
         {
-        	WalkerDocument document = platform().newDocument();
+        	var document = platform().newDocument(options.documentOptions);
             document.load(testInput.getAbsolutePath());
             document.save(expected.getAbsolutePath());
         }

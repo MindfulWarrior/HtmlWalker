@@ -5,9 +5,14 @@ import htmlwalker.platform.WalkerPlatform;
 
 public class CloneTestWalker extends TestWalker
 {
+    public CloneTestWalker(WalkerPlatform platform, WalkerPlatform.IOptions options)
+    {
+        super(platform, options);
+        walkers.add(new CloneWalker(output()));
+    }
+
     public CloneTestWalker(WalkerPlatform platform)
     {
-        super(platform);
-        walkers.add(new CloneWalker(output()));
+        this(platform, null);
     }
 }

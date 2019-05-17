@@ -26,7 +26,8 @@ public class FormattingTest extends BaseTest
     protected WalkerPlatform platform() { return HtmlPlatform.theInstance; }
 
     @Override
-    protected void createExpected(File expected, File testInput) {
+    protected void createExpected(File expected, File testInput, Options options)
+    {
         createFormattedClone(testInput.getPath(), expected.getPath());
     }
 

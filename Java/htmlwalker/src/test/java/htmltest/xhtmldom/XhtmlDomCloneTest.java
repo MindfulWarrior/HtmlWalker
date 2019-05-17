@@ -29,7 +29,7 @@ public class XhtmlDomCloneTest extends CloneTest
 	public String testFolder() { return TSTPATH; }
 
 	@Override
-	protected void createExpected(File expected, File testInput)
+	protected void createExpected(File expected, File testInput, Options options)
 	{
 		try {
 			Document dom = XhtmlDomPlatform.documentBuilder().parse(testInput);

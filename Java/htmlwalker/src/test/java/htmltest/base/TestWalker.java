@@ -11,17 +11,17 @@ public class TestWalker extends JoinedWalker
 
     public final TagTraceWalker tracer = new TagTraceWalker();
 
-    public TestWalker(WalkerPlatform platform, boolean formatted)
+    public TestWalker(WalkerPlatform platform, WalkerPlatform.IOptions options)
     {
     	super();
-    	output = platform.newDocument();
+    	output = platform.newDocument(options);
         walkers.add(tracer);
         tracer.verbosity = 2;
     }
     
     public TestWalker(WalkerPlatform platform)
     {
-    	this(platform, false);
+    	this(platform, null);
     }
 
     public WalkerDocument output() { return output; }

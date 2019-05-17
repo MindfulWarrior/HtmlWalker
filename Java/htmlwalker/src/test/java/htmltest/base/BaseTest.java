@@ -31,7 +31,7 @@ public abstract class BaseTest
 	
 	protected abstract WalkerPlatform platform();
 	
-    protected abstract void createExpected(File expected, File testInput);
+    protected abstract void createExpected(File expected, File testInput, Options options);
 	
 	public BaseTest()
 	{
@@ -121,7 +121,7 @@ public abstract class BaseTest
 	    File expected = new File(getOutPath(filename));
 		if (!expected.exists())
 		{
-			createExpected(expected, testInput);
+			createExpected(expected, testInput, new Options(platform()));
 			assertTrue(expected.getPath() + " does not exists and could not be created", expected.exists());
 			if (!autoCreate)
 				fail(expected.getPath() + " had to be created. Rerun test.");

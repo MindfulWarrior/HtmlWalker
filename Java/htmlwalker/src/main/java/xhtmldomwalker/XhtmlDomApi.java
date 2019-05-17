@@ -124,13 +124,18 @@ public class XhtmlDomApi extends DomApi<Document>
 	@Override
 	public void save(Document dom, String path, String encoding) throws HtmlWalkerException
 	{
-		try(FileWriter writer = new FileWriter(path, Charset.forName(encoding)))
+		if (encoding == null)
+			save(dom, path);
+		else
 		{
-			save(dom, writer);
-		}
-		catch (IOException e)
-		{
-			throw new HtmlWalkerException(e);
+			try(FileWriter writer = new FileWriter(path, Charset.forName(encoding)))
+			{
+				save(dom, writer);
+			}
+			catch (IOException e)
+			{
+				throw new HtmlWalkerException(e);
+			}
 		}		
 	}
 	

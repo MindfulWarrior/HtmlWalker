@@ -34,9 +34,9 @@ public abstract class CloneTest extends BaseTest
 	{
 		TestWalker walker;
 		if (!platform().isXml() && options.formatted && options.documentOptions.getProvideEol())
-			walker = new FormattedCloneTestWalker(platform());
+			walker = new FormattedCloneTestWalker(platform(), options.documentOptions);
 		else
-			walker = new CloneTestWalker(platform());
+			walker = new CloneTestWalker(platform(), options.documentOptions);
 
 	    try
 	    {
@@ -44,7 +44,7 @@ public abstract class CloneTest extends BaseTest
 	    	walker.visit(document.documentTag());
 			if (testOutput.exists())
             	testOutput.delete();
-	        walker.output().save(testOutput.getPath());
+	        walker.output().save(testOutput.getPath(), document.encoding);
 		}
 	    catch (HtmlWalkerException e)
 	    {

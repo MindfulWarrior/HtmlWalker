@@ -29,7 +29,7 @@ public class Xhtml_Base extends CloneWalker_Base
 
 
 	@Override
-	protected void createExpected(File expected, File testInput)
+	protected void createExpected(File expected, File testInput, Options options)
 	{
 		try {
 			Document dom = XhtmlDomPlatform.documentBuilder().parse(testInput);
