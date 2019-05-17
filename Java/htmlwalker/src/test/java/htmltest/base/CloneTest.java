@@ -58,7 +58,7 @@ public abstract class CloneTest extends BaseTest
 	{
 	    var testInput = getTestInput(inFile);
 	    var testOutput = getTestOutput(outFile);
-		var testExpected = getTestExpected(expectedFile, testInput, true);
+		var testExpected = getTestExpected(expectedFile, testInput, options);
 		doTest(testInput, testOutput, testExpected, options);
 	}
 

@@ -32,8 +32,11 @@ public class CleanerTest extends BaseTest
 
     protected void doTest(String test)
     {
+        var options = new Options(platform());
+        options.autoCreate = false;
+
         var testInput = getTestInput("test." + test + ".html");
-        var expected = getTestExpected("saved." + test + ".html", testInput, false);
+        var expected = getTestExpected("saved." + test + ".html", testInput, options);
         var testOutput = getTestOutput("output." + test + ".html");
         App.main(new String[] { testInput.getPath(), testOutput.getPath() });
         compareToExpected(testOutput, expected, false);

@@ -13,9 +13,10 @@ public abstract class BaseTest
 {
     public class Options
     {
-        public final WalkerPlatform.IOptions documentOptions;
+		public final WalkerPlatform.IOptions documentOptions;
 
-        public boolean formatted = false;
+		public boolean autoCreate = true;
+		public boolean formatted = false;
 
         public Options(WalkerPlatform platform)
         {
@@ -115,15 +116,15 @@ public abstract class BaseTest
 	    return new File(getOutPath(filename));
     }    
 
-    protected File getTestExpected(String filename, File testInput, boolean autoCreate)
+    protected File getTestExpected(String filename, File testInput, Options options)
     {
 		assertTrue(testInput.getPath() + " does not exists.", testInput.exists());
 	    File expected = new File(getOutPath(filename));
 		if (!expected.exists())
 		{
-			createExpected(expected, testInput, new Options(platform()));
+			createExpected(expected, testInput, options);
 			assertTrue(expected.getPath() + " does not exists and could not be created", expected.exists());
-			if (!autoCreate)
+			if (!options.autoCreate)
 				fail(expected.getPath() + " had to be created. Rerun test.");
 		}
 	    return expected;
@@ -131,7 +132,7 @@ public abstract class BaseTest
 
     protected File getTestExpected(String filename, File testInput)
     {
-		return getTestExpected(filename, testInput, true);
+		return getTestExpected(filename, testInput, new Options((platform())));
 	}
 
     private String readNextLine(BufferedReader reader, boolean ignoreWhitespace) throws IOException
