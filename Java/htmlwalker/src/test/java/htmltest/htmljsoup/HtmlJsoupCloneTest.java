@@ -36,7 +36,7 @@ public class HtmlJsoupCloneTest extends CloneTest
 	protected WalkerPlatform platform() { return HtmlPlatform.theInstance; }
 
 	@Override
-	protected void createExpected(File expected, File testInput, Options options)
+	protected void createExpected(File expected, File testInput, TestOptions options)
 	{
 		try
 		{

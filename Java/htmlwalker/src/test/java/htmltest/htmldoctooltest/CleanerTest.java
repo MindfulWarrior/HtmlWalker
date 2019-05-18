@@ -25,14 +25,14 @@ public class CleanerTest extends BaseTest
     protected WalkerPlatform platform() { return HtmlPlatform.theInstance; }
 
     @Override
-    protected void createExpected(File expected, File testInput, Options options)
+    protected void createExpected(File expected, File testInput, TestOptions options)
     {
         App.main(new String[] { testInput.getPath(), expected.getPath() });
     }
 
     protected void doTest(String test)
     {
-        var options = new Options(platform());
+        var options = new TestOptions(platform());
         options.autoCreate = false;
 
         var testInput = getTestInput("test." + test + ".html");

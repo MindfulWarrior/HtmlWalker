@@ -10,9 +10,4 @@ public class FormattedCloneTestWalker extends TestWalker
         super(platform, options);
         walkers.add(new FormattedCloneWalker(output()));
     }
-
-    public FormattedCloneTestWalker(WalkerPlatform platform)
-    {
-        this(platform, null);
-    }
 }

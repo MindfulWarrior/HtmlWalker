@@ -18,11 +18,6 @@ public class TestWalker extends JoinedWalker
         walkers.add(tracer);
         tracer.verbosity = 2;
     }
-    
-    public TestWalker(WalkerPlatform platform)
-    {
-    	this(platform, null);
-    }
-
+ 
     public WalkerDocument output() { return output; }
 }

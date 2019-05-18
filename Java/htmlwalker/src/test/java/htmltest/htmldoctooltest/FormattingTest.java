@@ -26,19 +26,24 @@ public class FormattingTest extends BaseTest
     protected WalkerPlatform platform() { return HtmlPlatform.theInstance; }
 
     @Override
-    protected void createExpected(File expected, File testInput, Options options)
+    protected void createExpected(File expected, File testInput, TestOptions options)
     {
-        createFormattedClone(testInput.getPath(), expected.getPath());
+        createFormattedClone(testInput.getPath(), expected.getPath(), options);
     }
 
-    protected void createFormattedClone(String pathInput, String pathOutput)
+    protected TestOptions createTestOptions()
     {
-        var options = platform().newDocumentOptions();
-        options.setProvideEol(true);
+        var options = new TestOptions(platform());
+        options.autoCreate = false;
+        options.documentOptions.setProvideEol(true);
+        return options;
+    }
 
+    protected void createFormattedClone(String pathInput, String pathOutput, TestOptions options)
+    {
         try {
-            var input = platform().newDocument(pathInput, options);
-            var walker = new FormattedCloneTestWalker(platform());
+            var input = platform().newDocument(pathInput, options.documentOptions);
+            var walker = new FormattedCloneTestWalker(platform(), options.documentOptions);
             walker.visit(input.documentTag());
             walker.output().save(pathOutput);
         }
@@ -49,13 +54,19 @@ public class FormattingTest extends BaseTest
         }
     }
 
+    protected void doTest(File testInput, File testOutput, File expected, TestOptions options)
+    {
+        createFormattedClone(testInput.getPath(), testOutput.getPath(), options);
+        compareToExpected(testOutput, expected, false);
+     }
+
     protected void doTest(String test)
     {
+        var options = createTestOptions();
         var testInput = getTestInput("test." + test + ".html");
-        var expected = getTestExpected("saved." + test + ".html", testInput);
+        var expected = getTestExpected("saved." + test + ".html", testInput, options);
         var testOutput = getTestOutput("output." + test + ".html");
-        createFormattedClone(testInput.getPath(), testOutput.getPath());
-        compareToExpected(testOutput, expected, false);
+        doTest(testInput, testOutput, expected, options);
     }
 
     @Test

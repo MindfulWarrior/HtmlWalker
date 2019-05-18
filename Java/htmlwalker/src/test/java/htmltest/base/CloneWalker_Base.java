@@ -36,7 +36,7 @@ public abstract class CloneWalker_Base extends CloneTest
     {
         String html = "<html><body><unsupported></unsupported></body></html>";
         var document = platform().newDocument();
-        var walker = new CloneTestWalker(platform());
+        var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
 
         try
         {
@@ -71,7 +71,7 @@ public abstract class CloneWalker_Base extends CloneTest
             }
 
             var document = platform().newDocument(testExpected.getPath());
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
 
             String expected = html;
@@ -152,7 +152,7 @@ public abstract class CloneWalker_Base extends CloneTest
         	var document = platform().newDocument();
             document.loadHtml(html);
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
 
             String expected = html;
@@ -187,7 +187,7 @@ public abstract class CloneWalker_Base extends CloneTest
             var document = platform().newDocument();
             document.load(testExpected.getAbsolutePath());
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
 
             String expected = html;
@@ -224,7 +224,7 @@ public abstract class CloneWalker_Base extends CloneTest
             var document = platform().newDocument();
             document.loadHtml(html);
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
 
             walker.output().save(testOutput.getAbsolutePath());
@@ -262,7 +262,7 @@ public abstract class CloneWalker_Base extends CloneTest
             var document = platform().newDocument();
             document.loadHtml(html);
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
 
             try (var writer = new FileWriter(testOutput.getAbsolutePath()))
@@ -303,7 +303,7 @@ public abstract class CloneWalker_Base extends CloneTest
         	var document = platform().newDocument();
             document.loadHtml(html);
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
 
             if (!html.equals(walker.output().html()))
@@ -340,7 +340,7 @@ public abstract class CloneWalker_Base extends CloneTest
             var document = platform().newDocument();
             document.loadHtml(html);
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
             walker.output().save(testOutput.getAbsolutePath());
 
@@ -389,7 +389,7 @@ public abstract class CloneWalker_Base extends CloneTest
             if (!isXml())
                 html += System.lineSeparator();
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
             walker.output().save(testOutput.getAbsolutePath());
 
@@ -415,7 +415,7 @@ public abstract class CloneWalker_Base extends CloneTest
             var document = platform().newDocument();
             document.loadHtml(hdr + html);
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
 
             if (walker.output().html() != html)
@@ -444,7 +444,7 @@ public abstract class CloneWalker_Base extends CloneTest
             var document = platform().newDocument();
             document.loadHtml(hdr + html);
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
             walker.output().save(testOutput.getPath());
 
@@ -486,7 +486,7 @@ public abstract class CloneWalker_Base extends CloneTest
             if (!platform().isXml())
                 html += System.lineSeparator();
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
             walker.output().save(testOutput.getPath());
 
@@ -511,7 +511,7 @@ public abstract class CloneWalker_Base extends CloneTest
             var document = platform().newDocument();
             document.loadHtml(hdr + html);
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
 
             if (walker.output().html() != html)
@@ -540,7 +540,7 @@ public abstract class CloneWalker_Base extends CloneTest
             var document = platform().newDocument();
             document.loadHtml(hdr + html);
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
             walker.output().save(testOutput.getPath());
 
@@ -582,7 +582,7 @@ public abstract class CloneWalker_Base extends CloneTest
             if (!platform().isXml())
                 html += System.lineSeparator();
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
             walker.output().save(testOutput.getPath());
 
@@ -605,7 +605,7 @@ public abstract class CloneWalker_Base extends CloneTest
             var document = platform().newDocument();
             document.loadHtml(html);
 
-            var walker = new CloneTestWalker(platform());
+            var walker = new CloneTestWalker(platform(), platform().newDocumentOptions());
             walker.visit(document.documentTag());
 
             var body = walker.output().documentTag().bodyTag();

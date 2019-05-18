@@ -11,14 +11,14 @@ import htmlwalker.platform.WalkerPlatform;
 
 public abstract class BaseTest
 {
-    public class Options
+    public class TestOptions
     {
 		public final WalkerPlatform.IOptions documentOptions;
 
 		public boolean autoCreate = true;
 		public boolean formatted = false;
 
-        public Options(WalkerPlatform platform)
+        public TestOptions(WalkerPlatform platform)
         {
             documentOptions = platform.newDocumentOptions();
         }
@@ -32,7 +32,7 @@ public abstract class BaseTest
 	
 	protected abstract WalkerPlatform platform();
 	
-    protected abstract void createExpected(File expected, File testInput, Options options);
+    protected abstract void createExpected(File expected, File testInput, TestOptions options);
 	
 	public BaseTest()
 	{
@@ -116,7 +116,7 @@ public abstract class BaseTest
 	    return new File(getOutPath(filename));
     }    
 
-    protected File getTestExpected(String filename, File testInput, Options options)
+    protected File getTestExpected(String filename, File testInput, TestOptions options)
     {
 		assertTrue(testInput.getPath() + " does not exists.", testInput.exists());
 	    File expected = new File(getOutPath(filename));
@@ -128,11 +128,6 @@ public abstract class BaseTest
 				fail(expected.getPath() + " had to be created. Rerun test.");
 		}
 	    return expected;
-	}
-
-    protected File getTestExpected(String filename, File testInput)
-    {
-		return getTestExpected(filename, testInput, new Options((platform())));
 	}
 
     private String readNextLine(BufferedReader reader, boolean ignoreWhitespace) throws IOException
@@ -179,9 +174,14 @@ public abstract class BaseTest
 	    return match;
 	}
 
-    protected void compareToExpected(File testOutput, File testInput, String expectedFile, boolean ignoreWhitespace)
-    {
-        File testExpected = getTestExpected(expectedFile, testInput);
+    protected void compareToExpected(
+		File testOutput,
+		File testInput,
+		String expectedFile,
+		TestOptions options,
+		boolean ignoreWhitespace
+	) {
+        File testExpected = getTestExpected(expectedFile, testInput, options);
         compareToExpected(testOutput, testExpected, ignoreWhitespace);
     }
 

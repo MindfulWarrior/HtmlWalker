@@ -21,7 +21,7 @@ public class Html5_Base extends CloneWalker_Base
     protected WalkerPlatform platform() { return HtmlPlatform.theInstance; }
 
     @Override
-    protected void createExpected(File expected, File testInput, Options options)
+    protected void createExpected(File expected, File testInput, TestOptions options)
     {
         try
         {

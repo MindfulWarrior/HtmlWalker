@@ -10,9 +10,4 @@ public class CloneTestWalker extends TestWalker
         super(platform, options);
         walkers.add(new CloneWalker(output()));
     }
-
-    public CloneTestWalker(WalkerPlatform platform)
-    {
-        this(platform, null);
-    }
 }

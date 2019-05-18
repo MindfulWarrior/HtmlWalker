@@ -22,7 +22,7 @@ public class CloneTest_Base extends CloneTest
     protected WalkerPlatform platform() { throw new UnsupportedOperationException(); }
 
     @Override
-    protected void createExpected(File expected, File testInput, Options options) { }
+    protected void createExpected(File expected, File testInput, TestOptions options) { }
 
     public void tEmptyLines()
     {

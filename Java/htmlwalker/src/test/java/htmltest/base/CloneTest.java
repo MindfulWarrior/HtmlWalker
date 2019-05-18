@@ -30,7 +30,7 @@ public abstract class CloneTest extends BaseTest
 		this.ext = ext;
 	}
 	
-	protected void doTest(File testInput, File testOutput, File testExpected, Options options)
+	protected void doTest(File testInput, File testOutput, File testExpected, TestOptions options)
 	{
 		TestWalker walker;
 		if (!platform().isXml() && options.formatted && options.documentOptions.getProvideEol())
@@ -54,7 +54,7 @@ public abstract class CloneTest extends BaseTest
 		compareToExpected(testOutput, testExpected, true);
 	}
 
-	protected void doTest(String inFile, String outFile, String expectedFile, Options options)
+	protected void doTest(String inFile, String outFile, String expectedFile, TestOptions options)
 	{
 	    var testInput = getTestInput(inFile);
 	    var testOutput = getTestOutput(outFile);
@@ -62,32 +62,17 @@ public abstract class CloneTest extends BaseTest
 		doTest(testInput, testOutput, testExpected, options);
 	}
 
-	protected void doTest(String inFile, String outFile, String expectedFile)
-	{
-		doTest(inFile, outFile, expectedFile, new Options(platform()));
-	}
-
-	protected void doTest(Options options)
+	protected void doTest(TestOptions options)
     {
 	    doTest("test." + this.ext, "clone." + this.ext, "expected." + this.ext, options);
     }
 
-	protected void doTest()
-    {
-	    doTest("test." + this.ext, "clone." + this.ext, "expected." + this.ext);
-    }
-
-    protected void doTest(String t, Options options)
+    protected void doTest(String t, TestOptions options)
     {
 	    doTest("test." + t + "." + this.ext, "clone." + t + "." + this.ext, "expected." + t + "." + this.ext, options);
     }
-
-    protected void doTest(String t)
-    {
-	    doTest("test." + t + "." + this.ext, "clone." + t + "." + this.ext, "expected." + t + "." + this.ext, new Options(platform()));
-    }
 	
-    protected void doTest(int t, Options options)
+    protected void doTest(int t, TestOptions options)
     {
     	options.documentOptions.setProvideEol(false);
 	    doTest(String.valueOf(t), options);
@@ -97,6 +82,6 @@ public abstract class CloneTest extends BaseTest
 	
     protected void doTest(int t)
     {
-	    doTest(t, new Options(platform()));
+	    doTest(t, new TestOptions(platform()));
     }
 }
