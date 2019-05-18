@@ -60,6 +60,7 @@ namespace XhtmlDomWalker
         // TODO: Add way to set Encoding for Xhtml
         protected override void Save(XmlDocument dom, string path, Encoding encoding) => dom.Save(path);
 
+        // TODO: Add way to set Encoding for Xhtml
         protected override void Save(XmlDocument dom, string path) => dom.Save(path);
 
         protected override void Save(XmlDocument dom, TextWriter writer) => dom.Save(writer);

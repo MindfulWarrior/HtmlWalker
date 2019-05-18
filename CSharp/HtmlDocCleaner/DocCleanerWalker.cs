@@ -11,6 +11,7 @@ namespace HtmlDocCleaner
     {
         public DocCleanerWalker(WalkerPlatform.WalkerDocument document) : base(document)
         {
+            // TODO add TagTrader
             Modifiers.Add(new DocCleanerModifier(Output.Factory));
         }
 

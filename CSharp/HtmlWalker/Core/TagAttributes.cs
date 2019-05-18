@@ -6,6 +6,7 @@ using static HtmlWalker.Platform.WalkerPlatform;
 
 namespace HtmlWalker.Core
 {
+    // TODO: Change attribute value to an object
     public class TagAttributes : IDictionary<string, string>
     {
         protected ITagApi Api { get; }

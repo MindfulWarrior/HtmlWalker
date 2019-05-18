@@ -272,7 +272,7 @@ namespace HtmlTest.Base
             string hdr = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
             var html = "<html><body><p>&lsquo;Hello, World!&rsquo;</p> </body></html>";
 
-            FileInfo testExpected = GetTestOutput("expected_load_entity." + Ext);
+            var testExpected = GetTestOutput("expected_load_entity." + Ext);
             try
             {
                 if (!testExpected.Exists)
@@ -283,7 +283,7 @@ namespace HtmlTest.Base
                     writer.WriteLine(html);
                 }
 
-                FileInfo testOutput = GetTestOutput("output_load_entity." + Ext);
+                var testOutput = GetTestOutput("output_load_entity." + Ext);
                 if (testOutput.Exists)
                     testOutput.Delete();
 

@@ -4,6 +4,7 @@ using System.Diagnostics;
 
 namespace HtmlWalker
 {
+    // TODO: Make into a modifier
     public class TagTraceWalker : EventWalker
     {
         public static void StartTagTrace(object sender, EventArgs args)

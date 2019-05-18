@@ -9,9 +9,9 @@ namespace HtmlDocCleaner
     public class DocCleanerModifier : EchoModifer
     {
         private WalkerFactory factory;
-        public DocCleanerModifier(WalkerFactory Factory)
+        public DocCleanerModifier(WalkerFactory factory)
         {
-            this.factory = Factory;
+            this.factory = factory;
         }
 
         public override ITag Visit(Comment adapter) => new Skip(factory, adapter);
