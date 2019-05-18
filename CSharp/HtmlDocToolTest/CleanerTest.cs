@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using Html5DomWalker;
 using HtmlDocCleaner;
@@ -12,18 +13,37 @@ namespace HtmlDocToolTest
     {
         public CleanerTest() : base("Cleaner") { }
 
+        public CleanerTest(string subFolder) : base(subFolder) { }
+
         protected override WalkerPlatform Platform => Html5DomPlatform.Instance;
 
         protected override void CreateExpected(FileInfo expected, FileInfo testInput, TestOptions options)
-            => Program.Main(new string[] { testInput.FullName, expected.FullName });
+            => RunProgram(testInput, expected, options);
+
+        private void RunProgram(FileInfo testInput, FileInfo testOutput, TestOptions options)
+        {
+            var args = new List<string>() { testInput.FullName, testOutput.FullName };
+            if (options.DocumentOptions.Encoding != null)
+            {
+                args.Add("--input-encoding");
+                args.Add(options.DocumentOptions.Encoding.CodePage.ToString());
+            }
+            Program.Main(args.ToArray());
+        }
+
+        public void DoTest(FileInfo testInput, FileInfo testOutput, FileInfo expected, TestOptions options)
+        {
+            RunProgram(testInput, testOutput, options);
+            CompareToExpected(testOutput, expected, false);
+        }
 
         protected void DoTest(string test)
         {
+            var options = new TestOptions(Platform) { AutoCreate = false };
             var testInput = GetTestInput("test." + test + ".html");
-            var expected = GetTestExpected("saved." + test + ".html", testInput, new TestOptions(Platform) { AutoCreate = false });
+            var expected = GetTestExpected("saved." + test + ".html", testInput, options);
             var testOutput = GetTestOutput("output." + test + ".html");
-            Program.Main(new string[] { testInput.FullName, testOutput.FullName });
-            CompareToExpected(testOutput, expected, false);
+            DoTest(testInput, testOutput, expected, options);
         }
 
         [TestMethod]
