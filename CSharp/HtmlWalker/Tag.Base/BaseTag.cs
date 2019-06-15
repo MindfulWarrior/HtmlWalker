@@ -104,7 +104,7 @@ namespace HtmlWalker.Tag.Base
             foreach (var item in Attributes)
                 adapter.Attributes[item.Key] = item.Value;
 
-            if (owner != null && owner.OwnedTags != null)
+            if (owner?.OwnedTags != null)
                 owner.OwnedTags.Add(adapter);
 
             if (TextValue != null)

@@ -77,11 +77,6 @@ namespace XhtmlDomWalker
             return document;
         }
 
-        protected override bool KeepEntities(bool attribute)
-        {
-            if (attribute)
-                return false;
-            return true;
-        }
+        protected override bool KeepEntities(bool attribute) => !attribute;
     }
 }
