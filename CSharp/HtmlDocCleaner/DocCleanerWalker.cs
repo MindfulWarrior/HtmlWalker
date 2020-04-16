@@ -14,19 +14,5 @@ namespace HtmlDocCleaner
             // TODO add TagTrader
             Modifiers.Add(new DocCleanerModifier(Output.Factory));
         }
-
-        protected override ITag HandleTag<T>(T adapter)
-        {
-            var tag = base.HandleTag(adapter);
-            tag.Attributes.Clear();
-            return tag;
-        }
-
-        protected override ITag StartTag<T>(T adapter)
-        {
-            var tag = base.StartTag(adapter);
-            tag.Attributes.Clear();
-            return tag;
-        }
     }
 }

@@ -19,5 +19,17 @@ namespace HtmlDocCleaner
         public override ITag Visit(TagHead adapter) => new Skip(factory, adapter) { SkipTree = true };
 
         public override ITag Visit(TagDiv adapter) => new Skip(factory, adapter);
+
+        public override ITag Visit(TagBody adapter)
+        {
+            adapter.Attributes.Clear();
+            return adapter;
+        }
+
+        public override ITag Visit(TagP adapter)
+        {
+            adapter.Attributes.Clear();
+            return adapter;
+        }
     }
 }
