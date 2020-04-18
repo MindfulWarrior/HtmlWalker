@@ -1,11 +1,11 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using Html5DomWalker;
 using HtmlDocCleaner;
 using HtmlTest.Base;
 using HtmlWalker.Platform;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace HtmlDocToolTest
 {

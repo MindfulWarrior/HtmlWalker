@@ -11,8 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Html5DomWalker\Html5DomWalker.Core.csproj" />
-    <ProjectReference Include="..\XhtmlDomWalker\XhtmlDomWalker.Core.csproj" />
+    <ProjectReference Include="..\Html5DomWalker\Html5DomWalker.Standard.csproj" />
+    <ProjectReference Include="..\HtmlWalker\HtmlWalker.Standard.csproj" />
+    <ProjectReference Include="..\XhtmlDomWalker\XhtmlDomWalker.Standard.csproj" />
   </ItemGroup>
 
   <ItemGroup>
