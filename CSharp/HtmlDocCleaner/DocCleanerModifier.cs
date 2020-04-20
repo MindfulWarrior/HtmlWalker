@@ -8,7 +8,8 @@ namespace HtmlDocCleaner
 {
     public class DocCleanerModifier : EchoModifer
     {
-        private WalkerFactory factory;
+        private readonly WalkerFactory factory;
+
         public DocCleanerModifier(WalkerFactory factory)
         {
             this.factory = factory;

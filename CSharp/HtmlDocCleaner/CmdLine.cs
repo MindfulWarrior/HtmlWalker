@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HtmlDocCleaner
 {
-    class CmdLine
+    public class CmdLine
     {
         delegate int ArgumentDelegate(CmdLine caller, string[] args, int pos);
 

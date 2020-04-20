@@ -101,7 +101,12 @@ namespace Html5DomWalker
             {
                 var parent = ((HtmlNode)tag);
                 if (adapter.Tag is HtmlNode node)
-                    parent.InsertBefore(node, parent.ChildNodes[index]);
+                {
+                    if (parent.ChildNodes.Count > 0)
+                        parent.InsertBefore(node, parent.ChildNodes[index]);
+                    else
+                        parent.AppendChild(node);
+                }
                 else
                     throw new NotSupportedException();
             }

@@ -3,6 +3,7 @@ using HtmlWalker.Tag.Util;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HtmlWalker.Tag.Base
 {
@@ -91,7 +92,11 @@ namespace HtmlWalker.Tag.Base
         /// <summary>
         ///   Implements <see cref="this[int]"/>
         /// </summary>
-        public ITag this[int index] { get => Tags[index]; set => Tags[index] = value; }
+        public ITag this[int index]
+        {
+            get => Tags[index];
+            set => Replace(index, ref value);
+        }
 
         /// <summary>
         ///   Implements <see cref="IList{T}.IndexOf(T)"/>
@@ -159,5 +164,23 @@ namespace HtmlWalker.Tag.Base
         {
             return new List<ITag>(Tags.AsReadOnly());
         }
+
+        public void Replace<T>(int index, ref T replacement) where T : ITag
+        {
+            if (index >= 0)
+            {
+                var original = this[index];
+                for (index = 0; index < original.OwnedTags.Count; index++)
+                    replacement.OwnedTags.Add(original.OwnedTags[index]);
+
+                RemoveAt(index);
+                Insert(index, replacement);
+
+                replacement.TextValue = original.TextValue;
+            }
+        }
+
+        public void Replace<T0, T1>(ref T0 original, ref T1 replacement)
+            where T0 : ITag where T1 : ITag => Replace(IndexOf(original), ref replacement);
     }
 }

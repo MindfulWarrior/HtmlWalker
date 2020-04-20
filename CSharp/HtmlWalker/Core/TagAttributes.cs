@@ -55,6 +55,12 @@ namespace HtmlWalker.Core
             Tag = tag;
         }
 
+        /// <summary>
+        ///   Implementation of the index opertator using the attribute as the index.
+        ///   If the attribute does not exist, the 'get' returns null.
+        /// </summary>
+        /// <param name="attr"></param>
+        /// <returns>string if 'get'</returns>
         public string this[string attr]
         {
             get => getAttribute(attr);
