@@ -21,17 +21,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Html5DomTest.Core", "Html5D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlDocCleaner.Core", "HtmlDocCleaner\HtmlDocCleaner.Core.csproj", "{B10443DC-6CD1-4C23-A16B-6C66AEDB67B1}"
 	ProjectSection(ProjectDependencies) = postProject
-		{EED8FC6B-1DD3-4FF7-BABC-FB1039200A05} = {EED8FC6B-1DD3-4FF7-BABC-FB1039200A05}
 		{91EC5DA3-0368-4064-A8E8-9045726F9E26} = {91EC5DA3-0368-4064-A8E8-9045726F9E26}
 		{5902B5AC-AD6D-43A8-B664-49A27B5CC044} = {5902B5AC-AD6D-43A8-B664-49A27B5CC044}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlDocToolTest.Core", "HtmlDocToolTest\HtmlDocToolTest.Core.csproj", "{E1CD6E6A-6255-4DC9-9E74-676D4DEEFE18}"
-	ProjectSection(ProjectDependencies) = postProject
-		{75C75403-F323-42ED-9D96-34C2D5BE7DB5} = {75C75403-F323-42ED-9D96-34C2D5BE7DB5}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlPrivateTest.Core", "HtmlPrivateTest\HtmlPrivateTest.Core.csproj", "{78EB7ED6-21F0-49A5-9ACF-B3B7BFB85840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordWalker.Core", "WordWalker.Core\WordWalker.Core.csproj", "{D30C01B6-6381-4884-8B70-CD9E02074834}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +81,10 @@ Global
 		{78EB7ED6-21F0-49A5-9ACF-B3B7BFB85840}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78EB7ED6-21F0-49A5-9ACF-B3B7BFB85840}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78EB7ED6-21F0-49A5-9ACF-B3B7BFB85840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D30C01B6-6381-4884-8B70-CD9E02074834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D30C01B6-6381-4884-8B70-CD9E02074834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D30C01B6-6381-4884-8B70-CD9E02074834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D30C01B6-6381-4884-8B70-CD9E02074834}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
