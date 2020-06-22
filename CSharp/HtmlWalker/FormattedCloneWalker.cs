@@ -56,14 +56,14 @@ namespace HtmlWalker
         {
             base.Start(adapter);
             if (currentTag.Name != "#skip")
-                currentTag.OwnedTags.Add(new Eol(Output.Factory));
+                currentTag.OwnedTags.Insert(0, new Eol(Output.Factory));
         }
 
         public override void Start(TagHead adapter)
         {
             base.Start(adapter);
             if (currentTag.Name != "#skip")
-                currentTag.OwnedTags.Add(new Eol(Output.Factory));
+                currentTag.OwnedTags.Insert(0, new Eol(Output.Factory));
         }
 
         public override void End(TagHead adapter)
@@ -78,7 +78,7 @@ namespace HtmlWalker
         {
             base.Start(adapter);
             if (currentTag.Name != "#skip")
-                currentTag.OwnedTags.Add(new Eol(Output.Factory, 2));
+                currentTag.OwnedTags.Insert(0, new Eol(Output.Factory, 2));
         }
 
         public override void End(TagBody adapter)
