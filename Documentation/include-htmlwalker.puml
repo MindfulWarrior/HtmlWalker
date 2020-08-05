@@ -1,0 +1,395 @@
+@startuml
+class CloneWalker {
+    + CloneWalker(document:WalkerPlatform.WalkerDocument)
+}
+DocGeneratorWalker <|-- CloneWalker
+class DocumentTag {
+    + DocumentTag(factory:WalkerPlatform.WalkerFactory, tag:object)
+    + <<override>> TextValue : string <<get>> <<set>>
+    + <<override>> OwnedTags : TagList <<get>>
+    + <<override>> OwnedText : string <<get>>
+    + <<override>> Visit(visitor:ITagVoidVisitor) : void
+    + <<override>> Visit(visitor:ITagGenericVisitor<T>) : T
+    + <<override>> Name : string <<get>>
+    + HtmlTag : TagHtml <<get>>
+    + HeadTag : TagHead <<get>>
+    + BodyTag : TagBody <<get>>
+}
+ContentUtilTag <|-- DocumentTag
+class FormattedCloneWalker {
+    + FormattedCloneWalker(document:WalkerPlatform.WalkerDocument)
+    + <<override>> Start(addapter:<<tag>>) : void
+    + <<override>> Start(addapter:<<tag>>) : void
+    + <<override>> End(addapter:<<tag>>) : void
+    + <<override>> Start(addapter:<<tag>>) : void
+    + <<override>> End(addapter:<<tag>>) : void
+    + <<override>> Handle(addapter:<<tag>>) : void
+}
+CloneWalker <|-- FormattedCloneWalker
+enum ContentType {
+    NONE,
+    TEXT,
+    TAG,
+    SCRIPT,
+    UTIL,
+    SKIP,
+}
+interface ITag {
+    Visit(visitor:ITagVoidVisitor) : void
+    Visit(visitor:ITagGenericVisitor<T>) : T
+    Owner : ITag <<get>>
+    ContentType : ContentType <<get>>
+    Tag : object <<get>>
+    Name : string <<get>>
+    TextValue : string <<get>> <<set>>
+    OwnedTags : TagList <<get>>
+    OwnedText : string <<get>>
+    Attributes : TagAttributes <<get>>
+    Clone(factory:WalkerPlatform.WalkerFactory, owner:ITag) : ITag
+}
+interface IWalker {
+    Handle(addapter:<<tag>>) : void
+    Start(addapter:<<tag>>) : void
+    End(addapter:<<tag>>) : void
+}
+interface IWalkerStream {
+    DocumentTag : DocumentTag <<get>>
+    Open(input:WalkerPlatform.WalkerDocument) : void
+    Close() : void
+    Dispose() : void
+    Handle(addapter:<<tag>>) : <<tag>>
+    Start(addapter:<<tag>>) : <<tag>>
+    End(addapter:<<tag>>) : <<tag>>
+}
+class JoinedWalker {
+    + <<readonly>> Walkers : List<IWalker>
+    + JoinedWalker()
+    + <<override>> Handle(addapter:<<tag>>) : void
+    + <<override>> Start(addapter:<<tag>>) : void
+    + <<override>> End(addapter:<<tag>>) : void
+}
+Walker <|-- JoinedWalker
+class TagTraceWalker {
+    + {static} StartTagTrace(sender:object, args:EventArgs) : void
+    + {static} EndTagTrace(sender:object, args:EventArgs) : void
+    + {static} TagTrace(sender:object, args:EventArgs) : void
+    + Verbosity : int = 1
+    + DebugTrace : bool = false
+    + TagTraceWalker()
+}
+EventWalker <|-- TagTraceWalker
+abstract class Walker {
+    + Walker()
+    + {abstract} Handle(addapter:<<tag>>) : void
+    + {abstract} Start(addapter:<<tag>>) : void
+    + {abstract} End(addapter:<<tag>>) : void
+    + <<virtual>> Visit(adapter:<<tag>>) : void
+}
+ITagVoidVisitor <|-- Walker
+IWalker <|-- Walker
+class CssStyle {
+    + CssStyle()
+    + CssStyle(css:string)
+    + Properties : string <<get>> <<set>>
+    + Clone() : object
+}
+"SortedDictionary`2" "<string,string>" <|-- CssStyle
+ICloneable <|-- CssStyle
+abstract class DocGeneratorWalker {
+    + <<readonly>> Modifiers : List<IModifier>
+    + DocGeneratorWalker(document:WalkerPlatform.WalkerDocument)
+}
+interface IModifier {
+}
+GenericWalker <|-- DocGeneratorWalker
+DocGeneratorWalker +-- IModifier
+"ITagGenericVisitor`1" "<ITag>" <|-- IModifier
+class EscHandler {
+    + {static} <<readonly>> Instance : EscHandler
+    {static} EscHandler()
+    + Escape(content:string) : string
+}
+class EventWalker {
+    + EventWalker()
+    + StartDocumentHandler : EventHandler
+    + EndDocumentHandler : EventHandler
+    + StartTagHandler : EventHandler
+    + EndTagHandler : EventHandler
+    + TagHandler : EventHandler
+    + <<override>> Handle(addapter:<<tag>>) : void
+    + <<override>> Start(addapter:<<tag>>) : void
+    + <<override>> End(addapter:<<tag>>) : void
+}
+class TagEventArgs {
+    + <<readonly>> Tag : ITag
+    + TagEventArgs(tag:ITag)
+}
+Walker <|-- EventWalker
+EventWalker +-- TagEventArgs
+EventArgs <|-- TagEventArgs
+abstract class GenericWalker {
+    + GenericWalker()
+    + <<override>> Handle(addapter:<<tag>>) : void
+    + <<override>> Start(addapter:<<tag>>) : void
+    + <<override>> End(addapter:<<tag>>) : void
+}
+Walker <|-- GenericWalker
+class TagAttributes {
+    + Keys : ICollection<string> <<get>>
+    + Values : ICollection<string> <<get>>
+    + Count : int <<get>>
+    + IsReadOnly : bool <<get>>
+    + Add(attr:string, value:string) : void
+    + Add(item:KeyValuePair<string, string>) : void
+    + Clear() : void
+    + Contains(item:KeyValuePair<string, string>) : bool
+    + ContainsKey(attr:string) : bool
+    + CopyTo(array:KeyValuePair<string, string>[], arrayIndex:int) : void
+    + GetEnumerator() : IEnumerator<KeyValuePair<string, string>>
+    + Remove(attr:string) : bool
+    + Remove(item:KeyValuePair<string, string>) : bool
+    + TryGetValue(attr:string, value:string) : bool
+    GetEnumerator() : IEnumerator
+}
+"IDictionary`2" "<string,string>" <|-- TagAttributes
+class HtmlWalkerException {
+    + HtmlWalkerException()
+    + HtmlWalkerException(msg:string)
+}
+class InvalidVisitorException {
+    + InvalidVisitorException()
+    + InvalidVisitorException(msg:string)
+}
+HtmlWalkerException <|-- InvalidVisitorException
+class NoDocumentException {
+    + NoDocumentException()
+    + NoDocumentException(msg:string)
+}
+HtmlWalkerException <|-- NoDocumentException
+class TagDeprecatedException {
+    + TagDeprecatedException(msg:string)
+    + TagDeprecatedException(adapter:ITag)
+}
+HtmlWalkerException <|-- TagDeprecatedException
+class TagNotSupportedException {
+    + TagNotSupportedException(msg:string)
+    + TagNotSupportedException(adapter:ITag)
+}
+HtmlWalkerException <|-- TagNotSupportedException
+abstract class WalkerPlatform <<partial>> {
+}
+interface ITagApi {
+    Name(tag:object) : string
+    Platform : WalkerPlatform <<get>>
+    GetText(tag:object) : string
+    SetText(tag:object, text:string) : void
+    OwnedText(tag:object) : string
+    GetScript(tag:object) : string
+    SetScript(tag:object, script:string) : void
+    GetAttributes(tag:object) : IDictionary<string, string>
+    GetAttribute(tag:object, attr:string) : string
+    SetAttribute(tag:object, attr:string, value:string) : void
+    Add(tag:object, adapter:ITag) : void
+    Remove(tag:object, adapter:ITag) : void
+    Insert(tag:object, index:int, adapter:ITag) : void
+}
+WalkerPlatform +-- ITagApi
+abstract class WalkerPlatform <<partial>> {
+}
+abstract class WalkerDocument {
+    + DocumentTag : DocumentTag <<get>>
+    + Platform : WalkerPlatform <<get>>
+    + ProvideEol : bool <<get>> <<set>>
+    + ConvertToEntities : bool <<get>> <<set>>
+    + Encoding : Encoding <<get>> <<set>> = null
+    + <<virtual>> Close() : void
+    + {abstract} Factory : WalkerFactory <<get>>
+    + {abstract} Html : string <<get>>
+    + {abstract} Load(path:string) : WalkerDocument
+    + {abstract} Load(reader:TextReader) : WalkerDocument
+    + {abstract} LoadHtml(html:string) : WalkerDocument
+    + {abstract} Save(path:string, encoding:Encoding) : void
+    + {abstract} Save(path:string) : void
+    + {abstract} Save(writer:TextWriter) : void
+}
+WalkerPlatform +-- WalkerDocument
+abstract class WalkerPlatform <<partial>> {
+}
+abstract class WalkerFactory {
+    {static} WalkerFactory()
+    + ConvertToEntities : bool = false
+    + {abstract} Platform : WalkerPlatform <<get>>
+}
+WalkerPlatform +-- WalkerFactory
+abstract class WalkerPlatform <<partial>> {
+    + HandleEntities(content:string, attribute:bool) : string
+    + {abstract} Name : string <<get>>
+    + {abstract} IsXml : bool <<get>>
+    + {abstract} NewDocumentOptions() : IOptions
+    + {abstract} NewDocument(options:IOptions) : WalkerDocument
+    + {abstract} NewDocument(adapter:DocumentTag, options:IOptions) : WalkerDocument
+    + {abstract} NewDocument(path:string, options:IOptions) : WalkerDocument
+}
+interface IOptions {
+    Encoding : Encoding <<get>> <<set>>
+    ProvideEol : bool <<get>> <<set>>
+    ConvertToEntities : bool <<get>> <<set>>
+}
+WalkerPlatform +-- IOptions
+abstract class BaseTag {
+    + BaseTag(factory:WalkerPlatform.WalkerFactory, tag:object)
+    + <<override>> ToString() : string
+    + {abstract} ContentType : ContentType <<get>>
+    + {abstract} TextValue : string <<get>> <<set>>
+    + {abstract} OwnedTags : TagList <<get>>
+    + {abstract} OwnedText : string <<get>>
+    + {abstract} Visit(visitor:ITagVoidVisitor) : void
+    + {abstract} Visit(visitor:ITagGenericVisitor<T>) : T
+    + Tag : object <<get>>
+    + <<virtual>> Name : string <<get>>
+    + <<virtual>> Owner : ITag <<get>> <<internal set>>
+    + Attributes : TagAttributes <<get>>
+    + Clone(factory:WalkerPlatform.WalkerFactory, owner:ITag) : ITag
+}
+ITag <|-- BaseTag
+abstract class ContentContainerTag {
+    + ContentContainerTag(factory:WalkerPlatform.WalkerFactory, tag:Object)
+    + <<override>> ContentType : ContentType <<get>>
+    + <<override>> TextValue : String <<get>> <<set>>
+    + <<override>> OwnedTags : TagList <<get>>
+    + <<override>> OwnedText : string <<get>>
+}
+BaseTag <|-- ContentContainerTag
+abstract class ContentNoneTag {
+    + ContentNoneTag(factory:WalkerPlatform.WalkerFactory, tag:object)
+    + <<override>> ContentType : ContentType <<get>>
+    + <<override>> TextValue : string <<get>> <<set>>
+    + <<override>> OwnedTags : TagList <<get>>
+    + <<override>> OwnedText : string <<get>>
+}
+BaseTag <|-- ContentNoneTag
+abstract class ContentScriptTag {
+    + ContentScriptTag(factory:WalkerPlatform.WalkerFactory, tag:object)
+    + <<override>> ContentType : ContentType <<get>>
+    + <<override>> TextValue : string <<get>> <<set>>
+    + <<override>> OwnedTags : TagList <<get>>
+    + <<override>> OwnedText : string <<get>>
+}
+BaseTag <|-- ContentScriptTag
+abstract class ContentTextTag {
+    + ContentTextTag(factory:WalkerPlatform.WalkerFactory, tag:object)
+    + <<override>> ContentType : ContentType <<get>>
+    + <<override>> TextValue : string <<get>> <<set>>
+    + <<override>> OwnedTags : TagList <<get>>
+    + <<override>> OwnedText : string <<get>>
+}
+BaseTag <|-- ContentTextTag
+abstract class ContentUtilTag {
+    + ContentUtilTag(factory:WalkerPlatform.WalkerFactory, tag:object)
+    + <<override>> ContentType : ContentType <<get>>
+}
+BaseTag <|-- ContentUtilTag
+class TagList {
+    GetEnumerator() : IEnumerator
+    + GetEnumerator() : IEnumerator<ITag>
+    + Count : int <<get>>
+    + IndexOf(adapter:ITag) : int
+    + Contains(item:ITag) : bool
+    + Add(adapter:ITag) : void
+    + Insert(index:int, adapter:ITag) : void
+    + RemoveAt(index:int) : void
+    + Clear() : void
+    + CopyTo(array:ITag[], arrayIndex:int) : void
+    + Remove(adapter:ITag) : bool
+    + IsReadOnly : bool <<get>>
+    + ToArray() : ITag[]
+    + ToList() : List<ITag>
+    + Replace(index:int, replacement:T) : void
+    + Replace(original:T0, replacement:T1) : void
+}
+"IList`1" "<ITag>" <|-- TagList
+class Comment {
+    + Comment(factory:WalkerPlatform.WalkerFactory, text:string)
+    + Comment(factory:WalkerPlatform.WalkerFactory, obj:object)
+    + <<override>> Visit(visitor:ITagVoidVisitor) : void
+    + <<override>> Visit(visitor:ITagGenericVisitor<T>) : T
+    + <<override>> Name : string <<get>>
+    + <<override>> TextValue : string <<get>> <<set>>
+}
+Text <|-- Comment
+class Entity {
+    + Entity(factory:WalkerPlatform.WalkerFactory, entity:string)
+    + Entity(factory:WalkerPlatform.WalkerFactory, obj:object)
+    + <<override>> Visit(visitor:ITagVoidVisitor) : void
+    + <<override>> Visit(visitor:ITagGenericVisitor<T>) : T
+    + <<override>> Name : string <<get>>
+    + <<override>> TextValue : string <<get>> <<set>>
+}
+Text <|-- Entity
+class Eol {
+    + Eol(factory:WalkerPlatform.WalkerFactory, count:int)
+    + Eol(factory:WalkerPlatform.WalkerFactory, text:string)
+    + Eol(factory:WalkerPlatform.WalkerFactory, obj:object)
+    + <<override>> Visit(visitor:ITagVoidVisitor) : void
+    + <<override>> Visit(visitor:ITagGenericVisitor<T>) : T
+    + <<override>> Name : string <<get>>
+}
+Text <|-- Eol
+class Skip {
+    + <<readonly>> SkippedTag : BaseTag
+    + SkipTree : bool
+    + Skip(factory:WalkerPlatform.WalkerFactory, adapter:BaseTag)
+    + <<override>> ContentType : ContentType <<get>>
+    + <<override>> Owner : ITag <<get>>
+    + <<override>> Visit(visitor:ITagVoidVisitor) : void
+    + <<override>> Visit(visitor:ITagGenericVisitor<T>) : T
+    + <<override>> Name : string <<get>>
+    + <<override>> TextValue : string <<get>> <<set>>
+    + <<override>> OwnedTags : TagList <<get>>
+    + <<override>> OwnedText : string <<get>>
+}
+ContentUtilTag <|-- Skip
+class Text {
+    + Text(factory:WalkerPlatform.WalkerFactory, text:string)
+    + Text(factory:WalkerPlatform.WalkerFactory, obj:object)
+    + <<override>> Visit(visitor:ITagVoidVisitor) : void
+    + <<override>> Visit(visitor:ITagGenericVisitor<T>) : T
+    + <<override>> Name : string <<get>>
+    + <<override>> TextValue : string <<get>> <<set>>
+    + <<override>> OwnedTags : TagList <<get>>
+    + <<override>> OwnedText : string <<get>>
+    + <<override>> ToString() : string
+}
+ContentUtilTag <|-- Text
+class Unknown {
+    + Unknown(factory:WalkerPlatform.WalkerFactory, text:string)
+    + Unknown(factory:WalkerPlatform.WalkerFactory, obj:object)
+    + <<override>> Visit(visitor:ITagVoidVisitor) : void
+    + <<override>> Visit(visitor:ITagGenericVisitor<T>) : T
+    + <<override>> Name : string <<get>>
+    + <<override>> TextValue : string <<get>> <<set>>
+    + <<override>> OwnedTags : TagList <<get>>
+    + <<override>> OwnedText : string <<get>>
+}
+ContentUtilTag <|-- Unknown
+class EchoModifer {
+    + <<virtual>> Visit(adapter:<<tag>>) : ITag
+}
+interface "ITagGenericVisitor`1"<T> {
+    Visit(adapter:<<tag>>) : T
+}
+interface ITagVoidVisitor {
+    Visit(adapter:<<tag>>) : void
+}
+abstract class "StrickXhtmlGenericVisitor`1"<T> {
+    + Visit(adapter:<<not supported tag>>) : T
+    + Visit(adapter:<<deprecated tag>>) : T
+    + {abstract} Visit(adapter:<<tag>>) : T
+}
+"ITagGenericVisitor`1" "<T>" <|-- "StrickXhtmlGenericVisitor`1"
+abstract class "StrictHtml5GenericVisitor`1"<T> {
+    + Visit(adapter:<<deprecated tag>>) : T
+    + {abstract} Visit(adapter:<<tag>>) : T
+}
+"ITagGenericVisitor`1" "<T>" <|-- "StrictHtml5GenericVisitor`1"
+@enduml

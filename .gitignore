@@ -339,3 +339,5 @@ ASALocalRun/
 .project
 *.class
 Java/htmlwalker/target/
+Documentation/HtmlWalker/
+.vscode/

@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlDocToolTest.Core", "Htm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlPrivateTest.Core", "HtmlPrivateTest\HtmlPrivateTest.Core.csproj", "{78EB7ED6-21F0-49A5-9ACF-B3B7BFB85840}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordWalker.Core", "WordWalker.Core\WordWalker.Core.csproj", "{D30C01B6-6381-4884-8B70-CD9E02074834}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordWalker.Core", "WordWalker.Core\WordWalker.Core.csproj", "{D30C01B6-6381-4884-8B70-CD9E02074834}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
