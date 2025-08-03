@@ -4,11 +4,12 @@ using System.Text.Json;
 
 #nullable enable
 
-const string GENERATE_JSON = "generate_tags.json";
+const string GENERATE_JSON = "generate.json";
 
 public struct Task
 {
     public string? Output { get; set; }
+    public string Prefix { get; set; }
     public string Template { get; set; }
     public string[] Keywords { get; set; }
     public string[][] Tags { get; set; }
@@ -51,7 +52,7 @@ try
                         content = content.Replace(keyword, tag);
                     }
 
-                    string outputFilePath = Path.Combine(output, $"Tag{tags[0]}.cs");
+                    string outputFilePath = Path.Combine(output, $"{task.Prefix}{tags[0]}.cs");
                     File.WriteAllText(outputFilePath, content);
 
                     Console.WriteLine($"Created file: {outputFilePath}");
