@@ -5,7 +5,7 @@ using HtmlWalker.Visitor;
 namespace HtmlWalker.Tag.Html
 {
     /// <summary>
-    ///   This class houses the HTML <b>&lt;a&gt;</b> tag object and provides the <see cref="ITag"/> interface.
+    ///   This class houses the HTML <b>&lt;$$tag$$&gt;</b> tag object and provides the <see cref="ITag"/> interface.
     ///   
     ///   Implements <see cref="ContentContainerTag"/>
     /// </summary>
@@ -18,7 +18,7 @@ namespace HtmlWalker.Tag.Html
         /// <param name="factory">
         ///   used to produce the new HTML tag and other objects as per the specific platform
         /// </param>
-        public Tag$$tag$$(WalkerPlatform.WalkerFactory factory) : base(factory, factory.CreateTag$$tag$$()) { }
+        public Tag$$tag$$(WalkerPlatform.WalkerFactory factory) : base(factory, factory.Create$$tag$$()) { }
 
         /// <summary>
         ///   Constructor for housing a existing <b>&lt;a&gt;</b> tag

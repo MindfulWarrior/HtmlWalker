@@ -342,3 +342,4 @@ ASALocalRun/
 Java/htmlwalker/target/
 Documentation/HtmlWalker/
 .vscode/
+.editorconfig

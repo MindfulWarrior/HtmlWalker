@@ -1,0 +1,13 @@
+{
+    "Tasks":  [
+        {
+            "Output": "../HtmlWalker/Tag.Html",
+            "Template": "content_tag.cs",
+            "Keyword": "$$tag$$",
+            "Tags": [
+                "A",
+                "Abbr"
+            ]
+        }
+    ]
+}
