@@ -1,4 +1,5 @@
-﻿using Microsoft.XmlDiffPatch;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.XmlDiffPatch;
 using System.IO;
 using System.Xml;
 using XhtmlXsd;
@@ -16,7 +17,7 @@ namespace HtmlTest.Base
         protected CloneTest(string ext, string subFolder) : base(subFolder) => Ext = ext;
 
         protected override void CompareToExpected(
-            FileInfo testOutput, FileInfo testExpected, bool ignoreWhitespace = true
+            FileInfo testOutput, FileInfo testExpected, bool ignoreWhitespace = true, bool ignoreQuotes = false
         ) {
             bool pass = false;
 
@@ -39,11 +40,17 @@ namespace HtmlTest.Base
             }
 
             if (!pass)
-                base.CompareToExpected(testOutput, testExpected);
+                base.CompareToExpected(testOutput, testExpected, ignoreWhitespace, ignoreQuotes);
         }
 
-        public void DoTest(FileInfo testInput, FileInfo testOutput, FileInfo testExpected, TestOptions options)
-        {
+        public void DoTest(
+            FileInfo testInput,
+            FileInfo testOutput,
+            FileInfo testExpected,
+            TestOptions options,
+            bool ignoreWhitespace = true,
+            bool ignoreQuotes = false
+        ) {
             TestWalker walker;
             if (!Platform.IsXml && options.Formatted && options.DocumentOptions.ProvideEol)
                 walker = new FormattedCloneTestWalker(Platform, options.DocumentOptions);
@@ -58,7 +65,7 @@ namespace HtmlTest.Base
 
             walker.Output.Save(testOutput.FullName, document.Encoding);
 
-            CompareToExpected(testOutput, testExpected);
+            CompareToExpected(testOutput, testExpected, ignoreWhitespace, ignoreQuotes);
         }
 
         public void DoTest(string inFile, string outFile, string expectedFile, TestOptions options)

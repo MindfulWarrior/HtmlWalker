@@ -68,7 +68,7 @@ namespace HtmlPrivateTest
             }
         }
 
-        [DataTestMethod]
+        [TestMethod]
         [DynamicData(nameof(AllInFolder), DynamicDataSourceType.Method)]
         public void TCloneAll(FileInfo testInput, string name)
         {
@@ -77,10 +77,10 @@ namespace HtmlPrivateTest
             var cloneExpected = cloneTest.GetTestExpected("expected." + name + ".clone.html", testInput, options);
             var cloneOutput = cloneTest.GetTestOutput("output." + name + ".clone.html");
 
-            cloneTest.DoTest(testInput, cloneOutput, cloneExpected, options);
+            cloneTest.DoTest(testInput, cloneOutput, cloneExpected, options, true, true);
         }
 
-        [DataTestMethod]
+        [TestMethod]
         [DynamicData(nameof(AllInFolder), DynamicDataSourceType.Method)]
         public void TFormatAll(FileInfo testInput, string name)
         {
@@ -92,7 +92,7 @@ namespace HtmlPrivateTest
             formattingTest.DoTest(testInput, formattedOutput, formattedExpected, options);
         }
 
-        [DataTestMethod]
+        [TestMethod]
         [DynamicData(nameof(AllInFolder), DynamicDataSourceType.Method)]
         public void TCleanAll(FileInfo testInput, string name)
         {

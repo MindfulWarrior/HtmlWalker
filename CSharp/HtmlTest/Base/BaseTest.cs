@@ -150,7 +150,7 @@ namespace HtmlTest.Base
             return line;
         }
 
-        protected bool CompareLines(string expected, string output, bool ignoreWhitespace = true)
+        protected bool CompareLines(string expected, string output, bool ignoreWhitespace = true, bool ignoreQuotes = false)
         {
             bool match = true;
 
@@ -168,6 +168,19 @@ namespace HtmlTest.Base
 
             while (match && ePos < eLine.Length && oPos < oLine.Length)
             {
+                if (ignoreQuotes)
+                {
+                    while (eLine[ePos] == '"' && eLine[ePos - 1] != '\\' && ePos < eLine.Length)
+                    {
+                        ePos++;
+                    }
+
+                    while (oLine[oPos] == '"' && oLine[oPos - 1] != '\\' && oPos < oLine.Length)
+                    {
+                        oPos++;
+                    }
+                }
+
                 if (ignoreWhitespace)
                 {
                     while (Char.IsWhiteSpace(eLine[ePos]) && ePos < eLine.Length)
@@ -194,14 +207,15 @@ namespace HtmlTest.Base
             FileInfo testInput,
             string expectedFile,
             TestOptions options,
-            bool ignoreWhitespace = true
+            bool ignoreWhitespace = true,
+            bool ignoreQuotes = false
         ) {
             FileInfo testExpected = GetTestExpected(expectedFile, testInput, options);
-            CompareToExpected(testOutput, testExpected, ignoreWhitespace);
+            CompareToExpected(testOutput, testExpected, ignoreWhitespace, ignoreQuotes);
         }
 
         protected virtual void CompareToExpected(
-            FileInfo testOutput, FileInfo testExpected, bool ignoreWhitespace = true
+            FileInfo testOutput, FileInfo testExpected, bool ignoreWhitespace = true, bool ignoreQuotes = false
         ) {
             string failure = null;
             try
@@ -232,7 +246,7 @@ namespace HtmlTest.Base
                 {
                     while (null != outputLine && null != expectedLine && null == failure)
                     {
-                        if (!CompareLines(expectedLine, outputLine, ignoreWhitespace))
+                        if (!CompareLines(expectedLine, outputLine, ignoreWhitespace, ignoreQuotes))
                             failure = "Expected - [" + expectedLine + "] vs Out - [" + outputLine + "]";
                         outputLine = ReadNextLine(output, ignoreWhitespace);
                         expectedLine = ReadNextLine(expected, ignoreWhitespace);
