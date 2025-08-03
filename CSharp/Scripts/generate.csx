@@ -6,11 +6,17 @@ using System.Text.Json;
 
 const string GENERATE_JSON = "generate.json";
 
-public struct Task
+public struct Output
 {
-    public string? Output { get; set; }
+    public string Folder { get; set; }
     public string Prefix { get; set; }
     public string Template { get; set; }
+    
+}
+
+public struct Task
+{
+    public Output[] Outputs { get; set; }
     public string[] Keywords { get; set; }
     public string[][] Tags { get; set; }
 }
@@ -29,14 +35,11 @@ try
     {
         foreach (var task in config.Tasks)
         {
-            if (task.Tags != null)
+            foreach (var output in task.Outputs)
             {
-                var template = File.ReadAllText(task.Template);
+                Directory.CreateDirectory(output.Folder);
 
-                // Create output directory if it doesn't exist
-                var output = task.Output ?? "output";
-                Directory.CreateDirectory(output);
-
+                var template = File.ReadAllText(output.Template);
                 foreach (var tags in task.Tags)
                 {
                     string content = template;
@@ -52,7 +55,7 @@ try
                         content = content.Replace(keyword, tag);
                     }
 
-                    string outputFilePath = Path.Combine(output, $"{task.Prefix}{tags[0]}.cs");
+                    string outputFilePath = Path.Combine(output.Folder, $"{output.Prefix}{tags[0]}.cs");
                     File.WriteAllText(outputFilePath, content);
 
                     Console.WriteLine($"Created file: {outputFilePath}");

@@ -1,9 +1,13 @@
 {
     "Tasks":  [
         {
-            "Output": "../HtmlWalker/Tag.Html",
-            "Prefix": "Tag",
-            "Template": "container_tag.cs",
+            "Outputs": [
+                {
+                    "Folder":  "../HtmlWalker/Tag.Html",
+                    "Prefix": "Tag",
+                    "Template": "container_tag.cs"
+                }
+            ],
             "Keywords": ["$$Tag$$", "$$tag$$"],
             "Tags": [
                 ["A",           "a"         ],
@@ -109,9 +113,13 @@
             ]
         },
         {
-            "Output": "../HtmlWalker/Tag.Html",
-            "Prefix": "Tag",
-            "Template": "none_tag.cs",
+            "Outputs": [
+                {
+                    "Folder":  "../HtmlWalker/Tag.Html",
+                    "Prefix": "Tag",
+                    "Template": "none_tag.cs"
+                }
+            ],
             "Keywords": ["$$Tag$$", "$$tag$$"],
             "Tags": [
                 ["Area",     "area"    ],
@@ -129,9 +137,13 @@
             ]           
         },
         {
-            "Output": "../HtmlWalker/Tag.Html",
-            "Prefix": "Tag",
-            "Template": "text_tag.cs",
+            "Outputs": [
+                {
+                    "Folder":  "../HtmlWalker/Tag.Html",
+                    "Prefix": "Tag",
+                    "Template": "text_tag.cs"
+                }
+            ],
             "Keywords": ["$$Tag$$", "$$tag$$"],
             "Tags": [
                 ["Option",   "option"  ],
@@ -140,9 +152,13 @@
             ]           
         },
         {
-            "Output": "../HtmlWalker/Tag.Html",
-            "Prefix": "Tag",
-            "Template": "script_tag.cs",
+            "Outputs": [
+                {
+                    "Folder":  "../HtmlWalker/Tag.Html",
+                    "Prefix": "Tag",
+                    "Template": "script_tag.cs"
+                }
+            ],
             "Keywords": ["$$Tag$$", "$$tag$$"],
             "Tags": [
                 ["Script", "script"],
@@ -150,18 +166,31 @@
             ]           
         },
         {
-            "Output": "../HtmlWalker/Tag.Html",
-            "Prefix": "Tag",
-            "Template": "meta_tag.cs",
+            "Outputs": [
+                {
+                    "Folder":  "../HtmlWalker/Tag.Html",
+                    "Prefix": "Tag",
+                    "Template": "meta_tag.cs"
+                }
+            ],
             "Keywords": ["$$Tag$$", "$$tag$$"],
             "Tags": [
                 ["Meta", "meta"]
             ]           
         },
         {
-            "Output": "../HtmlWalker/Visitor/ITagGenericVisitor",
-            "Prefix": "ITagGenericVisitorTag",
-            "Template": "itag_generic_visitor.cs",
+            "Outputs": [
+                {
+                    "Folder":  "../HtmlWalker/Visitor/ITagGenericVisitor",
+                    "Prefix": "ITagGenericVisitorTag",
+                    "Template": "itag_generic_visitor.cs"
+                },
+                {
+                    "Folder":  "../HtmlWalker/Visitor/ITagVoidVisitor",
+                    "Prefix": "ITagVoidVisitorTag",
+                    "Template": "itag_void_visitor.cs"
+                }
+            ],
             "Keywords": ["$$Tag$$", "$$tag$$"],
             "Tags": [
                 ["A",           "a"         ],
