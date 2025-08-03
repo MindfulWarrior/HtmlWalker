@@ -13,7 +13,7 @@ namespace HtmlWalker.Tag.Html
     public class TagStrong : ContentContainerTag
     {
         /// <summary>
-        ///   Constructor for housing a new <b>&lt;stron&gt;</b> tag
+        ///   Constructor for housing a new <b>&lt;strong&gt;</b> tag
         /// </summary>
         /// <param name="factory">
         ///   used to produce the new HTML tag and other objects as per the specific platform

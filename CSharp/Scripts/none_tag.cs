@@ -5,27 +5,27 @@ using HtmlWalker.Visitor;
 namespace HtmlWalker.Tag.Html
 {
     /// <summary>
-    ///   This class houses the HTML <b>&lt;output&gt;</b> tag object and provides the <see cref="ITag"/> interface.
+    ///   This class houses the HTML <b>&lt;$$tag$$&gt;</b> tag object and provides the <see cref="ITag"/> interface.
     ///   
-    ///   Implements <see cref="ContentContainerTag"/>
+    ///   Implements <see cref="ContentNoneTag"/>
     /// </summary>
     /// <author>Robert R Flores</author>
-    public class TagOutput : ContentContainerTag
+    public class Tag$$Tag$$ : ContentNoneTag
     {
         /// <summary>
-        ///   Constructor for housing a new <b>&lt;output&gt;</b> tag
+        ///   Constructor for housing a new <b>&lt;$$tag$$&gt;</b> tag
         /// </summary>
         /// <param name="factory">
         ///   used to produce the new HTML tag and other objects as per the specific platform
         /// </param>
-        public TagOutput(WalkerPlatform.WalkerFactory factory) : base(factory, factory.CreateOutput()) { }
+        public Tag$$Tag$$(WalkerPlatform.WalkerFactory factory) : base(factory, factory.Create$$Tag$$()) { }
 
         /// <summary>
-        ///   Constructor for housing a existing <b>&lt;output&gt;</b> tag
+        ///   Constructor for housing a existing <b>&lt;$$tag$$&gt;</b> tag
         /// </summary>
         /// <param name="factory">used to produce objects as per the specific platform</param>
         /// <param name="tag">object managed by the adapter</param>
-        public TagOutput(WalkerPlatform.WalkerFactory factory, object tag) : base(factory, tag) { }
+        public Tag$$Tag$$(WalkerPlatform.WalkerFactory factory, object tag) : base(factory, tag) { }
 
         /// <summary>
         ///   Implements <see cref="ITag.Visit(ITagVoidVisitor)"/>

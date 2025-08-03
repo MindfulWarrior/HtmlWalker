@@ -5,7 +5,7 @@ using HtmlWalker.Visitor;
 namespace HtmlWalker.Tag.Html
 {
     /// <summary>
-    ///   This class houses the HTML <b>&lt;&gt;</b> tag object and provides the <see cref="ITag"/> interface.
+    ///   This class houses the HTML <b>&lt;figure&gt;</b> tag object and provides the <see cref="ITag"/> interface.
     ///   
     ///   Implements <see cref="ContentContainerTag"/>
     /// </summary>

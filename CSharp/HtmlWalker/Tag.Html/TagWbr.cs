@@ -7,7 +7,7 @@ namespace HtmlWalker.Tag.Html
     /// <summary>
     ///   This class houses the HTML <b>&lt;wbr&gt;</b> tag object and provides the <see cref="ITag"/> interface.
     ///   
-    ///   Implements <see cref="ContentContainerTag"/>
+    ///   Implements <see cref="ContentNoneTag"/>
     /// </summary>
     /// <author>Robert R Flores</author>
     public class TagWbr : ContentNoneTag

@@ -13,7 +13,7 @@ namespace HtmlWalker.Tag.Html
     public class TagTt : ContentContainerTag
     {
         /// <summary>
-        ///   Constructor for housing a new <b>&lt;b&gt;</b> tag
+        ///   Constructor for housing a new <b>&lt;tt&gt;</b> tag
         /// </summary>
         /// <param name="factory">
         ///   used to produce the new HTML tag and other objects as per the specific platform
@@ -21,7 +21,7 @@ namespace HtmlWalker.Tag.Html
         public TagTt(WalkerPlatform.WalkerFactory factory) : base(factory, factory.CreateTt()) { }
 
         /// <summary>
-        ///   Constructor for housing a existing <b>&lt;b&gt;</b> tag
+        ///   Constructor for housing a existing <b>&lt;tt&gt;</b> tag
         /// </summary>
         /// <param name="factory">used to produce objects as per the specific platform</param>
         /// <param name="tag">object managed by the adapter</param>

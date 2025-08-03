@@ -23,6 +23,8 @@ namespace HtmlWalker.Tag.Html
         /// <summary>
         ///   Constructor for housing a existing <b>&lt;legend&gt;</b> tag
         /// </summary>
+        /// <param name="factory">used to produce objects as per the specific platform</param>
+        /// <param name="tag">object managed by the adapter</param>
         public TagLegend(WalkerPlatform.WalkerFactory factory, object tag) : base(factory, tag) { }
 
         /// <summary>

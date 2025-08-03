@@ -4,14 +4,14 @@ using System.Text.Json;
 
 #nullable enable
 
-const string GENERATE_JSON = "generate.json";
+const string GENERATE_JSON = "generate_tags.json";
 
 public struct Task
 {
     public string? Output { get; set; }
     public string Template { get; set; }
-    public string Keyword { get; set; }
-    public string[] Tags { get; set; }
+    public string[] Keywords { get; set; }
+    public string[][] Tags { get; set; }
 }
 
 public struct Config
@@ -30,21 +30,29 @@ try
         {
             if (task.Tags != null)
             {
-                var templateContent = File.ReadAllText(task.Template);
+                var template = File.ReadAllText(task.Template);
 
                 // Create output directory if it doesn't exist
                 var output = task.Output ?? "output";
                 Directory.CreateDirectory(output);
 
-                foreach (var tag in task.Tags)
+                foreach (var tags in task.Tags)
                 {
-                    if (string.IsNullOrWhiteSpace(tag))
-                        continue;
+                    string content = template;
 
-                    string newContent = templateContent.Replace(task.Keyword, tag);
-                    string outputFilePath = Path.Combine(output, $"Tag{tag}.cs");
+                    for (int n = 0; n < tags.Length; n++)
+                    {
+                        var tag = tags[n];
+                        var keyword = task.Keywords[n];
 
-                    File.WriteAllText(outputFilePath, newContent);
+                        if (string.IsNullOrWhiteSpace(tag))
+                            continue;
+
+                        content = content.Replace(keyword, tag);
+                    }
+
+                    string outputFilePath = Path.Combine(output, $"Tag{tags[0]}.cs");
+                    File.WriteAllText(outputFilePath, content);
 
                     Console.WriteLine($"Created file: {outputFilePath}");
                 }

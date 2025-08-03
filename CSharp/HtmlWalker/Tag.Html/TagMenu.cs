@@ -21,7 +21,7 @@ namespace HtmlWalker.Tag.Html
         public TagMenu(WalkerPlatform.WalkerFactory factory) : base(factory, factory.CreateMenu()) { }
 
         /// <summary>
-        ///   Constructor for housing a existing <b>&lt;mark&gt;</b> tag
+        ///   Constructor for housing a existing <b>&lt;menu&gt;</b> tag
         /// </summary>
         /// <param name="factory">used to produce objects as per the specific platform</param>
         /// <param name="tag">object managed by the adapter</param>

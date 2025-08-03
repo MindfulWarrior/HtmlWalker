@@ -24,7 +24,7 @@ namespace HtmlWalker.Tag.Html
         ///   Constructor for housing a existing <b>&lt;rp&gt;</b> tag
         /// </summary>
         /// <param name="factory">used to produce objects as per the specific platform</param>
-        /// <param name="tag">used to produce as per the specific platform</param>
+        /// <param name="tag">object managed by the adapter</param>
         public TagRp(WalkerPlatform.WalkerFactory factory, object tag) : base(factory, tag) { }
 
         /// <summary>

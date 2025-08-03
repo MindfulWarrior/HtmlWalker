@@ -7,7 +7,7 @@ namespace HtmlWalker.Tag.Html
     /// <summary>
     ///   This class houses the HTML <b>&lt;title&gt;</b> tag object and provides the <see cref="ITag"/> interface.
     ///   
-    ///   Implements <see cref="ContentContainerTag"/>
+    ///   Implements <see cref="ContentTextTag"/>
     /// </summary>
     /// <author>Robert R Flores</author>
     public class TagTitle : ContentTextTag

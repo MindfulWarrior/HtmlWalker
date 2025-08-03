@@ -21,7 +21,7 @@ namespace HtmlWalker.Tag.Html
         public TagAddress(WalkerPlatform.WalkerFactory factory) : base(factory, factory.CreateAddress()) { }
 
         /// <summary>
-        ///   Constructor for housing a existing <b>&lt;adress&gt;</b> tag
+        ///   Constructor for housing a existing <b>&lt;address&gt;</b> tag
         /// </summary>
         /// <param name="factory">used to produce objects as per the specific platform</param>
         /// <param name="tag">object managed by the adapter</param>
